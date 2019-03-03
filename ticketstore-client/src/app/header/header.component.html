@@ -1,3 +1,44 @@
-<p>
-  header works!
-</p>
+<nav class="navbar sticky-top navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a routerLink="/home" class="navbar-brand mb-0 h1 p-0">
+          <!-- <img src="../../assets/img/logo.ico" width="30" height="30" class="d-inline-block align-top" alt=""> -->
+          Ticketstore
+        </a>
+      </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarcontent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarcontent">
+        <ul class="nav navbar-nav ml-auto">
+          <li class="nav-item" routerlinkActive="active">
+            <a class="nav-link link" routerLink="/createEvent">Evenement aanmaken</a>
+          </li>
+          <!--<li class="nav-item" routerLinkActive="active">
+            <a class="nav-link link" routerLink="/vrijwilliger">Vrijwilliger</a>
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link link" routerLink="/voertuig">Voertuig</a>
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link link" routerLink="/kazerne">Kazerne</a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav m-0">
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link link" routerLink="/inschrijven" *ngIf="!auth.isLoggedIn()">Inschrijven</a>
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link link" routerLink="/intranet" *ngIf="auth.isLoggedIn()">Intranet</a>
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+              <a class="nav-link link" routerLink="/intranet" *ngIf="!auth.isLoggedIn()">Inloggen</a>
+            </li>
+          <li class="nav-item" routerLinkActive="active" *ngIf="auth.isLoggedIn()">
+            <a class="nav-link link" (click)="auth.logout()">Uitloggen</a>
+          </li> -->
+        </ul>
+      </div>
+    </div>
+  </nav>
