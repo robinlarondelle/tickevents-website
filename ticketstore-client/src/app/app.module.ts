@@ -7,6 +7,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { EventCreateComponent } from './event-create/event-create.component';
 import { AppRoutingModule } from './app-routing.module';
+import { EventsComponent } from './events/events.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { AppRoutingModule } from './app-routing.module';
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    EventCreateComponent
+    EventCreateComponent,
+    EventsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
