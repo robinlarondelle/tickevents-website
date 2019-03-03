@@ -9,6 +9,10 @@ import { EventCreateComponent } from './event-create/event-create.component';
 import { AppRoutingModule } from './app-routing.module';
 import { EventsComponent } from './events/events.component';
 import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
+import { MyEventsComponent } from './profile/my-events/my-events.component';
+import { MyTicketsComponent } from './profile/my-tickets/my-tickets.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +22,11 @@ import { LoginComponent } from './login/login.component';
     FooterComponent,
     EventCreateComponent,
     EventsComponent,
-    LoginComponent
+    LoginComponent,
+    ProfileComponent,
+    MyEventsComponent,
+    MyTicketsComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
