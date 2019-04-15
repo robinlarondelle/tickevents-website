@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+
+    <div class="col-md-6" *ngIf="!success; else successTemplate">
+      <h1 class="text-center">Registreer uzelf hier</h1>
+      <hr>
+
+      <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <div class="form-row mt-3">
+          <label for="firstName">Voornaam*</label>
+          <input type="text" class="form-control" id="firstName" placeholder="Jan" ngModel name="firstName" required
+            #firstName="ngModel">
+          <span class="help-block" *ngIf="!firstName.valid && firstName.touched">Dit veld is verplicht</span>
+        </div>
+
+        <div class="form-row mt-3">
+          <label for="middleName">Tussenvoegsel</label>
+          <input type="text" class="form-control" placeholder="van den" ngModel name="middleName">
+        </div>
+
+        <div class="form-row mt-3">
+          <label for="lastName">Achternaam*</label>
+          <input type="text" class="form-control" id="lastName" placeholder="Jansen" name="lastName" ngModel required
+            #lastName="ngModel">
+          <span class="help-block" *ngIf="!lastName.valid && lastName.touched">Dit veld is verplicht</span>
+        </div>
+
+        <div class="form-row mt-3">
+          <label for="email">Email*</label>
+          <input type="text" class="form-control" id="email" placeholder="janjansen@email.com" name="email" ngModel
+            required email #email="ngModel">
+          <span class="help-block" *ngIf="!email.valid && email.touched">Dit veld is verplicht</span>
+        </div>
+
+        <div class="form-row mt-3">
+          <label for="password">Wachtwoord*</label>
+          <input type="password" class="form-control" id="password" name="password" ngModel
+            required password #password="ngModel">
+          <span class="help-block" *ngIf="!email.valid && email.touched">Dit veld is verplicht</span>
+        </div>
+
+        <div class="form-row mt-3">
+          <label for="passwordConf">Herhaal Wachtwoord*</label>
+          <input type="password" class="form-control" id="passwordConf" name="passwordConf" ngModel
+            required password #password="ngModel">
+          <span class="help-block" *ngIf="!email.valid && email.touched">Dit veld is verplicht</span>
+        </div>
+
+        <hr class="mb-0">
+
+        <span><i><small>* verplicht</small></i></span>
+
+        <div class="d-flex mt-3">
+          <button class="btn btn-danger btn-lg mr-2" type="button" (click)="home()">Terug</button>
+          <button class="btn btn-warning btn-lg" type="reset" (click)="onReset()">Reset</button>
+          <button class="btn btn-success btn-lg ml-auto" type="submit" [disabled]="!f.valid">Verstuur!</button>
+        </div>
+
+      </form>
+    </div>
+
+    <ng-template #successTemplate class="col-md-6">
+      <h1>Gelukt!</h1>
+      <p>Uw verzoek tot aanmelding is ontvangen. U ontvangt spoedig een bevestigings-email</p>
+      <button class="btn btn-default" (click)="home()">home</button>
+    </ng-template>
+    
+    <div class="col-md-3"></div>
+  </div>
+</div>

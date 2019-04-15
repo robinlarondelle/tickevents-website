@@ -19,7 +19,7 @@ import { MyEventsComponent } from './profile/my-events/my-events.component';
 import { MyTicketsComponent } from './profile/my-tickets/my-tickets.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { EmailVerificationComponent } from './email-verification/email-verification.component';
-import { EmailVerificationService } from './services/email-verification.service';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -34,8 +34,8 @@ import { EmailVerificationService } from './services/email-verification.service'
     MyEventsComponent,
     MyTicketsComponent,
     PageNotFoundComponent,
-    EmailVerificationComponent
-  ],
+    EmailVerificationComponent,
+    RegisterComponent  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

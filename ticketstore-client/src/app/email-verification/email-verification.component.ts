@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { EmailVerificationService } from '../services/email-verification.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-email-verification',
@@ -17,7 +17,7 @@ export class EmailVerificationComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private emailVerificationService: EmailVerificationService
+    private authService: AuthService
   ) { }
 
 
@@ -34,7 +34,7 @@ export class EmailVerificationComponent implements OnInit, OnDestroy {
   }
 
   onClick() {    
-    this.emailVerificationService.sendVerification(this.identityUserID, this.token).subscribe(res => {
+    this.authService.sendVerification(this.identityUserID, this.token).subscribe(res => {
 
       //if no status 201
         //let user ask for new token

@@ -9,12 +9,14 @@ import { MyEventsComponent } from './profile/my-events/my-events.component';
 import { MyTicketsComponent } from './profile/my-tickets/my-tickets.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { EmailVerificationComponent } from './email-verification/email-verification.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   { path: '', redirectTo: "/home", pathMatch: "full" },
   { path: "home", component: HomeComponent },
   { path: "events", component: EventsComponent },
   { path: "login", component: LoginComponent },
+  { path: "register", component: RegisterComponent },
   { path: "create-event", component: EventCreateComponent },
   { path: "profile", component: ProfileComponent, children: [
       { path: "my-events", component: MyEventsComponent },

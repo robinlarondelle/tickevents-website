@@ -6,16 +6,20 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class EmailVerificationService {
+export class AuthService {
 
   constructor(
     private http: HttpClient
   ) {}
 
-  sendVerification(userid, token) {    
+  sendVerification(userid, token) {        
     return this.http.post(`${environment.BASE_URL}/api/verify-email/`, {
       "IdentityUserID": `${userid}`,
       "Token": `${token}`
     })
+  }
+
+  register(form) {
+    return this.http.post(`${environment.BASE_URL}/api/register`, form)
   }
 }
