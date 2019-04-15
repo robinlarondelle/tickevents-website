@@ -1,9 +1,44 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-          <h1 class="text-center">Login Component</h1>
-        </div>
-        <div class="col-md-2"></div>
+<div class="container h-100">
+    <div class="row  center-fix">
+      <div class="col-md-2"></div>
+  
+      <div class="col-md-8 p-0" *ngIf="!success; else successTemplate">
+        <h1 class="text-center display-4">Login</h1>
+        <hr class="mt-5">
+  
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    
+          <div class="form-group row">
+            <label for="email" class="col-form-label col-lg-3">Email*</label>
+            <input type="email" class="form-control col-lg-9" name="email" ngModel required>
+            <span class="help-block" *ngIf="!email.valid && email.touched">Dit veld is verplicht</span>
+          </div>
+  
+          <div class="form-group row">
+            <label for="password" class="col-form-label col-lg-3">Wachtwoord*</label>
+            <input type="password" class="form-control col-lg-9" name="password" ngModel required>
+            <span class="help-block" *ngIf="!password.valid && password.touched">Dit veld is verplicht</span>
+          </div>
+  
+          <hr class="mb-0">
+  
+          <span><i><small>* verplicht</small></i></span>
+  
+          <div class="d-flex mt-3 w-100">
+            <button class="btn btn-danger btn-md mr-2" type="button" (click)="home()">Terug</button>
+            <button class="btn btn-warning btn-md" type="reset" (click)="onReset()">Reset</button>
+            <button class="btn btn-success btn-md ml-auto" type="submit" [disabled]="!f.valid">Verstuur!</button>
+          </div>
+  
+        </form>
+      </div>
+  
+      <ng-template #successTemplate class="col-md-6">
+        <h1>Gelukt!</h1>
+        <p>Uw verzoek tot aanmelding is ontvangen. U ontvangt spoedig een bevestigings-email</p>
+        <button class="btn btn-default" (click)="home()">home</button>
+      </ng-template>
+  
+      <div class="col-md-3"></div>
     </div>
   </div>

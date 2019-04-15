@@ -1,15 +1,18 @@
-<nav class="navbar sticky-top navbar-expand-lg bg-light">
+<nav class="navbar fixed-top navbar-expand-lg bg-light">
   <div class="container-fluid">
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarcontent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
     <div class="navbar-header">
       <a routerLink="/home" class="navbar-brand mb-0 h1 p-0">
         <!-- <img src="../../assets/img/logo.ico" width="30" height="30" class="d-inline-block align-top" alt=""> -->
         Ticketstore
       </a>
     </div>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarcontent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+
     <div class="collapse navbar-collapse" id="navbarcontent">
       <ul class="nav navbar-nav mr-auto">
         <li class="nav-item" routerlinkActive="active">
@@ -27,3 +30,30 @@
     </div>
   </div>
 </nav>
+
+<!-- <nav class="navbar fixed-top navbar-expand-lg bg-light">
+  <div class="container">
+    <div class="collapse navbar-collapse" id="navbarcontent">
+      <ul class="nav navbar-nav ml-auto mr-auto">
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link link" routerLink="/vrijwilliger">Home</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link link" routerLink="/voertuig">About</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="projectsDropdown" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">Projects</a>
+          <div class="dropdown-menu" aria-labelledby="projectsDropdown">
+            <a routerLink="/CineApp" class="dropdown-item">CineApp</a>
+            <a routerLink="/Ticketstore" class="dropdown-item">Ticketstore</a>
+            <a routerLink="/Handpicked" class="dropdown-item">Handpicked</a>
+            <a routerLink="/TrueSkill" class="dropdown-item">TrueSkill</a>
+            <a routerLink="/brw-hvt-svr" class="dropdown-item">Brandweer-Hoogvliet (Server)</a>
+            <a routerLink="/brw-hvt-page" class="dropdown-item">Brandweer-Hoogvliet (Page)</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav> -->

@@ -1,0 +1,19 @@
+.nav-item {
+  text-align: center;
+  min-width: 100px;
+  max-width:100px;
+  color: white;
+}
+
+a {
+  color: blue;
+}
+
+.dropdown-item{
+  color: black;
+}
+
+
+nav {
+  background: white !important;
+}

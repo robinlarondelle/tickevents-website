@@ -9,7 +9,6 @@ import { HttpModule } from '@angular/http'
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
 import { EventCreateComponent } from './event-create/event-create.component';
 import { AppRoutingModule } from './app-routing.module';
 import { EventsComponent } from './events/events.component';
@@ -26,7 +25,6 @@ import { RegisterComponent } from './register/register.component';
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    FooterComponent,
     EventCreateComponent,
     EventsComponent,
     LoginComponent,
