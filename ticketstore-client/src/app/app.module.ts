@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormlyModule, } from '@ngx-formly/core'
 import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'; 
+import { HttpModule } from '@angular/http'
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -16,6 +18,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { MyEventsComponent } from './profile/my-events/my-events.component';
 import { MyTicketsComponent } from './profile/my-tickets/my-tickets.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { EmailVerificationComponent } from './email-verification/email-verification.component';
+import { EmailVerificationService } from './services/email-verification.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +33,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     ProfileComponent,
     MyEventsComponent,
     MyTicketsComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    EmailVerificationComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +42,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     FormlyModule.forRoot(),
     FormlyBootstrapModule,
     FormsModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]

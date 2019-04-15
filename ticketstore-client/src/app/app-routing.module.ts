@@ -8,6 +8,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { MyEventsComponent } from './profile/my-events/my-events.component';
 import { MyTicketsComponent } from './profile/my-tickets/my-tickets.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { EmailVerificationComponent } from './email-verification/email-verification.component';
 
 const routes: Routes = [
   { path: '', redirectTo: "/home", pathMatch: "full" },
@@ -21,6 +22,7 @@ const routes: Routes = [
     ]
   },
   { path: "404", component: PageNotFoundComponent },
+  { path: "verify-email/:userid/:token/:jwt", component: EmailVerificationComponent },
   { path: "**", redirectTo: "/404" }
 ]
 
