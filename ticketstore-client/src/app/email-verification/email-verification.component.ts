@@ -26,11 +26,6 @@ export class EmailVerificationComponent implements OnInit, OnDestroy {
       this.identityUserID = +params['userid']
       this.token = params['token']
       this.jwt = params['jwt']
-
-      console.log(this.identityUserID);
-      console.log(this.token);
-      console.log(this.jwt);
-      
     })
   }
 
@@ -40,6 +35,15 @@ export class EmailVerificationComponent implements OnInit, OnDestroy {
 
   onClick() {    
     this.emailVerificationService.sendVerification(this.identityUserID, this.token).subscribe(res => {
+
+      //if no status 201
+        //let user ask for new token
+      
+      //save jwt token
+      //log user in
+      //redirect to profile page
+
+
       console.log(res);
       
     })
