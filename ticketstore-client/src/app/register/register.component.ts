@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, NgForm } from '@angular/forms'
 import { AuthService } from '../services/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MustMatch } from "../validator/MustMatch"
 
 @Component({
   selector: 'app-register',
@@ -10,6 +11,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
   success: Boolean = false
+  duplicateEmailError = false
+  passwordDontMatchError = false
+  model: any = {}; //form-model
 
   constructor(
     private authService: AuthService,
@@ -17,16 +21,15 @@ export class RegisterComponent implements OnInit {
     private route: ActivatedRoute
   ) { }
 
-  ngOnInit() {
+  ngOnInit() {    
   }
 
   onSubmit(form: NgForm) {
-    this.authService.register(form.value).subscribe(res => {
-      console.log(res);
-      this.success = true;
-      
+    this.authService.register(form.value).subscribe(res => {      
+      if (res.message.includes('DuplicateEmailError')) this.duplicateEmailError = true
+      else if (res.message.includes('PasswordDontMatchError')) this.passwordDontMatchError = true
+      else this.success = true
     })
-    
   }
 
   onReset(form: NgForm) {
@@ -35,5 +38,10 @@ export class RegisterComponent implements OnInit {
 
   home() {
     this.router.navigate(["../home"], {relativeTo: this.route})
+  }
+
+  resendEmail(email) {
+    console.log(`resend email`);
+    
   }
 }

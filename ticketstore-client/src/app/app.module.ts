@@ -19,6 +19,7 @@ import { MyTicketsComponent } from './profile/my-tickets/my-tickets.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { EmailVerificationComponent } from './email-verification/email-verification.component';
 import { RegisterComponent } from './register/register.component';
+import { MustMatchDirective } from './directives/MustMatchDirective';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { RegisterComponent } from './register/register.component';
     MyTicketsComponent,
     PageNotFoundComponent,
     EmailVerificationComponent,
-    RegisterComponent  ],
+    RegisterComponent,
+    MustMatchDirective  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
