@@ -9,9 +9,14 @@ import { AuthService } from '../services/auth.service';
 })
 export class EmailVerificationComponent implements OnInit, OnDestroy {
 
+  alreadyVerifiedEmailError: boolean = false
+  expiredTokenError: boolean = false
+  tokenMismatchError: boolean = false
+  tokenMissingError: boolean = false
+
   identityUserID: number
-  token: String
-  jwt: String
+  token: string
+  jwt: string
   private sub: any
 
 
@@ -33,19 +38,24 @@ export class EmailVerificationComponent implements OnInit, OnDestroy {
     this.sub.unsubscribe()
   }
 
-  onClick() {    
+  confirmEmail() {    
     this.authService.sendVerification(this.identityUserID, this.token).subscribe(res => {
-
-      //if no status 201
-        //let user ask for new token
-      
-      //save jwt token
-      //log user in
-      //redirect to profile page
-
-
-      console.log(res);
+      if (res.message) {
+        if (res.message.includes('AlreadyVerifiedEmailError')) this.alreadyVerifiedEmailError = true
+        else if (res.message.includes('ExpiredTokenError')) this.expiredTokenError = true
+        else if (res.message.includes('TokenMismatchError')) this.tokenMismatchError = true
+        else if (res.message.includes('TokenMissingError')) this.tokenMismatchError = true
+      } else {
+        localStorage.setItem('token', this.token)
+        console.log(`success`);
+        
+      }
       
     })
+  }
+
+  resendEmail() {
+    console.log(`resend email`);
+    
   }
 }
