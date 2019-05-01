@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onReset(form: NgForm) {
-    form.reset()
+    form.resetForm()
   }
 
   home() {

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-light">
+<nav class="navbar navbar-nav fixed-top navbar-expand-lg">
   <div class="container-fluid">
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarcontent"
@@ -24,36 +24,105 @@
           <a class="nav-link link" routerLink="/register">Registreren</a>
         </li>
         <li class="nav-item" routerlinkActive="active">
-          <a class="nav-link link" routerLink="/login">Inloggen</a>
+          <button class="nav-link link btn btn-default" data-toggle="modal" data-target="#loginModal">Inloggen</button>
         </li>
       </ul>
     </div>
   </div>
 </nav>
 
-<!-- <nav class="navbar fixed-top navbar-expand-lg bg-light">
-  <div class="container">
-    <div class="collapse navbar-collapse" id="navbarcontent">
-      <ul class="nav navbar-nav ml-auto mr-auto">
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link link" routerLink="/vrijwilliger">Home</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link link" routerLink="/voertuig">About</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="projectsDropdown" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">Projects</a>
-          <div class="dropdown-menu" aria-labelledby="projectsDropdown">
-            <a routerLink="/CineApp" class="dropdown-item">CineApp</a>
-            <a routerLink="/Ticketstore" class="dropdown-item">Ticketstore</a>
-            <a routerLink="/Handpicked" class="dropdown-item">Handpicked</a>
-            <a routerLink="/TrueSkill" class="dropdown-item">TrueSkill</a>
-            <a routerLink="/brw-hvt-svr" class="dropdown-item">Brandweer-Hoogvliet (Server)</a>
-            <a routerLink="/brw-hvt-page" class="dropdown-item">Brandweer-Hoogvliet (Page)</a>
+<!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalLabel">Inloggen</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <form (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm" name="form" >
+        <div class="modal-body">
+          <div class="form-group row">
+            <label for="email" class="col-form-label col-lg-3">Email*</label>
+            <input type="email" class="form-control col-lg-9" name="email" [(ngModel)]="model.email" #email="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required email="true">
+
+            <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+                <div *ngIf="email.errors.required" class="padding-fix">Veld is verplicht</div>
+                <div *ngIf="email.errors.email" class="padding-fix">Geen geldige email</div>
+              </div>
           </div>
-        </li>
-      </ul>
+
+          <div class="form-group row">
+            <label for="password" class="col-form-label col-lg-3">Wachtwoord*</label>
+            <input type="password" class="form-control col-lg-9" name="password" [(ngModel)]="model.password" #password="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required>
+
+            <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
+                <div *ngIf="password.errors.required" class="padding-fix">Veld is verplicht</div>
+              </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <span><i><small>* verplicht</small></i></span>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="onReset(f)">Close</button>
+          <button type="button" class="btn btn-primary" type="submit">Inloggen</button>
+        </div>
+      </form>
+
     </div>
   </div>
-</nav> -->
+</div>
+
+<!--
+
+  <div class="container h-100">
+    <div class="row  center-fix">
+      <div class="col-md-2"></div>
+  
+      <div class="col-md-8 p-0" *ngIf="!success; else successTemplate">
+        <h1 class="text-center display-4">Login</h1>
+        <hr class="mt-5">
+  
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    
+          <div class="form-group row">
+            <label for="email" class="col-form-label col-lg-3">Email*</label>
+            <input type="email" class="form-control col-lg-9" name="email" ngModel required>
+            <span class="help-block" *ngIf="!email.valid && email.touched">Dit veld is verplicht</span>
+          </div>
+  
+          <div class="form-group row">
+            <label for="password" class="col-form-label col-lg-3">Wachtwoord*</label>
+            <input type="password" class="form-control col-lg-9" name="password" ngModel required>
+            <span class="help-block" *ngIf="!password.valid && password.touched">Dit veld is verplicht</span>
+          </div>
+  
+          <hr class="mb-0">
+  
+          <span><i><small>* verplicht</small></i></span>
+  
+          <div class="d-flex mt-3 w-100">
+            <button class="btn btn-danger btn-md mr-2" type="button" (click)="home()">Terug</button>
+            <button class="btn btn-warning btn-md" type="reset" (click)="onReset()">Reset</button>
+            <button class="btn btn-success btn-md ml-auto" type="submit" [disabled]="!f.valid">Verstuur!</button>
+          </div>
+  
+        </form>
+      </div>
+  
+      <ng-template #successTemplate class="col-md-6">
+        <h1>Gelukt!</h1>
+        <p>Uw verzoek tot aanmelding is ontvangen. U ontvangt spoedig een bevestigings-email</p>
+        <button class="btn btn-default" (click)="home()">home</button>
+      </ng-template>
+  
+      <div class="col-md-3"></div>
+    </div>
+  </div>
+
+-->
