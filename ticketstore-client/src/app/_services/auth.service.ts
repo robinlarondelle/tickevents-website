@@ -3,8 +3,8 @@ import { environment } from 'src/environments/environment.prod';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { Config } from 'protractor';
-import { RegisterResponse } from '../models/RegisterResponse';
-import { LoginResponse } from '../models/LoginResponse';
+import { RegisterResponse } from '../_models/RegisterResponse';
+import { LoginResponse } from '../_models/LoginResponse';
 import { catchError, map, tap } from 'rxjs/operators';
 
 

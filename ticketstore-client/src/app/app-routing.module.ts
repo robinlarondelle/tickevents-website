@@ -1,28 +1,25 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { EventCreateComponent } from './event-create/event-create.component';
-import { EventsComponent } from './events/events.component';
-import { LoginComponent } from './login/login.component';
-import { ProfileComponent } from './profile/profile.component';
-import { MyEventsComponent } from './profile/my-events/my-events.component';
-import { MyTicketsComponent } from './profile/my-tickets/my-tickets.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { EmailVerificationComponent } from './email-verification/email-verification.component';
-import { RegisterComponent } from './register/register.component';
+import { EventsComponent } from './home/events/events.component';
+import { LoginComponent } from './home/login/login.component';
+import { PageNotFoundComponent } from './home/page-not-found/page-not-found.component';
+import { EmailVerificationComponent } from './home/email-verification/email-verification.component';
+import { RegisterComponent } from './home/register/register.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   { path: '', redirectTo: "/home", pathMatch: "full" },
-  { path: "home", component: HomeComponent },
-  { path: "events", component: EventsComponent },
-  { path: "login", component: LoginComponent },
-  { path: "register", component: RegisterComponent },
-  { path: "create-event", component: EventCreateComponent },
-  { path: "profile", component: ProfileComponent, children: [
-      { path: "my-events", component: MyEventsComponent },
-      { path: "my-tickets", component: MyTicketsComponent }
+  { path: "home", component: HomeComponent, children: [
+      { path: "events", component: EventsComponent },
+      { path: "login", component: LoginComponent },
+      { path: "register", component: RegisterComponent },
     ]
   },
+  { path: "dashboard", component: DashboardComponent, children: [
+    
+  ]},
+
   { path: "404", component: PageNotFoundComponent },
   { path: "verify-email/:userid/:token/:jwt", component: EmailVerificationComponent },
   { path: "**", redirectTo: "/404" }

@@ -8,34 +8,28 @@ import { HttpModule } from '@angular/http'
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { HeaderComponent } from './header/header.component';
-import { EventCreateComponent } from './event-create/event-create.component';
+import { HeaderComponent } from './home/header/header.component';
 import { AppRoutingModule } from './app-routing.module';
-import { EventsComponent } from './events/events.component';
-import { LoginComponent } from './login/login.component';
-import { ProfileComponent } from './profile/profile.component';
-import { MyEventsComponent } from './profile/my-events/my-events.component';
-import { MyTicketsComponent } from './profile/my-tickets/my-tickets.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { EmailVerificationComponent } from './email-verification/email-verification.component';
-import { RegisterComponent } from './register/register.component';
-import { MustMatchDirective } from './directives/MustMatchDirective';
+import { EventsComponent } from './home/events/events.component';
+import { LoginComponent } from './home/login/login.component';
+import { PageNotFoundComponent } from './home/page-not-found/page-not-found.component';
+import { EmailVerificationComponent } from './home/email-verification/email-verification.component';
+import { RegisterComponent } from './home/register/register.component';
+import { MustMatchDirective } from './_directives/MustMatchDirective';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    EventCreateComponent,
     EventsComponent,
     LoginComponent,
-    ProfileComponent,
-    MyEventsComponent,
-    MyTicketsComponent,
     PageNotFoundComponent,
     EmailVerificationComponent,
     RegisterComponent,
-    MustMatchDirective  ],
+    MustMatchDirective,
+    DashboardComponent  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
