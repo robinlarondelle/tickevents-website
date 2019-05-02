@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { ViewChild, ElementRef } from '@angular/core';
+
 
 @Component({
   selector: 'app-header',
@@ -10,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   model: any = {}; //form-model
+  @ViewChild('closeBtn') closeBtn: ElementRef;
 
 
   constructor(
@@ -27,9 +30,17 @@ export class HeaderComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     this.authService.login(form.value).subscribe(res => {
-      this.authService.saveToken(res.token)      
-      this.router.navigateByUrl("/profile")           
+      this.authService.saveToken(res.token)
+      this.router.navigateByUrl("/profile")
+
+      // close the modal
+      this.closeModal();
     })
+  }
+
+  // call this wherever you want to close modal
+  private closeModal(): void {
+    this.closeBtn.nativeElement.click();
   }
 
 }

@@ -31,6 +31,9 @@
   </div>
 </nav>
 
+
+
+
 <!-- Login Modal -->
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
   aria-hidden="true">
@@ -69,8 +72,8 @@
 
         <div class="modal-footer">
           <span><i><small>* verplicht</small></i></span>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="onReset(f)">Close</button>
-          <button type="button" class="btn btn-primary" type="submit">Inloggen</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="onReset(f)" #closeBtn>Close</button>
+          <button type="submit" class="btn btn-primary" #button >Inloggen</button>
         </div>
       </form>
 
