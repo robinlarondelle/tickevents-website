@@ -7,10 +7,13 @@ import { PageNotFoundComponent } from './home/page-not-found/page-not-found.comp
 import { EmailVerificationComponent } from './home/email-verification/email-verification.component';
 import { RegisterComponent } from './home/register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { WelcomeComponent } from './home/welcome/welcome.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: "/home", pathMatch: "full" },
+  { path: '', redirectTo: "/home/welcome", pathMatch: "full" },
+  { path: 'home', redirectTo: "/home/welcome", pathMatch: "full" },
   { path: "home", component: HomeComponent, children: [
+      { path: "welcome", component: WelcomeComponent},
       { path: "events", component: EventsComponent },
       { path: "login", component: LoginComponent },
       { path: "register", component: RegisterComponent },

@@ -17,6 +17,7 @@ import { EmailVerificationComponent } from './home/email-verification/email-veri
 import { RegisterComponent } from './home/register/register.component';
 import { MustMatchDirective } from './shared/directives/MustMatchDirective';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { WelcomeComponent } from './home/welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     EmailVerificationComponent,
     RegisterComponent,
     MustMatchDirective,
-    DashboardComponent  ],
+    DashboardComponent,
+    WelcomeComponent  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
