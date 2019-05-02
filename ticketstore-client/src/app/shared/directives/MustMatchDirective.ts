@@ -1,7 +1,7 @@
 import { Directive, Input } from '@angular/core';
 import { NG_VALIDATORS, Validator, ValidationErrors, FormGroup } from '@angular/forms';
 
-import { MustMatch } from '../_validator/MustMatch';
+import { MustMatch } from '../validator/MustMatch';
 
 @Directive({
     selector: '[mustMatch]',

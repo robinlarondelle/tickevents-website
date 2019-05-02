@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, NgForm } from '@angular/forms'
-import { AuthService } from '../../_services/auth.service';
+import { AuthService } from '../../shared/services/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { MustMatch } from "../../_validator/MustMatch"
+import { MustMatch } from "../../shared/validator/MustMatch"
 
 @Component({
   selector: 'app-register',

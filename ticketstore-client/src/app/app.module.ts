@@ -15,7 +15,7 @@ import { LoginComponent } from './home/login/login.component';
 import { PageNotFoundComponent } from './home/page-not-found/page-not-found.component';
 import { EmailVerificationComponent } from './home/email-verification/email-verification.component';
 import { RegisterComponent } from './home/register/register.component';
-import { MustMatchDirective } from './_directives/MustMatchDirective';
+import { MustMatchDirective } from './shared/directives/MustMatchDirective';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
