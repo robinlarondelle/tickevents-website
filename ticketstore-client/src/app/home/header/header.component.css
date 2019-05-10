@@ -47,3 +47,14 @@ nav {
 .btn {
   color: aliceblue;
 }
+
+.active {
+  text-decoration: underline;
+  font-weight: bold;
+  font-size: 110%;
+}
+
+.nav-link {
+  height: 50px;
+  min-width: 130px;
+}

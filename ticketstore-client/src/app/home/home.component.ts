@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    //Create random backgrounds with random classes
     $(document).ready(function(){
       var classCycle=['imageCycle1','imageCycle2','imageCycle3','imageCycle4'];
   
@@ -19,7 +20,6 @@ export class HomeComponent implements OnInit {
       var classToAdd = classCycle[randomNumber];
   
       $('#background').addClass(classToAdd);
-  
   });
   }
 }

@@ -1,9 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormlyModule, } from '@ngx-formly/core'
-import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http'
 
 import { AppComponent } from './app.component';
@@ -18,6 +16,7 @@ import { RegisterComponent } from './home/register/register.component';
 import { MustMatchDirective } from './shared/directives/MustMatchDirective';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { WelcomeComponent } from './home/welcome/welcome.component';
+import { EventComponent } from './home/events/event/event.component';
 
 @NgModule({
   declarations: [
@@ -31,13 +30,12 @@ import { WelcomeComponent } from './home/welcome/welcome.component';
     RegisterComponent,
     MustMatchDirective,
     DashboardComponent,
-    WelcomeComponent  ],
+    WelcomeComponent,
+    EventComponent ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormlyModule.forRoot(),
-    FormlyBootstrapModule,
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     HttpModule

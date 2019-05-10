@@ -1,4 +1,4 @@
-<nav class="navbar navbar-nav fixed-top navbar-expand-lg">
+<nav class="navbar navbar-nav fixed-top navbar-expand-lg p-0">
   <div class="container-fluid">
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarcontent"
@@ -13,21 +13,28 @@
       </a>
     </div>
 
-    <div class="collapse navbar-collapse" id="navbarcontent">
-      <ul class="nav navbar-nav mr-auto">
-        <li class="nav-item" routerlinkActive="active">
-          <a class="nav-link link" routerLink="./events">Evenementen</a>
+    <div class="collapse navbar-collapse m-0 p-0" id="navbarcontent">
+
+      <ul class="nav navbar-nav mr-auto nav-fill w-auto m-0">
+        <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+          <a class="nav-link link pt-3" routerLink="./welcome">Home</a>
+        </li>
+        <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+          <a class="nav-link link pt-3" routerLink="./events">Evenementen</a>
         </li>
       </ul>
+
       <ul class="nav navbar-nav ml-auto">
-        <li class="nav-item" routerlinkActive="active">
-          <a class="nav-link link" routerLink="./register">Registreren</a>
+        <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+          <a class="nav-link link pt-3" routerLink="./register">Registreren</a>
         </li>
-        <li class="nav-item" routerlinkActive="active">
-          <button class="nav-link link btn btn-default" data-toggle="modal" data-target="#loginModal">Inloggen</button>
+        <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+          <button class="nav-link link pt-3 btn btn-default" data-toggle="modal" data-target="#loginModal">Inloggen</button>
         </li>
       </ul>
+
     </div>
+
   </div>
 </nav>
 
@@ -46,34 +53,35 @@
         </button>
       </div>
 
-      <form (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm" name="form" >
+      <form (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm" name="form">
         <div class="modal-body">
           <div class="form-group row">
             <label for="email" class="col-form-label col-lg-3">Email*</label>
             <input type="email" class="form-control col-lg-9" name="email" [(ngModel)]="model.email" #email="ngModel"
-            [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required email="true">
+              [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required email="true">
 
             <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
-                <div *ngIf="email.errors.required" class="padding-fix">Veld is verplicht</div>
-                <div *ngIf="email.errors.email" class="padding-fix">Geen geldige email</div>
-              </div>
+              <div *ngIf="email.errors.required" class="padding-fix">Veld is verplicht</div>
+              <div *ngIf="email.errors.email" class="padding-fix">Geen geldige email</div>
+            </div>
           </div>
 
           <div class="form-group row">
             <label for="password" class="col-form-label col-lg-3">Wachtwoord*</label>
-            <input type="password" class="form-control col-lg-9" name="password" [(ngModel)]="model.password" #password="ngModel"
-            [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required>
+            <input type="password" class="form-control col-lg-9" name="password" [(ngModel)]="model.password"
+              #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required>
 
             <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
-                <div *ngIf="password.errors.required" class="padding-fix">Veld is verplicht</div>
-              </div>
+              <div *ngIf="password.errors.required" class="padding-fix">Veld is verplicht</div>
+            </div>
           </div>
         </div>
 
         <div class="modal-footer">
           <span><i><small>* verplicht</small></i></span>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="onReset(f)" #closeBtn>Close</button>
-          <button type="submit" class="btn btn-primary" #button >Inloggen</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="onReset(f)"
+            #closeBtn>Close</button>
+          <button type="submit" class="btn btn-primary" #button>Inloggen</button>
         </div>
       </form>
 

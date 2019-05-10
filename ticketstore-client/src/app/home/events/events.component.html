@@ -1,9 +1,12 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-          <h1 class="text-center">Event Component</h1>
-        </div>
-        <div class="col-md-2"></div>
+<section class="white title ">
+  <h1 class="text-center display-1">Evenementen</h1>
+  <hr class=" m-0">
+  <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium quisquam tempora placeat, asperiores
+    aspernatur assumenda, sunt enim eos magnam quasi sequi exercitationem cumque tempore quidem odio doloribus esse
+    ducimus doloremque.</p>
+  <div class="card-columns">
+    <div class="white" *ngFor="let event of events">
+      <app-event [event]="event"></app-event>
     </div>
   </div>
+</section>
