@@ -3,12 +3,16 @@ import { NgForm } from '@angular/forms';
 import { AuthService } from '../../shared/services/auth.service';
 import { Router } from '@angular/router';
 import { ViewChild, ElementRef } from '@angular/core';
+import { trigger, state } from '@angular/animations'
 
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
+  animations: [
+    
+  ]
 })
 export class HeaderComponent implements OnInit {
   model: any = {}; //form-model

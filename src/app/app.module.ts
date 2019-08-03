@@ -17,6 +17,7 @@ import { MustMatchDirective } from './shared/directives/MustMatchDirective';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { WelcomeComponent } from './home/welcome/welcome.component';
 import { EventComponent } from './home/events/event/event.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { EventComponent } from './home/events/event/event.component';
     EventComponent ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,

@@ -13,10 +13,10 @@ const routes: Routes = [
   { path: '', redirectTo: "/home/welcome", pathMatch: "full" },
   { path: 'home', redirectTo: "/home/welcome", pathMatch: "full" },
   { path: "home", component: HomeComponent, children: [
-      { path: "welcome", component: WelcomeComponent},
-      { path: "events", component: EventsComponent },
-      { path: "login", component: LoginComponent },
-      { path: "register", component: RegisterComponent },
+      { path: "welcome", component: WelcomeComponent, data: { animation: 'WelcomeComponent'}},
+      { path: "events", component: EventsComponent, data: { animation: 'EventsComponent'} },
+      { path: "login", component: LoginComponent , data: { animation: 'LoginComponent'}},
+      { path: "register", component: RegisterComponent , data: { animation: 'RegisterComponent'}},
     ]
   },
   { path: "dashboard", component: DashboardComponent, children: [
