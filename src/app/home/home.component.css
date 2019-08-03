@@ -4,7 +4,7 @@
   scroll-snap-type: y mandatory;
 }
 
-.imageCycle1 {
+#background {
   background: url("../../assets/bg1.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -12,6 +12,9 @@
   max-width: 100%;
 }
 
+/* Deprecated */
+
+/* 
 .imageCycle2 {
   background: url("../../assets/bg2.jpg");
   background-size: cover;
@@ -34,4 +37,4 @@
   background-repeat: no-repeat;
   height: 100vh !important;
   max-width: 100%;
-}
+} */
