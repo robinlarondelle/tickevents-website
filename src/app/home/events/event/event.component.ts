@@ -9,17 +9,21 @@ import { Event } from 'src/app/shared/models/EventModel';
 })
 export class EventComponent implements OnInit {
   event: Event
+  image: string
 
   constructor() {  }
 
   ngOnInit() {
+    this.image = this.event.Image
+    
   }
 
   purchaseTicket() {
     console.log("purchase Ticket");
+  }
 
-    
-    
+  getImage() {
+    return this.image
   }
 
 }

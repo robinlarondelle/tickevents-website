@@ -10,4 +10,5 @@ export class Event {
   EventDate: Date;
   Capacity: string;
   PricePerTicket: number;
+  Image: string;
 }
