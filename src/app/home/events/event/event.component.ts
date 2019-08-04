@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Event } from 'src/app/shared/models/EventModel';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-event',
@@ -11,7 +12,9 @@ export class EventComponent implements OnInit {
   event: Event
   image: string
 
-  constructor() {  }
+  constructor(
+    private router: Router
+  ) {  }
 
   ngOnInit() {
     this.image = this.event.Image
@@ -24,6 +27,12 @@ export class EventComponent implements OnInit {
 
   getImage() {
     return this.image
+  }
+
+  onClick() {
+    console.log(this.event.EventID);
+    
+    this.router.navigateByUrl("/home/events/" + this.event.EventID)
   }
 
 }

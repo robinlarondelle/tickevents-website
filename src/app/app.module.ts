@@ -18,6 +18,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { WelcomeComponent } from './home/welcome/welcome.component';
 import { EventComponent } from './home/events/event/event.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EventDetailsComponent } from './event-details/event-details.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MustMatchDirective,
     DashboardComponent,
     WelcomeComponent,
-    EventComponent ],
+    EventComponent,
+    EventDetailsComponent ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
