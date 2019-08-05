@@ -18,7 +18,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { WelcomeComponent } from './home/welcome/welcome.component';
 import { EventComponent } from './home/events/event/event.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { EventDetailsComponent } from './event-details/event-details.component';
+import { EventDetailsComponent } from './home/event-details/event-details.component';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RequestCache } from './shared/services/request-cache.service';

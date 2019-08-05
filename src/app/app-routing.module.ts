@@ -8,7 +8,7 @@ import { EmailVerificationComponent } from './home/email-verification/email-veri
 import { RegisterComponent } from './home/register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { WelcomeComponent } from './home/welcome/welcome.component';
-import { EventDetailsComponent } from './event-details/event-details.component';
+import { EventDetailsComponent } from './home/event-details/event-details.component';
 
 const routes: Routes = [
   { path: '', redirectTo: "/home/welcome", pathMatch: "full" },
