@@ -10,28 +10,15 @@ import { Router } from '@angular/router';
 })
 export class EventComponent implements OnInit {
   event: Event
-  image: string
 
   constructor(
     private router: Router
   ) {  }
 
   ngOnInit() {
-    this.image = this.event.Image
-    
   }
 
-  purchaseTicket() {
-    console.log("purchase Ticket");
-  }
-
-  getImage() {
-    return this.image
-  }
-
-  onClick() {
-    console.log(this.event.EventID);
-    
+  onClick() {    
     this.router.navigateByUrl("/home/events/" + this.event.EventID)
   }
 

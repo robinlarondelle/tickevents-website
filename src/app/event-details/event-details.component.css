@@ -1,0 +1,10 @@
+.container {
+  margin-top: 100px;
+}
+
+.image {
+  background-image: image("../../assets/demo-poster.png");
+  background-position: center;
+  /* background-size: cover; */
+  background-repeat: no-repeat;
+}

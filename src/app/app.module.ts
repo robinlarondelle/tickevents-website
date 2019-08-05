@@ -20,6 +20,10 @@ import { EventComponent } from './home/events/event/event.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EventDetailsComponent } from './event-details/event-details.component';
 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { RequestCache } from './shared/services/request-cache.service';
+import { CachingInterceptor } from './shared/services/caching-interceptor.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +48,14 @@ import { EventDetailsComponent } from './event-details/event-details.component';
     HttpClientModule,
     HttpModule
   ],
-  providers: [],
+  providers: [
+    RequestCache,
+    { 
+      provide: HTTP_INTERCEPTORS, 
+      useClass: CachingInterceptor, 
+      multi: true 
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
