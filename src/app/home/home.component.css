@@ -5,10 +5,10 @@
 }
 
 #background {
-  background: url("../../assets/bg1.jpg");
+  background: url("../../assets/bg2.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh !important;
+  height: 105vh !important;
   max-width: 100%;
 }
 

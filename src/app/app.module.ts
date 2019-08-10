@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http'
+import { ScrollEventModule } from 'ngx-scroll-event';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -44,6 +45,7 @@ import { CachingInterceptor } from './shared/services/caching-interceptor.servic
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
+    ScrollEventModule,
     ReactiveFormsModule,
     HttpClientModule,
     HttpModule
