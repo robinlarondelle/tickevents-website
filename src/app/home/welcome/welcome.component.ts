@@ -24,13 +24,12 @@ import {
         opacity: 0
       })),
 
-      transition('show  <=> hide', [
-        animate('0.3s ease-in-out')
+      transition('* => show', [
+        animate('1s ease-in')
       ]),
 
-      transition('* => show', [
-        animate('1s')
-
+      transition('show  => hide', [
+        animate('0.3s ease-in-out')
       ])
     ])
   ]
@@ -40,21 +39,19 @@ import {
 
 export class WelcomeComponent implements OnInit, AfterContentInit {
 
-  mouseState
+  mouseState = 'hide'
   allowedToScroll = false
 
-  ngOnInit() {
-    this.mouseState = 'hide'
-  }
+  ngOnInit() {}
 
-
-  ngAfterContentInit(): void {
-    this.allowedToScroll = true    
-    this.mouseState = 'show'
+  ngAfterContentInit(){
+    setTimeout(() => {
+      this.allowedToScroll = true
+      this.mouseState = 'show'
+    }, 1000)
   }
 
   constructor() { }
-
 
   onScroll() {
     if (this.allowedToScroll) {
