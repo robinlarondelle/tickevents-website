@@ -18,8 +18,7 @@
   height: 25%;
   width: 100%;
   text-align: center;
-  background: aliceblue;
-  color: black;
+  background: none;
   border: 1px aliceblue solid; 
   border-radius: 0px 0px 5px 5px;
 } 
