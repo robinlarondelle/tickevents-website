@@ -9,6 +9,7 @@ import { RegisterComponent } from './home/register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { WelcomeComponent } from './home/welcome/welcome.component';
 import { EventDetailsComponent } from './home/event-details/event-details.component';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: "/home/welcome", pathMatch: "full" },
@@ -21,9 +22,8 @@ const routes: Routes = [
       { path: "events/:id", component: EventDetailsComponent , data: { animation: 'EventDetailsComponent'}},
     ]
   },
-  { path: "dashboard", component: DashboardComponent, children: [
-    
-  ]},
+  
+  { path: "dashboard", component: DashboardComponent, canActivate: [AuthGuard]},
 
   { path: "404", component: PageNotFoundComponent },
   { path: "verify-email/:userid/:token/:jwt", component: EmailVerificationComponent },

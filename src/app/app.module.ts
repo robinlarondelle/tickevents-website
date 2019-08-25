@@ -24,6 +24,8 @@ import { EventDetailsComponent } from './home/event-details/event-details.compon
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RequestCache } from './shared/services/request-cache.service';
 import { CachingInterceptor } from './shared/services/caching-interceptor.service';
+import { CreateEventWizardComponent } from './create-event-wizard/create-event-wizard.component';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { CachingInterceptor } from './shared/services/caching-interceptor.servic
     DashboardComponent,
     WelcomeComponent,
     EventComponent,
-    EventDetailsComponent ],
+    EventDetailsComponent,
+    CreateEventWizardComponent
+   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -56,7 +60,8 @@ import { CachingInterceptor } from './shared/services/caching-interceptor.servic
       provide: HTTP_INTERCEPTORS, 
       useClass: CachingInterceptor, 
       multi: true 
-    }
+    },
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

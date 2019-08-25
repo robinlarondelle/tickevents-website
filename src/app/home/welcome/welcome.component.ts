@@ -7,6 +7,7 @@ import {
   transition,
   // ...
 } from '@angular/animations';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-welcome',
@@ -51,12 +52,18 @@ export class WelcomeComponent implements OnInit, AfterContentInit {
     }, 1000)
   }
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   onScroll() {
     if (this.allowedToScroll) {
       this.mouseState = 'hide'
     }
+  }
+
+  secret() {
+    this.router.navigateByUrl('dashboard')
   }
 
 

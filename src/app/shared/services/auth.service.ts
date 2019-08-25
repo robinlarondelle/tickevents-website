@@ -18,11 +18,14 @@ export class AuthService {
     private http: HttpClient
   ) {}
 
-  public saveToken(token: string): void {
-    localStorage.setItem('mean-token', token)
+  saveToken(token: string): void {
+    localStorage.setItem('x-access-token', token)
     this.token = token     
   }
 
+  getToken():string {
+    return localStorage.getItem('x-access-token')
+  }
 
 
   sendVerification(userid, token): Observable<RegisterResponse> {        
@@ -52,5 +55,9 @@ export class AuthService {
       console.error(`${operation} failed: ${error.message}`)
       return of(result as T)
     }
+  }
+
+  loggedIn() {
+    return !!this.getToken()
   }
 }
