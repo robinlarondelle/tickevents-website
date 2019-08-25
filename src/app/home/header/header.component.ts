@@ -34,7 +34,7 @@ export class HeaderComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     this.authService.login(form.value).subscribe(res => {
-      this.authService.saveToken(res.token)
+      this.authService.setToken(res.token)
       this.router.navigateByUrl("/profile")
 
       // close the modal

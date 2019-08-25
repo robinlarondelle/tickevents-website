@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpModule } from '@angular/http'
 import { ScrollEventModule } from 'ngx-scroll-event';
 
@@ -21,11 +21,12 @@ import { EventComponent } from './home/events/event/event.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EventDetailsComponent } from './home/event-details/event-details.component';
 
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RequestCache } from './shared/services/request-cache.service';
-import { CachingInterceptor } from './shared/services/caching-interceptor.service';
+import { CachingInterceptor } from './shared/interceptors/caching-interceptor.service';
 import { CreateEventWizardComponent } from './create-event-wizard/create-event-wizard.component';
 import { AuthGuard } from './shared/guards/auth.guard';
+import { TokenInterceptorService } from './shared/interceptors/token-interceptor.service';
+import { AlertComponent } from './alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { AuthGuard } from './shared/guards/auth.guard';
     WelcomeComponent,
     EventComponent,
     EventDetailsComponent,
-    CreateEventWizardComponent
+    CreateEventWizardComponent,
+    AlertComponent
    ],
   imports: [
     BrowserModule,
@@ -60,6 +62,11 @@ import { AuthGuard } from './shared/guards/auth.guard';
       provide: HTTP_INTERCEPTORS, 
       useClass: CachingInterceptor, 
       multi: true 
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
     },
     AuthGuard
   ],
