@@ -9,21 +9,26 @@ import { RegisterComponent } from './home/register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { WelcomeComponent } from './home/welcome/welcome.component';
 import { EventDetailsComponent } from './home/event-details/event-details.component';
+import { CreateEventComponent } from './create-event/create-event.component';
 
 const routes: Routes = [
   { path: '', redirectTo: "/home/welcome", pathMatch: "full" },
   { path: 'home', redirectTo: "/home/welcome", pathMatch: "full" },
-  { path: "home", component: HomeComponent, children: [
-      { path: "welcome", component: WelcomeComponent, data: { animation: 'WelcomeComponent'}},
-      { path: "events", component: EventsComponent, data: { animation: 'EventsComponent'} },
-      { path: "login", component: LoginComponent , data: { animation: 'LoginComponent'}},
-      { path: "register", component: RegisterComponent , data: { animation: 'RegisterComponent'}},
-      { path: "events/:id", component: EventDetailsComponent , data: { animation: 'EventDetailsComponent'}},
+  {
+    path: "home", component: HomeComponent, children: [
+      { path: "welcome", component: WelcomeComponent, data: { animation: 'WelcomeComponent' } },
+      { path: "events", component: EventsComponent, data: { animation: 'EventsComponent' } },
+      { path: "login", component: LoginComponent, data: { animation: 'LoginComponent' } },
+      { path: "register", component: RegisterComponent, data: { animation: 'RegisterComponent' } },
+      { path: "events/:id", component: EventDetailsComponent, data: { animation: 'EventDetailsComponent' } },
+      { path: 'create-event', component: CreateEventComponent, data: { animation: 'CreateEventComponent' } }
     ]
   },
-  { path: "dashboard", component: DashboardComponent, children: [
-    
-  ]},
+  {
+    path: "dashboard", component: DashboardComponent, children: [
+
+    ]
+  },
 
   { path: "404", component: PageNotFoundComponent },
   { path: "verify-email/:userid/:token/:jwt", component: EmailVerificationComponent },

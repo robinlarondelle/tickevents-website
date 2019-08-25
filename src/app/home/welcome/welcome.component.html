@@ -1,10 +1,10 @@
 <section class="title" (window:scroll)="onScroll()">
   <h1 class="text-center display-1">TickEvents</h1>
-  <hr class="white m-0">
+  <hr class="hr m-0">
   <p class="mt-2 lead">Het evenementenplatform van Nederland! Organiseer je eigen evenement en wij faciliteren de
     ticketverkoop voor je. <br>Krijg snel en makkelijk inzicht in jouw ticket verkoop!</p>
 
-    <div class="btn btn-outline-light btn-lg create-event-button mt-5" >Maak een evenement aan!</div>
+    <button class="btn btn-outline-light btn-lg create-event-button mt-5" (click)="navigate()">Maak een evenement aan!</button>
 
   <div class="scroll-downs fixed-bottom" [@showHideMouse]="mouseState">
     <div class="mousey">

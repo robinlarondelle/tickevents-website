@@ -1,0 +1,105 @@
+<div class="w">
+  <div class="title display-1 mt-5">
+    <p>Maak een evenement aan</p>
+    <hr class="hr m-0">
+  </div>
+
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <span>Via TickEvents kan je makkelijk je evenement hosten. Wij verzorgen de ticketverkoop, jij verzorgt het
+        evenement. Om te beginnen maak je op TickEvents een evenement aan.
+        Dit doe je door simpelweg dit formulier in te vullen. Als je het evenement hebt aangemaakt, kun je het hierna
+        bekijken in je persoonlijke beheerderspaneel, onder 'Mijn Evenementen'.
+      </span>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+
+  <div class="row  center-fix">
+
+    <div class="col-md p-4">
+
+      <!-- Start form -->
+      <form (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm" name="form">
+
+        <!-- eventName group -->
+        <div class="form-group row">
+          <label for="eventName" class="col-form-label col-lg-3">Naam van Evenement*</label>
+          <div class="col-lg-9">
+            <input type="text" class="form-control" name="eventName" [(ngModel)]="model.eventName" #eventName="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && eventName.invalid }" required>
+            <div *ngIf="f.submitted && eventName.invalid" class="invalid-feedback">
+              <div *ngIf="eventName.errors.required">Veld is verplicht</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- eventDate Group -->
+        <div class="form-group row">
+          <label for="eventDate" class="col-form-label col-lg-3">Datum*</label>
+          <div class="col-lg-9">
+            <input type="text" class="form-control" name="eventDate" [(ngModel)]="model.eventDate"
+              [ngClass]="{ 'is-invalid': f.submitted && eventDate.invalid }" #eventDate="ngModel">
+          </div>
+        </div>
+
+
+
+        <h6 class="mb-3 mt-5">Locatie van Evenement gegevens:</h6>
+        <div class="form-group row">
+          <label for="venue" class="col-form-label col-lg-3">Naam van locatie*</label>
+          <div class="col-lg-9">
+            <input type="text" class="form-control" name="venue" [(ngModel)]="model.venue" #venue="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && venue.invalid }" required>
+            <div *ngIf="f.submitted && venue.invalid" class="invalid-feedback">
+              <div *ngIf="venue.errors.required">Veld is verplicht</div>
+            </div>
+          </div>
+        </div>
+
+        <!--Venue data row-->
+        <div class="form-row">
+          <div class="col-md-6">
+            <label for="venueAddress">Adres*</label>
+            <input type="text" class="form-control" name="venueAddress" [(ngModel)]="model.venueAddress"
+              #venueAddress="ngModel" [ngClass]="{ 'is-invalid': f.submitted && venueAddress.invalid }">
+            <div *ngIf="f.submitted && venueAddress.invalid" class="invalid-feedback">
+              <div *ngIf="venueAddress.errors.required">Veld is verplicht</div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <label for="venueZipcode">Postcode*</label>
+            <input type="text" class="form-control" [(ngModel)]="model.venueZipcode" #venueZipcode="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && venueZipcode.invalid }">
+            <div *ngIf="f.submitted && venueZipcode.invalid" class="invalid-feedback">
+              <div *ngIf="venueZipcode.errors.required">Veld is verplicht</div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <label for="venueCity">Stad*</label>
+            <input type="text" class="form-control" [(ngModel)]="model.venueCity" #venueCity="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && venueCity.invalid }">
+            <div *ngIf="f.submitted && venueCity.invalid" class="invalid-feedback">
+              <div *ngIf="venueCity.errors.required">Veld is verplicht</div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <hr class="mb-0">
+
+        <span><i><small>* verplicht</small></i></span>
+
+        <div class="d-flex mt-3 w-100">
+          <button class="btn btn-danger btn-md mr-2" type="button" (click)="home()">Terug</button>
+          <button class="btn btn-warning btn-md" type="reset" (click)="onReset()">Reset</button>
+          <button class="btn btn-success btn-md ml-auto" type="submit">Verstuur!</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

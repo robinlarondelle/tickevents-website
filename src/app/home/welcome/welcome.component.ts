@@ -7,6 +7,7 @@ import {
   transition,
   // ...
 } from '@angular/animations';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-welcome',
@@ -51,7 +52,10 @@ export class WelcomeComponent implements OnInit, AfterContentInit {
     }, 1000)
   }
 
-  constructor() { }
+  constructor(
+    private router: Router
+
+  ) {}
 
   onScroll() {
     if (this.allowedToScroll) {
@@ -59,6 +63,7 @@ export class WelcomeComponent implements OnInit, AfterContentInit {
     }
   }
 
-
-
+  navigate() {    
+    this.router.navigateByUrl("/home/create-event")
+  }
 }
