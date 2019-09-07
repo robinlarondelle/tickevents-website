@@ -27,6 +27,7 @@ import { CreateEventWizardComponent } from './create-event-wizard/create-event-w
 import { AuthGuard } from './shared/guards/auth.guard';
 import { TokenInterceptorService } from './shared/interceptors/token-interceptor.service';
 import { AlertComponent } from './alert/alert.component';
+import { TokenService } from './shared/services/token.service';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { AlertComponent } from './alert/alert.component';
       useClass: TokenInterceptorService,
       multi: true
     },
-    AuthGuard
+    AuthGuard,
+    TokenService
   ],
   bootstrap: [AppComponent]
 })

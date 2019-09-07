@@ -5,7 +5,8 @@ import { Observable, of } from 'rxjs';
 import { RegisterResponse } from '../models/RegisterResponse';
 import { LoginResponse } from '../models/LoginResponse';
 import { catchError, map, tap } from 'rxjs/operators';
-
+import { TokenService } from 'src/app/shared/services/token.service';
+import { User } from '../models/User.model';
 
 
 @Injectable({
@@ -14,38 +15,9 @@ import { catchError, map, tap } from 'rxjs/operators';
 export class AuthService {
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private tokenService: TokenService
   ) { }
-
-  //token getters and setters
-  setToken(token: string): void {
-    localStorage.setItem('x-access-token', token)
-  }
-
-
-  getToken(): string {
-    return localStorage.getItem('x-access-token')
-  }
-
-
-  removeToken() {
-    localStorage.removeItem('x-access-token')
-  }
-
-
-  //Auth request endpoints
-  sendVerification(userid, token): Observable<RegisterResponse> {
-    return this.http.post(`${environment.BASE_URL}/api/verify-email/`, {
-      "IdentityUserID": `${userid}`,
-      "Token": `${token}`
-    })
-  }
-
-
-  register(form): Observable<RegisterResponse> {
-    return this.http.post(`${environment.BASE_URL}/api/register`, form)
-  }
-
 
   login(form): Observable<LoginResponse> {
     return this.http.post<any>(`${environment.BASE_URL}/api/login`, form)
@@ -54,8 +26,7 @@ export class AuthService {
 
           //if a login was successfull, the response will contain a token
           if (res && res.token) {
-            this.setToken(res.token)
-
+            this.tokenService.setToken(res.token)
           }
 
           return res
@@ -63,11 +34,31 @@ export class AuthService {
       )
   }
 
-  logout() {
-    this.removeToken()
+
+  register(form): Observable<RegisterResponse> {
+    return this.http.post(`${environment.BASE_URL}/api/register`, form)
   }
 
-  loggedIn() {
-    return !!this.getToken()
+
+  sendVerification(userid, token): Observable<RegisterResponse> {
+    return this.http.post(`${environment.BASE_URL}/api/verify-email/`, {
+      "IdentityUserID": `${userid}`,
+      "Token": `${token}`
+    })
+  }
+
+
+  logout(): void {
+    this.tokenService.removeToken()
+  }
+
+
+  isLoggedIn(): boolean {
+    return !!this.tokenService.getToken()
+  }
+
+
+  getLoggedInUser(): User {    
+    return this.tokenService.getPayload()
   }
 }

@@ -1,50 +1,31 @@
-import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../../shared/services/auth.service';
+import { User } from 'src/app/shared/models/User.model';
+import { TokenService } from 'src/app/shared/services/token.service';
 import { Router } from '@angular/router';
-import { ViewChild, ElementRef } from '@angular/core';
-import { trigger, state } from '@angular/animations'
-
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
-  animations: [
-    
-  ]
+  animations: []
 })
 export class HeaderComponent implements OnInit {
-  model: any = {}; //form-model
-  @ViewChild('closeBtn') closeBtn: ElementRef;
-
+  user: User
 
   constructor(
-    private authService: AuthService,
+    private auth: AuthService,
     private router: Router
-
   ) { }
 
   ngOnInit() {
+    this.user = this.auth.getLoggedInUser()
   }
 
-  onReset(form: NgForm) {
-    form.resetForm()
+  logout() {
+    console.log('logout');
+    
+    this.auth.logout()
+    this.router.navigate(["/home/welcome"])
   }
-
-  onSubmit(form: NgForm) {
-    this.authService.login(form.value).subscribe(res => {
-      this.authService.setToken(res.token)
-      this.router.navigateByUrl("/profile")
-
-      // close the modal
-      this.closeModal();
-    })
-  }
-
-  // call this wherever you want to close modal
-  private closeModal(): void {
-    this.closeBtn.nativeElement.click();
-  }
-
 }
