@@ -28,4 +28,13 @@ export class HeaderComponent implements OnInit {
     this.auth.logout()
     this.router.navigate(["/home/welcome"])
   }
+
+  tickets() {
+    console.log('TODO: Navigate to My Tickets')
+  }
+
+  events() {
+    console.log('TODO: Navigate to My Events');
+    
+  }
 }

@@ -43,10 +43,12 @@
     <li class="dropdown">
       <button class="nav-link dropdown-toggle w drp-btn" id="navbarDropdown" role="button" data-toggle="dropdown"
         aria-expanded="false" aria-haspopup="true">
-        Welcome {{user.firstname}}
+        Welkom {{user.firstname}}!
       </button>
       <div class="dropdown-menu">
         <button class="dropdown-item" (click)="logout()">Uitloggen</button>
+        <button class="dropdown-item" (click)="tickets()">Mijn Tickets</button>
+        <button class="dropdown-item" (click)="events()">Mijn Evenementen</button>
       </div>
     </li>
   </ul>
