@@ -28,6 +28,7 @@ import { AuthGuard } from './shared/guards/auth.guard';
 import { TokenInterceptorService } from './shared/interceptors/token-interceptor.service';
 import { AlertComponent } from './alert/alert.component';
 import { TokenService } from './shared/services/token.service';
+import { ErrorInterceptor } from './shared/interceptors/error-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -58,12 +59,18 @@ import { TokenService } from './shared/services/token.service';
     HttpModule
   ],
   providers: [
-    RequestCache,
-    { 
-      provide: HTTP_INTERCEPTORS, 
-      useClass: CachingInterceptor, 
-      multi: true 
-    },
+    //disable caching and intercepting until further notice
+    // RequestCache,
+    // { 
+    //   provide: HTTP_INTERCEPTORS, 
+    //   useClass: CachingInterceptor, 
+    //   multi: true 
+    // },
+    // { 
+    //   provide: HTTP_INTERCEPTORS, 
+    //   useClass: ErrorInterceptor, 
+    //   multi: true 
+    // },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
