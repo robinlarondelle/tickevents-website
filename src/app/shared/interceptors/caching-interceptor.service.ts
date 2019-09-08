@@ -5,6 +5,11 @@ import { startWith, tap } from 'rxjs/operators';
 import { RequestCache } from '../services/request-cache.service';
 
 
+/*
+* CURRENTLY NOT ACTIVATED
+*/
+
+
 @Injectable()
 export class CachingInterceptor implements HttpInterceptor {
   constructor(private cache: RequestCache) {}

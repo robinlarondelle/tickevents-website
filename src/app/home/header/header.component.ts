@@ -22,9 +22,7 @@ export class HeaderComponent implements OnInit {
     this.user = this.auth.getLoggedInUser()
   }
 
-  logout() {
-    console.log('logout');
-    
+  logout() {    
     this.auth.logout()
     this.router.navigate(["/home/welcome"])
   }

@@ -12,17 +12,10 @@ export class AuthGuard implements CanActivate {
     private router : Router) {}
   
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-      console.log('is logged in ' + this.authService.isLoggedIn());
-      
-
-      if (this.authService.isLoggedIn()) {
-        console.log('authorized');
-        
+      if (this.authService.isLoggedIn()) {        
         return true //authorized
 
-      } else {
-        console.log('not authorized');
-        
+      } else {        
         this.authService.logout()
 
         //return to url after login

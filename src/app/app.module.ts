@@ -30,6 +30,7 @@ import { AlertComponent } from './alert/alert.component';
 import { TokenService } from './shared/services/token.service';
 import { ErrorInterceptor } from './shared/interceptors/error-interceptor.service';
 import { PurchaseTicketComponent } from './home/event-details/purchase-ticket/purchase-ticket.component';
+import { TicketTypeComponent } from './home/event-details/purchase-ticket/ticket-type/ticket-type.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { PurchaseTicketComponent } from './home/event-details/purchase-ticket/pu
     EventDetailsComponent,
     CreateEventWizardComponent,
     AlertComponent,
-    PurchaseTicketComponent
+    PurchaseTicketComponent,
+    TicketTypeComponent
    ],
   imports: [
     BrowserModule,

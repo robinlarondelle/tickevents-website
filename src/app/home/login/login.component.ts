@@ -20,9 +20,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || './home/welcome';
-    console.log(this.returnUrl);
-    
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || './home/welcome';    
   }
 
   onSubmit(form: any) {

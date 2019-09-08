@@ -1,6 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpRequest, HttpResponse } from '@angular/common/http';
 
+
+/*
+* CURRENTLY NOT ACTIVATED
+*/
+
+
 const maxAge = 30000;
 @Injectable()
 export class RequestCache  {

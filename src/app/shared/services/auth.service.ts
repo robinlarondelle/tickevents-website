@@ -56,11 +56,7 @@ export class AuthService {
 
   isLoggedIn(): boolean {
     const isExpired = this.tokenService.isTokenExpired()
-    const isKnown = !!this.tokenService.getToken() 
-    
-    console.log("isExpired " + isExpired);
-    console.log("isKnown " + isKnown);
-    
+    const isKnown = !!this.tokenService.getToken()     
 
     if (!isExpired && isKnown) return true
     return false
