@@ -22,7 +22,7 @@ export class AuthService {
   login(form): Observable<LoginResponse> {
     return this.http.post<any>(`${environment.BASE_URL}/api/login`, form)
       .pipe(
-        map(res => {
+        map(res => {          
 
           //if a login was successfull, the response will contain a token
           if (res && res.token) {
@@ -50,11 +50,20 @@ export class AuthService {
 
   logout(): void {
     this.tokenService.removeToken()
+    this.tokenService.removePayload()
   }
 
 
   isLoggedIn(): boolean {
-    return !!this.tokenService.getToken()
+    const isExpired = this.tokenService.isTokenExpired()
+    const isKnown = !!this.tokenService.getToken() 
+    
+    console.log("isExpired " + isExpired);
+    console.log("isKnown " + isKnown);
+    
+
+    if (!isExpired && isKnown) return true
+    return false
   }
 
 

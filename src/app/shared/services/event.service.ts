@@ -28,7 +28,6 @@ export class EventService {
    //Decide to fetch events from server based on some service-properties
    //Fetch from server when: firstfetch, updateEvents, lastfecht more than 1 hour ago, 0 events in array
    getEvents(): Observable<Event[]> {
-
     if (!this.firstFetch || this.updateEvents) {
       if (this.lastFetch != undefined && !this.lastFetch.isBefore(moment().subtract(1, 'hour'))) {
         if (this.events != undefined && this.events.length > 0) {
@@ -43,11 +42,8 @@ export class EventService {
     return this.http.get<any>(`${environment.BASE_URL}/api/events`)
       .pipe(
         map(res => {
-          console.log(res)
           if (res.events) {
-
             this.events = res.events
-
             return this.events
           }
         })

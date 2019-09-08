@@ -11,30 +11,3 @@
   height: 101vh !important;
   max-width: 100%;
 }
-
-/* Deprecated */
-
-/* 
-.imageCycle2 {
-  background: url("../../assets/bg2.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 100vh !important;
-  max-width: 100%;
-}
-
-.imageCycle3 {
-  background: url("../../assets/bg3.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 100vh !important;
-  max-width: 100%;
-}
-
-.imageCycle4 {
-  background: url("../../assets/bg4.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 100vh !important;
-  max-width: 100%;
-} */
