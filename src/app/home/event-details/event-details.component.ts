@@ -19,18 +19,27 @@ export class EventDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    let eventID = null;
-    this.activeRoute.params.subscribe(params => {
-      eventID = params.id
-    })
 
-    this.eventService.getEventById(eventID).subscribe(event => {
-      this.event = event
-    })
+    this.event = this.eventService.getSelectedEvent()
+
+    if (!!!this.event) {
+      let eventID = null;
+      this.activeRoute.params.subscribe(params => {
+        eventID = params.id
+        
+        this.eventService.getEventById(eventID).subscribe(event => {
+          this.event = event
+        })
+      })
+    }
   }
 
   return() {
     this.router.navigateByUrl("/home/events")
+  }
+
+  purchase() {        
+    this.router.navigate(["purchase"], {relativeTo: this.activeRoute})
   }
 
 }

@@ -9,6 +9,7 @@ import { Event as EventModel } from '../models/EventModel';
 })
 export class EventService {
 
+  selectedEvent: EventModel
   events: EventModel[]
   lastFetch: Date
 
@@ -22,6 +23,14 @@ export class EventService {
 
    getEventById(id: Number): Observable<EventModel> {
      return this.http.get<EventModel>(`${environment.BASE_URL}/api/events/${id}`)
+   }
+
+   getSelectedEvent(): EventModel {
+     return this.selectedEvent
+   }
+
+   setSelectedEvent(event: EventModel) {
+     this.selectedEvent = event
    }
 
    purchaseTicket(eventID: number) {

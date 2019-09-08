@@ -29,6 +29,7 @@ import { TokenInterceptorService } from './shared/interceptors/token-interceptor
 import { AlertComponent } from './alert/alert.component';
 import { TokenService } from './shared/services/token.service';
 import { ErrorInterceptor } from './shared/interceptors/error-interceptor.service';
+import { PurchaseTicketComponent } from './home/event-details/purchase-ticket/purchase-ticket.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { ErrorInterceptor } from './shared/interceptors/error-interceptor.servic
     EventComponent,
     EventDetailsComponent,
     CreateEventWizardComponent,
-    AlertComponent
+    AlertComponent,
+    PurchaseTicketComponent
    ],
   imports: [
     BrowserModule,
