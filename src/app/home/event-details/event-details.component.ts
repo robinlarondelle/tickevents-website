@@ -20,8 +20,11 @@ export class EventDetailsComponent implements OnInit {
 
   ngOnInit() {
 
+    //Get selected event from the application
     this.event = this.eventService.getSelectedEvent()
 
+    //If the user navigated to this endpoint by typing in the URL, the selectedEvent property is not set
+    //In that case, we need to fetch the selectedEvent from the server
     if (!!!this.event) {
       let eventID = null;
       this.activeRoute.params.subscribe(params => {
