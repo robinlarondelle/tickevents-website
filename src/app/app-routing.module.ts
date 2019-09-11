@@ -10,7 +10,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { WelcomeComponent } from './home/welcome/welcome.component';
 import { EventDetailsComponent } from './home/event-details/event-details.component';
 import { AuthGuard } from './shared/guards/auth.guard';
-import { PurchaseTicketComponent } from './home/event-details/purchase-ticket/purchase-ticket.component';
+import { PurchaseTicketFormComponent } from './home/purchase-ticket-form/purchase-ticket-form.component';
+import { TicketTypeComponent } from './home/purchase-ticket-form/ticket-type/ticket-type.component';
+import { CustomerDetailsComponent } from './home/purchase-ticket-form/customer-details/customer-details.component';
+import { PurchaseOverviewComponent } from './home/purchase-ticket-form/purchase-overview/purchase-overview.component';
+import { PurchaseFormGuard } from './shared/guards/purchase-form.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: "/home/welcome", pathMatch: "full" },
@@ -22,7 +26,15 @@ const routes: Routes = [
       { path: "login", component: LoginComponent, data: { animation: 'LoginComponent' } },
       { path: "register", component: RegisterComponent, data: { animation: 'RegisterComponent' } },
       { path: "events/:id", component: EventDetailsComponent, data: { animation: 'EventDetailsComponent' } },
-      { path: "events/:id/purchase", component: PurchaseTicketComponent }
+
+      { path: "events/:id/purchase", component: PurchaseTicketFormComponent, children: [
+        {path: "", canActivate: [PurchaseFormGuard], children: [
+          { path: "", redirectTo: "home/events/:id/purchase", pathMatch: "full"},
+          { path: "ticket-types", component: TicketTypeComponent},
+          { path: "customer-details", component: CustomerDetailsComponent},
+          { path: "purchase-overview", component: PurchaseOverviewComponent},
+        ]}
+      ] }
     ]
   },
 

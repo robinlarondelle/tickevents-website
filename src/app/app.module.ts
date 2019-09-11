@@ -29,8 +29,10 @@ import { TokenInterceptorService } from './shared/interceptors/token-interceptor
 import { AlertComponent } from './alert/alert.component';
 import { TokenService } from './shared/services/token.service';
 import { ErrorInterceptor } from './shared/interceptors/error-interceptor.service';
-import { PurchaseTicketComponent } from './home/event-details/purchase-ticket/purchase-ticket.component';
-import { TicketTypeComponent } from './home/event-details/purchase-ticket/ticket-type/ticket-type.component';
+import { PurchaseTicketFormComponent } from './home/purchase-ticket-form/purchase-ticket-form.component';
+import { TicketTypeComponent } from './home/purchase-ticket-form/ticket-type/ticket-type.component';
+import { PurchaseOverviewComponent } from './home/purchase-ticket-form/purchase-overview/purchase-overview.component';
+import { CustomerDetailsComponent } from './home/purchase-ticket-form/customer-details/customer-details.component';
 
 @NgModule({
   declarations: [
@@ -49,8 +51,10 @@ import { TicketTypeComponent } from './home/event-details/purchase-ticket/ticket
     EventDetailsComponent,
     CreateEventWizardComponent,
     AlertComponent,
-    PurchaseTicketComponent,
-    TicketTypeComponent
+    PurchaseTicketFormComponent,
+    TicketTypeComponent,
+    PurchaseOverviewComponent,
+    CustomerDetailsComponent
    ],
   imports: [
     BrowserModule,
