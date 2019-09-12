@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { TicketType } from 'src/app/shared/models/ticket-type.model';
 import { Form, FormGroup, FormArray, FormBuilder } from '@angular/forms';
-import { TicketTypeComponent } from './ticket-type/ticket-type.component';
+import { TicketTypesComponent } from './ticket-types/ticket-types.component';
 import { Subscription } from 'rxjs';
 import { PurchaseTicketService } from 'src/app/shared/services/purchase-ticket.service';
 

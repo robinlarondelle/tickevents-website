@@ -42,7 +42,7 @@ export class EventDetailsComponent implements OnInit {
   }
 
   purchase() {        
-    this.router.navigate(["purchase"], {relativeTo: this.activeRoute})
+    this.router.navigate(["purchase/ticket-types"], {relativeTo: this.activeRoute})
   }
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-purchase-overview',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PurchaseOverviewComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
   }
+
+  click()  {
+    this.router.navigate(["ticket-types"], {relativeTo: this.route.parent})
+  }
+
 
 }

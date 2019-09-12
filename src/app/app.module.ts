@@ -30,7 +30,7 @@ import { AlertComponent } from './alert/alert.component';
 import { TokenService } from './shared/services/token.service';
 import { ErrorInterceptor } from './shared/interceptors/error-interceptor.service';
 import { PurchaseTicketFormComponent } from './home/purchase-ticket-form/purchase-ticket-form.component';
-import { TicketTypeComponent } from './home/purchase-ticket-form/ticket-type/ticket-type.component';
+import { TicketTypesComponent } from './home/purchase-ticket-form/ticket-types/ticket-types.component';
 import { PurchaseOverviewComponent } from './home/purchase-ticket-form/purchase-overview/purchase-overview.component';
 import { CustomerDetailsComponent } from './home/purchase-ticket-form/customer-details/customer-details.component';
 
@@ -52,7 +52,7 @@ import { CustomerDetailsComponent } from './home/purchase-ticket-form/customer-d
     CreateEventWizardComponent,
     AlertComponent,
     PurchaseTicketFormComponent,
-    TicketTypeComponent,
+    TicketTypesComponent,
     PurchaseOverviewComponent,
     CustomerDetailsComponent
    ],

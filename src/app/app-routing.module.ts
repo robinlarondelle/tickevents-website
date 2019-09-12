@@ -11,7 +11,7 @@ import { WelcomeComponent } from './home/welcome/welcome.component';
 import { EventDetailsComponent } from './home/event-details/event-details.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { PurchaseTicketFormComponent } from './home/purchase-ticket-form/purchase-ticket-form.component';
-import { TicketTypeComponent } from './home/purchase-ticket-form/ticket-type/ticket-type.component';
+import { TicketTypesComponent } from './home/purchase-ticket-form/ticket-types/ticket-types.component';
 import { CustomerDetailsComponent } from './home/purchase-ticket-form/customer-details/customer-details.component';
 import { PurchaseOverviewComponent } from './home/purchase-ticket-form/purchase-overview/purchase-overview.component';
 import { PurchaseFormGuard } from './shared/guards/purchase-form.guard';
@@ -29,8 +29,7 @@ const routes: Routes = [
 
       { path: "events/:id/purchase", component: PurchaseTicketFormComponent, children: [
         {path: "", canActivate: [PurchaseFormGuard], children: [
-          { path: "", redirectTo: "home/events/:id/purchase", pathMatch: "full"},
-          { path: "ticket-types", component: TicketTypeComponent},
+          { path: "ticket-types", component: TicketTypesComponent},
           { path: "customer-details", component: CustomerDetailsComponent},
           { path: "purchase-overview", component: PurchaseOverviewComponent},
         ]}
