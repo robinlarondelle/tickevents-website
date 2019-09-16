@@ -1,0 +1,17 @@
+{
+  "name": "Robin La Rondelle",
+  "email": "robinlarondelle@hotmail.com",
+  "dateOfBirth": 19980923000000,
+  "eventID": 1,
+  "purchaseMethod": "ideal",
+  "purchase": [
+    {
+      "type": "VIP",
+      "amount": 1
+    },
+    {
+      "type": "Regular",
+      "amount": 3
+    }
+  ]
+}

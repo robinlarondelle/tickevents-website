@@ -33,6 +33,7 @@ import { PurchaseTicketFormComponent } from './home/purchase-ticket-form/purchas
 import { TicketTypesComponent } from './home/purchase-ticket-form/ticket-types/ticket-types.component';
 import { PurchaseOverviewComponent } from './home/purchase-ticket-form/purchase-overview/purchase-overview.component';
 import { CustomerDetailsComponent } from './home/purchase-ticket-form/customer-details/customer-details.component';
+import { TypeComponent } from './home/purchase-ticket-form/ticket-types/type/type.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { CustomerDetailsComponent } from './home/purchase-ticket-form/customer-d
     PurchaseTicketFormComponent,
     TicketTypesComponent,
     PurchaseOverviewComponent,
-    CustomerDetailsComponent
+    CustomerDetailsComponent,
+    TypeComponent
    ],
   imports: [
     BrowserModule,

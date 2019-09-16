@@ -1,7 +1,7 @@
-export class TicketType {
+export interface TicketType {
   id: number
   eventId: number
-  type: string
+  name: string
   price: number
   available: number
 }

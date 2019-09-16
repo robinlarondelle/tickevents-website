@@ -1,0 +1,13 @@
+<div class="container-fluid text-left mt-3">
+  <div class="row">
+    <div class="col-sm-3">
+      <span>{{type.Name}}:</span>
+    </div>
+    <div class="col-sm-3">
+      {{type.PricePerTicket / 100 | currency:'EUR' }}
+    </div>
+    <div class="col-sm-6">
+      <button class="btn btn-outline-info" (click)="click()">To Customer Details</button>
+    </div>
+  </div>
+</div>
