@@ -31,8 +31,11 @@ export class TicketTypesComponent implements OnInit {
 
   }
 
+  return() {
+    this.router.navigate(['../..'], {relativeTo: this.route})
+  }
 
-
-
-
+  next() {
+    this.router.navigate(["customer-details"], {relativeTo: this.route.parent})
+  }
 }

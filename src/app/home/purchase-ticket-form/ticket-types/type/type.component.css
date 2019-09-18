@@ -1,0 +1,15 @@
+.width-fix {
+  max-width: 200px;
+}
+
+.btn {
+  border-radius: 50% !important;
+  width: 35px;
+  height: 35px;
+}
+
+.vcenter {
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
+}

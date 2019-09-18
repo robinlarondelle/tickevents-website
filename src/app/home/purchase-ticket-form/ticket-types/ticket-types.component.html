@@ -1,5 +1,18 @@
-<div class="container-fluid">
-  <div *ngFor="let type of types">
-    <app-type [type]="type"></app-type>
+<p class="lead">Kies hier uw soorten tickets uit.</p>
+<hr class="mb-3">
+<div *ngFor="let type of types">
+  <app-type [type]="type"></app-type>
+</div>
+<hr class="mb-3">
+
+<div class="row">
+  <div class="col-sm-3 text-sm-left">
+    <button class="btn btn-outline-danger" (click)="return()">Terug naar Evenement</button>
+  </div>
+  <div class="col-sm 3 text-sm-center">
+    <button class="btn btn-outline-warning">Reset</button>
+  </div>
+  <div class="col-sm-4 text-sm-right">
+    <button class="btn btn-outline-info" (click)="next()">Gegevens invullen ></button>
   </div>
 </div>

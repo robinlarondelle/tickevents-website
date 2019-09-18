@@ -9,7 +9,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class TypeComponent implements OnInit {
   @Input() type: TicketType
-
+  amount = 0
   constructor(
     private router: Router,
     private route: ActivatedRoute
@@ -21,6 +21,16 @@ export class TypeComponent implements OnInit {
 
   click()  {
     this.router.navigate(["customer-details"], {relativeTo: this.route.parent})
+  }
+
+  minus() {
+    if (this.amount >= 1) {
+      this.amount--
+    }
+  }
+
+  plus() {
+    this.amount++
   }
 
 }

@@ -1,10 +1,12 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import { TicketType } from 'src/app/shared/models/ticket-type.model';
 import { Form, FormGroup, FormArray, FormBuilder } from '@angular/forms';
 import { TicketTypesComponent } from './ticket-types/ticket-types.component';
 import { Subscription, Subscriber } from 'rxjs';
 import { PurchaseTicketService } from 'src/app/shared/services/purchase-ticket.service';
 import { EventService } from 'src/app/shared/services/event.service';
+import { Event } from 'src/app/shared/models/EventModel';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-purchase-ticket-form',
@@ -12,6 +14,7 @@ import { EventService } from 'src/app/shared/services/event.service';
   styleUrls: ['./purchase-ticket-form.component.css']
 })
 export class PurchaseTicketFormComponent implements OnInit, AfterViewInit {
+  event: Event
 
   // purchaseForm: FormGroup
   // purchaseFormSub: Subscription
@@ -20,6 +23,8 @@ export class PurchaseTicketFormComponent implements OnInit, AfterViewInit {
 
   constructor(
     private purchaseTicketService: PurchaseTicketService,
+    private route: ActivatedRoute,
+    private eventService: EventService
   ) {
    }
 
@@ -28,10 +33,19 @@ export class PurchaseTicketFormComponent implements OnInit, AfterViewInit {
     //   this.purchaseForm = purchase
     //   this.ticketTypes = this.purchaseForm.get('types') as FormArray
     // })
+
+    
+    this.route.params.subscribe(params => {
+      let eventId = params.id
+      this.eventService.getEventById(eventId).subscribe(event => {
+        this.event = event
+      })
+    })
+
+
   }
 
   ngAfterViewInit() {
     // this.ticketForm.addControl('types', this.ticketTypeComponent.typeControl)
   }
-
 }
