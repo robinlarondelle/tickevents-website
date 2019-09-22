@@ -5,7 +5,7 @@ import { TicketTypesComponent } from './ticket-types/ticket-types.component';
 import { Subscription, Subscriber } from 'rxjs';
 import { PurchaseTicketService } from 'src/app/shared/services/purchase-ticket.service';
 import { EventService } from 'src/app/shared/services/event.service';
-import { Event } from 'src/app/shared/models/EventModel';
+import { Event } from 'src/app/shared/models/event.model';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -15,26 +15,18 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PurchaseTicketFormComponent implements OnInit, AfterViewInit {
   event: Event
-
-  // purchaseForm: FormGroup
-  // purchaseFormSub: Subscription
-  // ticketTypes: FormArray
-
+  purchaseForm: FormGroup
+  purchaseForm$: Subscription
+  tickets: FormArray
 
   constructor(
     private purchaseTicketService: PurchaseTicketService,
     private route: ActivatedRoute,
     private eventService: EventService
   ) {
-   }
+  }
 
   ngOnInit() {
-    // this.purchaseFormSub = this.purchaseTicketService.purchaseForm.subscribe(purchase => {
-    //   this.purchaseForm = purchase
-    //   this.ticketTypes = this.purchaseForm.get('types') as FormArray
-    // })
-
-    
     this.route.params.subscribe(params => {
       let eventId = params.id
       this.eventService.getEventById(eventId).subscribe(event => {
@@ -42,7 +34,11 @@ export class PurchaseTicketFormComponent implements OnInit, AfterViewInit {
       })
     })
 
-
+    this.purchaseForm$ = this.purchaseTicketService.purchaseForm$
+      .subscribe(form => {
+        this.purchaseForm = form
+        this.tickets = this.purchaseForm.get('tickets') as FormArray
+      })
   }
 
   ngAfterViewInit() {

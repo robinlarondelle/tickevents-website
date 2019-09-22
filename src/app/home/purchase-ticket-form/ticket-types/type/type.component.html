@@ -5,12 +5,12 @@
     <div class="col text-left">
       <div class="row">
         <div class="col">
-          <b>{{type.Name}}</b>
+          <b>{{type?.name}}</b>
         </div>
       </div>
       <div class="row">
         <div class="col">
-          <span>{{type.PricePerTicket / 100 | currency: "EUR"}} per kaartje</span>
+          <span>{{type?.pricePerTicket / 100 | currency: "EUR"}} per kaartje</span>
         </div>
       </div>
     </div>
@@ -26,7 +26,7 @@
           </div>
           <div class="row no-gutters">
             <div class="col">
-              {{type.PricePerTicket / 100 * amount | currency: "EUR"}}
+              {{type?.pricePerTicket / 100 * amount | currency: "EUR"}}
             </div>
           </div>
         </div>

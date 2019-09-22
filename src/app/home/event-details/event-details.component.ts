@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Route } from '@angular/compiler/src/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EventService } from '../../shared/services/event.service';
-import { Event } from "../../shared/models/EventModel"
+import { Event } from "../../shared/models/event.model"
 
 @Component({
   selector: 'app-event-details',
@@ -16,7 +16,9 @@ export class EventDetailsComponent implements OnInit {
     private activeRoute: ActivatedRoute,
     private router: Router,
     private eventService: EventService
-  ) { }
+  ) {
+    this.event = null
+   }
 
   ngOnInit() {
 

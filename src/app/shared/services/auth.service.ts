@@ -42,8 +42,8 @@ export class AuthService {
 
   sendVerification(userid, token): Observable<RegisterResponse> {
     return this.http.post(`${environment.BASE_URL}/api/verify-email/`, {
-      "IdentityUserID": `${userid}`,
-      "Token": `${token}`
+      "identityUserID": `${userid}`,
+      "token": `${token}`
     })
   }
 

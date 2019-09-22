@@ -22,7 +22,7 @@ export class TicketTypesComponent implements OnInit {
 
   ngOnInit() { 
     this.route.params.subscribe(params => {
-      this.eventService.getEventTypesByEventId(params.id).subscribe((types: TicketType[]) => {
+      this.eventService.getEventTypesByEventId(params.id).subscribe((types: TicketType[]) => {        
         types.map((type: TicketType) => {          
           this.types.push(type)
         })

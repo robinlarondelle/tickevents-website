@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from 'src/app/shared/services/event.service';
-import { Event } from 'src/app/shared/models/EventModel';
+import { Event } from 'src/app/shared/models/event.model';
 import { map } from 'rxjs/operators';
 
 
@@ -22,6 +22,8 @@ export class EventsComponent implements OnInit {
 
     this.eventService.getEvents().subscribe(events => {
       this.events = events
+      console.log(events);
+      
     })
   }
 

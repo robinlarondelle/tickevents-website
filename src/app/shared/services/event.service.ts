@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable, of } from 'rxjs';
-import { Event } from '../models/EventModel';
+import { Event } from '../models/event.model';
 import * as moment from 'moment'
 import { map } from 'rxjs/operators';
 import { TicketType } from '../models/ticket-type.model';
+import { Ticket } from '../models/ticket.model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,19 +21,19 @@ export class EventService {
 
   constructor(
     private http: HttpClient
-   ) { 
-     this.firstEventFetch = true
-     this.updateEvents = false
-     this.events = []
-   }
+  ) {
+    this.firstEventFetch = true
+    this.updateEvents = false
+    this.events = []
+  }
 
-   //Decide to fetch events from server based on some service-properties
-   //Fetch from server when: firstfetch, updateEvents, lastfecht more than 1 hour ago, 0 events in array
-   getEvents(): Observable<Event[]> {
+  //Decide to fetch events from server based on some service-properties
+  //Fetch from server when: firstfetch, updateEvents, lastfecht more than 1 hour ago, 0 events in array
+  getEvents(): Observable<Event[]> {
     if (!this.firstEventFetch || this.updateEvents) {
       if (this.lastEventsFetch != undefined && !this.lastEventsFetch.isBefore(moment().subtract(1, 'hour'))) {
         if (this.events != undefined && this.events.length > 0) {
-          return of (this.events)
+          return of(this.events)
         }
       }
     }
@@ -49,36 +50,36 @@ export class EventService {
           }
         })
       )
-   }
+  }
 
 
-   getEventById(id: Number): Observable<Event> {
-     return this.http.get<Event>(`${environment.BASE_URL}/api/events/${id}`)
-   }
-
-   
-   getEventTypesByEventId(id: Number): Observable<TicketType[]> {
-     return this.http.get<TicketType[]>(`${environment.BASE_URL}/api/events/${id}/types`)
-   }
+  getEventById(id: Number): Observable<Event> {
+    return this.http.get<Event>(`${environment.BASE_URL}/api/events/${id}`)
+  }
 
 
-   getSelectedEvent(): Event {
-     return this.selectedEvent
-   }
+  getEventTypesByEventId(id: Number): Observable<TicketType[]> {
+    return this.http.get<any>(`${environment.BASE_URL}/api/events/${id}/types`)
+  }
 
 
-   setSelectedEvent(event: Event) {
-     this.selectedEvent = event
-   }
+  getSelectedEvent(): Event {
+    return this.selectedEvent
+  }
 
 
-   purchaseTicket(eventID: number) {
-     return -1 //TODO implement endpoint
-   }
+  setSelectedEvent(event: Event) {
+    this.selectedEvent = event
+  }
 
 
-   //request the service to update it's events, even if there hasn't passed 1 hour since lastFetch
-   setUpdateEvents() {
-     this.updateEvents = true
-   }
+  purchaseTicket(eventID: number) {
+    return -1 //TODO implement endpoint
+  }
+
+
+  //request the service to update it's events, even if there hasn't passed 1 hour since lastFetch
+  setUpdateEvents() {
+    this.updateEvents = true
+  }
 }

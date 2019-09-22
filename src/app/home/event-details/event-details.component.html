@@ -6,7 +6,7 @@
   </div>
   <div class="row">
     <div class="col-md-12 text-center">
-      <div class="h1 w display-1">{{event.Name}}</div>
+      <div class="h1 w display-1">{{event?.name}}</div>
       <hr style="border: 1px aliceblue solid" class="mb-5">
       <div class="row">
         <div class="col-md-7">
@@ -15,7 +15,7 @@
           </div>
         </div>
         <div class="col-md-5 w">
-          {{event.Description}}
+          {{event?.description}}
           <br>
           <a class="btn btn-md btn-primary" (click)="purchase()">Koop Ticket!</a>
         </div>
