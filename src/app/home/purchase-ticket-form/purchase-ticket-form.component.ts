@@ -13,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './purchase-ticket-form.component.html',
   styleUrls: ['./purchase-ticket-form.component.css']
 })
-export class PurchaseTicketFormComponent implements OnInit, AfterViewInit {
+export class PurchaseTicketFormComponent implements OnInit, AfterViewInit, OnDestroy {
   event: Event
   purchaseForm: FormGroup
   purchaseForm$: Subscription
@@ -27,6 +27,7 @@ export class PurchaseTicketFormComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+    //Get current event ID
     this.route.params.subscribe(params => {
       let eventId = params.id
       this.eventService.getEventById(eventId).subscribe(event => {
@@ -34,14 +35,24 @@ export class PurchaseTicketFormComponent implements OnInit, AfterViewInit {
       })
     })
 
-    this.purchaseForm$ = this.purchaseTicketService.purchaseForm$
-      .subscribe(form => {
+    //Get Form Properties
+    this.purchaseForm$ = this.purchaseTicketService.purchaseForm$.subscribe(form => {
+      console.log(form);
+      
         this.purchaseForm = form
+        
         this.tickets = this.purchaseForm.get('tickets') as FormArray
       })
   }
 
   ngAfterViewInit() {
     // this.ticketForm.addControl('types', this.ticketTypeComponent.typeControl)
+  }
+
+
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    this.purchaseForm$.unsubscribe()
   }
 }

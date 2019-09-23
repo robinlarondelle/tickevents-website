@@ -1,8 +1,8 @@
 export class Ticket {
   id: number
-  eventId: number
-  type: string
-  paymentReceived: boolean
+  ticketTypeID: number
   boughtBy?: number
-  price: number
+  paymentReceived: boolean
+  reservated: boolean
+  reservatedUntill?: Date
 }

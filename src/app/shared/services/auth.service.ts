@@ -6,7 +6,7 @@ import { RegisterResponse } from '../models/RegisterResponse';
 import { LoginResponse } from '../models/LoginResponse';
 import { catchError, map, tap } from 'rxjs/operators';
 import { TokenService } from 'src/app/shared/services/token.service';
-import { User } from '../models/User.model';
+import { User } from '../models/user.model';
 
 
 @Injectable({

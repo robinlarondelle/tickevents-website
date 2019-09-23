@@ -1,8 +1,10 @@
 <div class="mt-5">
   <div class="card text-center">
     <div class="card-body">
-      <h2>Kaartjes voor {{event?.name}}</h2>
-      <router-outlet></router-outlet>
+      <form [formGroup]="purchaseForm" ngSubmit="onSubmit()">
+        <h2>Kaartjes voor {{event?.name}}</h2>
+        <router-outlet></router-outlet>
+      </form>
     </div>
   </div>
 </div>
