@@ -2,7 +2,7 @@
 <hr class="mb-3">
 
 <div *ngFor="let type of ticketTypeForm?.controls">
-  <app-type [typeForm]="type" (increase)="increaseType()" (decrease)="decreaseType()"></app-type>
+  <app-type [typeForm]="type" (increase)="increaseType($event)" (decrease)="decreaseType($event)"></app-type>
 </div>
 
 <hr class="mb-3">

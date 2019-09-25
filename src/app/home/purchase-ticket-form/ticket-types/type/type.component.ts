@@ -23,22 +23,20 @@ export class TypeComponent implements OnInit {
   ) { }
 
 
-  ngOnInit() {
-    console.log(this.typeForm.controls.amount)
-   }
+  ngOnInit() { }
 
 
-  click()  {
-    this.router.navigate(["customer-details"], {relativeTo: this.route.parent})
+  click() {
+    this.router.navigate(["customer-details"], { relativeTo: this.route.parent })
   }
 
 
   decreaseType() {
-    this.decrease.emit()
+    this.decrease.emit(this.typeForm.controls.type.value)
   }
 
 
-  increaseType() {
-    this.increase.emit()
+  increaseType() {    
+    this.increase.emit(this.typeForm.controls.type.value)
   }
 }

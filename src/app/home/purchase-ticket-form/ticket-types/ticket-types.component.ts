@@ -52,16 +52,16 @@ export class TicketTypesComponent implements OnInit, OnDestroy {
   next() {
     this.router.navigate(["customer-details"], { relativeTo: this.route.parent })
   }
-  
 
-  increaseType() {
-    console.log("increase");
+
+  increaseType(type: TicketType) {    
+    this.purchaseTicketService.increaseType(type)
   }
 
 
-  decreaseType() {
-    console.log("decrease");
-  }
+  decreaseType(type: TicketType) {
+    this.purchaseTicketService.decreaseType(type)
+  } 
 
 
   ngOnDestroy() {

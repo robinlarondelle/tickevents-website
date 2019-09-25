@@ -43,11 +43,34 @@ export class PurchaseTicketService {
   }
 
   increaseType(type: TicketType) {
+    const group = this.purchaseForm.getValue()
+    const typesGroups = group.get('tickets') as FormArray
 
+    typesGroups.controls.map(ticketTypeForm => {
+
+      if (ticketTypeForm.value.type === type) {
+        ticketTypeForm.get('amount').setValue(ticketTypeForm.value.amount + 1)
+      }
+    })
+
+    this.purchaseForm.next(group)
   }
 
 
   decreaseType(type: TicketType) {
+    const group = this.purchaseForm.getValue()
+    const typesGroups = group.get('tickets') as FormArray
+
+    typesGroups.controls.map(ticketTypeForm => {
+
+      if (ticketTypeForm.value.type === type) {
+        if (ticketTypeForm.value.amount  > 0 ) {
+          ticketTypeForm.get('amount').setValue(ticketTypeForm.value.amount - 1)
+        } else {
+          //TODO: Throw error
+        }
+      }
+    })
 
   }
 }
