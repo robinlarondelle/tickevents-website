@@ -1,5 +1,5 @@
 .width-fix {
-  max-width: 200px;
+  max-width: 275px;
 }
 
 .btn {
@@ -12,4 +12,10 @@
   display: inline-block;
   vertical-align: middle;
   float: none;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
 }

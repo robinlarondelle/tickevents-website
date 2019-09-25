@@ -17,33 +17,36 @@ export class PurchaseTicketFormComponent implements OnInit, AfterViewInit, OnDes
   event: Event
   purchaseForm: FormGroup
   purchaseForm$: Subscription
-  tickets: FormArray
+
 
   constructor(
     private purchaseTicketService: PurchaseTicketService,
     private route: ActivatedRoute,
     private eventService: EventService
-  ) {
+  ) { 
+    this.purchaseForm = new FormGroup({})
   }
 
+
   ngOnInit() {
+
     //Get current event ID
     this.route.params.subscribe(params => {
       let eventId = params.id
       this.eventService.getEventById(eventId).subscribe(event => {
         this.event = event
+
+        //Pre-fill the form with the corresponding ticket types
+        this.purchaseTicketService.loadTicketTypes(this.event.eventID)
+
+        //Get Form Properties
+        this.purchaseForm$ = this.purchaseTicketService.purchaseForm$.subscribe(form => {                    
+          this.purchaseForm = form          
+        })  
       })
     })
-
-    //Get Form Properties
-    this.purchaseForm$ = this.purchaseTicketService.purchaseForm$.subscribe(form => {
-      console.log(form);
-      
-        this.purchaseForm = form
-        
-        this.tickets = this.purchaseForm.get('tickets') as FormArray
-      })
   }
+
 
   ngAfterViewInit() {
     // this.ticketForm.addControl('types', this.ticketTypeComponent.typeControl)

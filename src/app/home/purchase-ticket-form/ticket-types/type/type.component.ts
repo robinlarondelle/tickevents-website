@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { TicketType } from 'src/app/shared/models/ticket-type.model';
+import { Component, OnInit, Input, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PurchaseTicketService } from 'src/app/shared/services/purchase-ticket.service';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { TicketType } from 'src/app/shared/models/ticket-type.model';
 
 @Component({
   selector: 'app-type',
@@ -9,8 +10,11 @@ import { PurchaseTicketService } from 'src/app/shared/services/purchase-ticket.s
   styleUrls: ['./type.component.css']
 })
 export class TypeComponent implements OnInit {
-  @Input() type: TicketType
-  amount = 0
+  @Input() typeForm: FormGroup
+  @Output() increase: EventEmitter<any> = new EventEmitter()
+  @Output() decrease: EventEmitter<any> = new EventEmitter()
+  type: TicketType
+
 
   constructor(
     private router: Router,
@@ -18,7 +22,10 @@ export class TypeComponent implements OnInit {
     private purchaseTicketService: PurchaseTicketService
   ) { }
 
-  ngOnInit() { }
+
+  ngOnInit() {
+    console.log(this.typeForm.controls.amount)
+   }
 
 
   click()  {
@@ -26,16 +33,12 @@ export class TypeComponent implements OnInit {
   }
 
 
-  minus() {
-    if (this.amount >= 1) {
-      this.amount--
-      this.purchaseTicketService.removeTicket(this.type)
-    }
+  decreaseType() {
+    this.decrease.emit()
   }
 
 
-  plus() {
-    this.amount++
-    this.purchaseTicketService.addTicket(this.type)
+  increaseType() {
+    this.increase.emit()
   }
 }

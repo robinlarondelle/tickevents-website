@@ -14,11 +14,13 @@ export class CustomerDetailsComponent implements OnInit, OnDestroy {
   customerForm: FormGroup
   pf$: Subscription
 
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private purchaseTicketService: PurchaseTicketService
   ) { }
+
 
   ngOnInit() {
     this.pf$ = this.purchaseTicketService.purchaseForm$.subscribe(form => {
@@ -26,18 +28,19 @@ export class CustomerDetailsComponent implements OnInit, OnDestroy {
     })
   }
 
+
   click()  {
     console.log(this.customerForm.value)
     this.router.navigate(["purchase-overview"], {relativeTo: this.route.parent})
   }
 
+
   return() {
     this.router.navigate(["ticket-types"], {relativeTo: this.route.parent})
   }
 
+
   ngOnDestroy() {
     this.pf$.unsubscribe()
   }
-
-
 }
