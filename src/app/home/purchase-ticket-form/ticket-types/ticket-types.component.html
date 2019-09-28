@@ -5,6 +5,14 @@
   <app-type [typeForm]="type" (increase)="increaseType($event)" (decrease)="decreaseType($event)"></app-type>
 </div>
 
+<div class="row">
+  <div class="col"></div>
+  <div class="col-8 col-sm-6 align-self-end text-center width-fix">
+    <hr class="w-100 mt-3">
+    <span><b>Totaal: {{total / 100 | currency:'EUR' }}</b></span>
+  </div>
+</div>
+
 <hr class="mb-3">
 
 <div class="row">

@@ -1,13 +1,12 @@
-import { Component, OnInit, Input, OnDestroy, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { PurchaseTicketService } from 'src/app/shared/services/purchase-ticket.service';
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { TicketType } from 'src/app/shared/models/ticket-type.model';
 
 @Component({
   selector: 'app-type',
   templateUrl: './type.component.html',
-  styleUrls: ['./type.component.css']
+  styleUrls: ['./type.component.css', '../ticket-types.component.css']
 })
 export class TypeComponent implements OnInit {
   @Input() typeForm: FormGroup
@@ -18,8 +17,7 @@ export class TypeComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute,
-    private purchaseTicketService: PurchaseTicketService
+    private route: ActivatedRoute
   ) { }
 
 
