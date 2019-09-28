@@ -12,7 +12,6 @@ import { PurchaseTicketService } from 'src/app/shared/services/purchase-ticket.s
   styleUrls: ['./ticket-types.component.css']
 })
 export class TicketTypesComponent implements OnInit, OnDestroy  {
-  types: TicketType[] = []
   ticketTypeForm: FormArray
   purchaseForm$: Subscription
   total: number = 0
@@ -22,20 +21,13 @@ export class TicketTypesComponent implements OnInit, OnDestroy  {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private eventService: EventService,
     private purchaseTicketService: PurchaseTicketService
-  ) {}
+  ) {
+    this.ticketTypeForm = new FormArray([])
+  }
 
 
   ngOnInit() {
-
-    //Get the current Event Type from the header
-    this.route.params.subscribe(params => {
-      this.eventService.getEventTypesByEventId(params.id).subscribe((types: TicketType[]) => {
-        this.types = types
-      })
-    })
-
 
     //Get the current available ticket types
     this.purchaseForm$ = this.purchaseTicketService.purchaseForm$.subscribe(form => {
@@ -44,7 +36,7 @@ export class TicketTypesComponent implements OnInit, OnDestroy  {
 
 
     //Get notified when the total purchase amount changes, and update the value to the service
-    this.total$ = this.purchaseTicketService.purchaseTotal.subscribe(purchaseTotal => {
+    this.total$ = this.purchaseTicketService.purchaseTotal.subscribe(purchaseTotal => {      
       this.total = purchaseTotal
     })
   }

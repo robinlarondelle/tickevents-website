@@ -13,17 +13,16 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './purchase-ticket-form.component.html',
   styleUrls: ['./purchase-ticket-form.component.css']
 })
-export class PurchaseTicketFormComponent implements OnInit, AfterViewInit, OnDestroy {
-  event: Event
+export class PurchaseTicketFormComponent implements OnInit, OnDestroy {
   purchaseForm: FormGroup
   purchaseForm$: Subscription
 
 
   constructor(
-    private purchaseTicketService: PurchaseTicketService,
     private route: ActivatedRoute,
-    private eventService: EventService
-  ) { 
+    private eventService: EventService,
+    private purchaseTicketService: PurchaseTicketService
+  ) {
     this.purchaseForm = new FormGroup({})
   }
 
@@ -32,30 +31,19 @@ export class PurchaseTicketFormComponent implements OnInit, AfterViewInit, OnDes
 
     //Get current event ID
     this.route.params.subscribe(params => {
-      let eventId = params.id
-      this.eventService.getEventById(eventId).subscribe(event => {
-        this.event = event
+      
+      //Pre-fill the form with the corresponding ticket types
+      this.purchaseTicketService.loadTicketTypes(params.id)
 
-        //Pre-fill the form with the corresponding ticket types
-        this.purchaseTicketService.loadTicketTypes(this.event.eventID)
-
-        //Get Form Properties
-        this.purchaseForm$ = this.purchaseTicketService.purchaseForm$.subscribe(form => {                    
-          this.purchaseForm = form          
-        })  
+      //Get Form Properties
+      this.purchaseForm$ = this.purchaseTicketService.purchaseForm$.subscribe(purchaseForm => {
+        this.purchaseForm = purchaseForm
       })
     })
   }
 
 
-  ngAfterViewInit() {
-    // this.ticketForm.addControl('types', this.ticketTypeComponent.typeControl)
-  }
-
-
   ngOnDestroy(): void {
-    //Called once, before the instance is destroyed.
-    //Add 'implements OnDestroy' to the class.
     this.purchaseForm$.unsubscribe()
   }
 }
