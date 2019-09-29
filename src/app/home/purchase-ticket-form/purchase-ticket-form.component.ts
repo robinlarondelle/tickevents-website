@@ -16,6 +16,7 @@ import { ActivatedRoute } from '@angular/router';
 export class PurchaseTicketFormComponent implements OnInit, OnDestroy {
   purchaseForm: FormGroup
   purchaseForm$: Subscription
+  event: Event
 
 
   constructor(
@@ -28,10 +29,14 @@ export class PurchaseTicketFormComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
-
+    
     //Get current event ID
     this.route.params.subscribe(params => {
-      
+
+      this.eventService.getEventById(params.id).subscribe(event => {
+        this.event = event
+      })
+
       //Pre-fill the form with the corresponding ticket types
       this.purchaseTicketService.loadTicketTypes(params.id)
 

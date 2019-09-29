@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup } from '@angular/forms';
 import { TicketType } from 'src/app/shared/models/ticket-type.model';
@@ -8,10 +8,10 @@ import { TicketType } from 'src/app/shared/models/ticket-type.model';
   templateUrl: './type.component.html',
   styleUrls: ['./type.component.css', '../ticket-types.component.css']
 })
-export class TypeComponent implements OnInit {
+export class TypeComponent implements OnInit, AfterViewInit {
   @Input() typeForm: FormGroup
-  @Output() increase: EventEmitter<any> = new EventEmitter()
-  @Output() decrease: EventEmitter<any> = new EventEmitter()
+  @ViewChild('amountControl') amountControl: ElementRef
+  @Output() manualChange: EventEmitter<any> = new EventEmitter()
   type: TicketType
 
 
@@ -21,7 +21,24 @@ export class TypeComponent implements OnInit {
   ) { }
 
 
-  ngOnInit() { }
+  ngOnInit() {   
+    this.typeForm.valueChanges.subscribe(changes => {      
+      this.manualChange.emit(changes)
+    })
+  }
+
+  ngAfterViewInit(): void {
+    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    //Add 'implements AfterViewInit' to the class.
+    this.amountControl.nativeElement.onkeydown = function(e) {
+      if(!((e.keyCode > 95 && e.keyCode < 106)
+        || (e.keyCode > 47 && e.keyCode < 58) 
+        || e.keyCode == 8)) {
+          return false;
+      }
+  }
+    
+  }
 
 
   click() {
@@ -30,11 +47,13 @@ export class TypeComponent implements OnInit {
 
 
   decreaseType() {
-    this.decrease.emit(this.typeForm.controls.type.value)
+    if (this.typeForm.controls.amount.value > 0) {
+    this.typeForm.controls.amount.setValue(this.typeForm.controls.amount.value - 1)
+    }
   }
 
 
-  increaseType() {    
-    this.increase.emit(this.typeForm.controls.type.value)
+  increaseType() {
+    this.typeForm.controls.amount.setValue(this.typeForm.controls.amount.value + 1)
   }
 }

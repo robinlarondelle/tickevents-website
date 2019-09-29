@@ -2,14 +2,14 @@ import { FormControl, Validators } from "@angular/forms"
 import { TicketType } from "./ticket-type.model"
 
 export class TicketTypeForm {
-  type = new FormControl('')
+  ticketType = new FormControl('')
   amount = new FormControl(0, [
     Validators.min(0)
   ])
 
-  constructor(type?: TicketType, amount?: number) {
-    if (type) {
-      this.type.setValue(type)
+  constructor(ticketType?: TicketType, amount?: number) {
+    if (ticketType) {
+      this.ticketType.setValue(ticketType)
     }
 
     if (amount) {
