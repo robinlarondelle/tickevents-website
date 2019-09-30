@@ -2,3 +2,7 @@
   border: 1px grey solid;
   border-radius: 5px;
 }
+
+#hr {
+  border: 0.5px dashed grey
+}

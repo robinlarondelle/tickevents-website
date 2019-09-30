@@ -21,11 +21,7 @@ export class TypeComponent implements OnInit, AfterViewInit {
   ) { }
 
 
-  ngOnInit() {   
-    this.typeForm.valueChanges.subscribe(changes => {      
-      this.manualChange.emit(changes)
-    })
-  }
+  ngOnInit() { }
 
   ngAfterViewInit(): void {
     //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.

@@ -67,13 +67,6 @@ export class TicketTypesComponent implements OnInit, OnDestroy  {
   }
 
 
-  manualChange(typeAmount: TicketTypeAmount) {
-    if( typeAmount.amount !== null) {
-      this.purchaseTicketService.change(new TicketTypeAmount(typeAmount.ticketType, typeAmount.amount))
-    }
-  }
-
-
   ngOnDestroy() {
     this.purchaseForm$.unsubscribe()
     this.total$.unsubscribe()

@@ -2,8 +2,7 @@
 <hr class="mb-3">
 
 <div *ngFor="let type of ticketTypeForm?.controls">
-  <app-type [typeForm]="type" 
-    (manualChange)="manualChange($event)"></app-type>
+  <app-type [typeForm]="type"></app-type>
 </div>
 
 <div class="row">

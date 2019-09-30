@@ -12,26 +12,22 @@ import { TicketTypeAmount } from '../models/ticket-type-amount.model';
   providedIn: 'root'
 })
 export class PurchaseTicketService {
-
-
   private purchaseForm: BehaviorSubject<FormGroup | undefined> = new BehaviorSubject(
     this.fb.group(new PurchaseForm(new CustomerDetailsForm()))
   )
 
   purchaseForm$: Observable<FormGroup> = this.purchaseForm.asObservable()
   purchaseTotal: BehaviorSubject<number> = new BehaviorSubject(0)
-  purchases: BehaviorSubject<TicketTypeAmount[]> = new BehaviorSubject([])
 
   constructor(
     private fb: FormBuilder,
     private eventService: EventService
-  ) {
-
-  }
+  ) { }
 
 
   //Initiate the purchaseForm with the correct types
   loadTicketTypes(eventID: number) {
+    this.purchaseForm.getValue().get('eventID').setValue(eventID)
     this.eventService.getEventTypesByEventId(eventID).subscribe(types => {
 
       let purchaseFormGroup = this.purchaseForm.getValue() // get the purchase FormGroup
@@ -50,11 +46,5 @@ export class PurchaseTicketService {
 
       this.purchaseForm.next(purchaseFormGroup) // notify all observers 
     })
-  }
-
-  // Detect when changes have happened on the TicketTypeAmount FormControl. The change can occur when
-  // the user increments or decrements with the two buttons, or when he manually inserts a value
-  change(ticketTypeAmount: TicketTypeAmount) {       
-
   }
 }

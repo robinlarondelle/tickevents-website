@@ -30,7 +30,6 @@ export class CustomerDetailsComponent implements OnInit, OnDestroy {
 
 
   click()  {
-    console.log(this.customerForm.value)
     this.router.navigate(["purchase-overview"], {relativeTo: this.route.parent})
   }
 
