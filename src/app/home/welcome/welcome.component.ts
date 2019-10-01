@@ -52,20 +52,13 @@ export class WelcomeComponent implements OnInit, AfterContentInit {
     }, 1000)
   }
 
-  constructor(
-    private router: Router
-  ) { }
+  constructor() { }
 
   onScroll() {
-    if (this.allowedToScroll) {
-      this.mouseState = 'hide'
-    }
+    // if (this.allowedToScroll) {
+    //   this.mouseState = 'hide'
+    // }
+    console.log("scrolling...");
+    
   }
-
-  secret() {
-    this.router.navigateByUrl('dashboard')
-  }
-
-
-
 }
