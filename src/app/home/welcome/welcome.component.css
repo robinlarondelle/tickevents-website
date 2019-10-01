@@ -49,12 +49,25 @@
 }
 
 .title {
-  font-size:  57.6px; /* default font-size at 600px */
+  font-size:  30px; /* default font-size at 350px */
 }
 
 .lead {
   font-size: 17.82px; /* default font-size at 600px */
 }
+
+@media (min-width: 300px) {
+  .title {
+    font-size: 16.5vw
+  }
+}
+
+@media (min-width: 350px) {
+  .title {
+    font-size: 57.6px;
+  }
+}
+
 
 @media (min-width: 576px) {
   .title {
@@ -79,7 +92,7 @@
 
 
 .bg {
-  animation: slide 10s cubic-bezier(.42,0,.58,1) infinite alternate;
+  animation: slide 14s cubic-bezier(.42,0,.58,1) infinite alternate;
   background-image: linear-gradient(-60deg, #D73502 50%, #F1C609 50%);
   bottom: 0;
   left: -50%;
@@ -92,11 +105,11 @@
 
 .bg2 {
   animation-direction:alternate-reverse;
-  animation-duration:8s;
+  animation-duration:12s;
 }
 
 .bg3 {
-  animation-duration:12s;
+  animation-duration:16s;
 }
 
 @keyframes slide {
