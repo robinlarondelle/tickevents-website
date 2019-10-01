@@ -1,3 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
+html {
+  height: 100vh;
+  padding: 0px;
+  margin: 0px;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+.w {
+  color: whitesmoke;
+}
+
+.b {
+  color: black;
+}
+
+.navbar-compensation {
+  margin-top: 75px;
+}

@@ -23,7 +23,6 @@ import { EventDetailsComponent } from './home/event-details/event-details.compon
 
 import { RequestCache } from './shared/services/request-cache.service';
 import { CachingInterceptor } from './shared/interceptors/caching-interceptor.service';
-import { CreateEventWizardComponent } from './create-event-wizard/create-event-wizard.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { TokenInterceptorService } from './shared/interceptors/token-interceptor.service';
 import { AlertComponent } from './alert/alert.component';
@@ -50,7 +49,6 @@ import { TypeComponent } from './home/purchase-ticket-form/ticket-types/type/typ
     WelcomeComponent,
     EventComponent,
     EventDetailsComponent,
-    CreateEventWizardComponent,
     AlertComponent,
     PurchaseTicketFormComponent,
     TicketTypesComponent,
