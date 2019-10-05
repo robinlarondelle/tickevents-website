@@ -7,7 +7,7 @@ import {
   transition,
   // ...
 } from '@angular/animations';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-welcome',
@@ -52,7 +52,10 @@ export class WelcomeComponent implements OnInit, AfterContentInit {
     }, 1000)
   }
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
 
   onScroll() {
     // if (this.allowedToScroll) {
@@ -60,5 +63,9 @@ export class WelcomeComponent implements OnInit, AfterContentInit {
     // }
     console.log("scrolling...");
     
+  }
+
+  createEvent() {
+    this.router.navigate(["/dashboard"], {relativeTo: this.route.parent})
   }
 }

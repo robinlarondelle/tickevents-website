@@ -56,67 +56,67 @@
   font-size: 17.82px; /* default font-size at 600px */
 }
 
-@media (min-width: 300px) {
-  .title {
-    font-size: 16.5vw
+
+/* Background */
+.parent {
+  width: 100%;
+  position: fixed;
+  overflow-x: hidden;
+}
+
+.svg-background {
+  position: inherit;
+
+  /* animations */
+  animation-name: rock;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  opacity: 0.5;
+}
+
+.sb-0 {
+  z-index: 0;
+}
+
+.sb-1 {
+  animation-delay: -1s;
+  z-index: 1;
+}
+
+.sb-2 {
+  animation-delay: -2s;
+  z-index: 2;
+}
+
+@keyframes rock {
+  0% {
+    transform-origin: center;
+    transform: translateX(20%) rotate(180deg) scale(3) scaleY(2);
   }
+
+  100% {
+    transform-origin: center;
+    transform: translateX(60%) rotate(180deg) scale(3) scaleY(2);
+  }
+}
+
+/* custom responsiveness */
+@media (min-width: 300px) {
+  .title { font-size: 16.5vw; }
 }
 
 @media (min-width: 350px) {
-  .title {
-    font-size: 57.6px;
-  }
+  .title { font-size: 57.6px; }
 }
 
-
 @media (min-width: 576px) {
-  .title {
-    font-size: 10vw;
-  }
-
-  .lead {
-    font-size: 3vw;
-  }
+  .title { font-size: 10vw; }
+  .lead { font-size: 3vw; }
 }
 
 @media (min-width: 1200px) {
-  .title {
-    font-size: 120px;
-  }
-
-  .lead {
-    font-size: 36px;
-  }
-}
-
-
-
-.bg {
-  animation: slide 14s cubic-bezier(.42,0,.58,1) infinite alternate;
-  background-image: linear-gradient(-60deg, #D73502 50%, #F1C609 50%);
-  bottom: 0;
-  left: -50%;
-  opacity: .5;
-  position: fixed;
-  right: -50%;
-  top: 0;
-  z-index: -1;
-}
-
-.bg2 {
-  animation-direction:alternate-reverse;
-  animation-duration:12s;
-}
-
-.bg3 {
-  animation-duration:16s;
-}
-
-@keyframes slide {
-  0% {
-    transform:translateX(-25%);
-  }
-  100% {
-    transform:translateX(25%);
-  }
+  .title { font-size: 120px; }
+  .lead { font-size: 36px; }
 }

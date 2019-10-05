@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { EventsComponent } from './home/events/events.component';
 import { LoginComponent } from './home/login/login.component';
 import { PageNotFoundComponent } from './home/page-not-found/page-not-found.component';
 import { EmailVerificationComponent } from './home/email-verification/email-verification.component';
@@ -22,7 +21,6 @@ const routes: Routes = [
   {
     path: "home", component: HomeComponent, children: [
       { path: "welcome", component: WelcomeComponent, data: { animation: 'WelcomeComponent' } },
-      { path: "events", component: EventsComponent, data: { animation: 'EventsComponent' } },
       { path: "login", component: LoginComponent, data: { animation: 'LoginComponent' } },
       { path: "register", component: RegisterComponent, data: { animation: 'RegisterComponent' } },
       { path: "events/:id", component: EventDetailsComponent, data: { animation: 'EventDetailsComponent' } },

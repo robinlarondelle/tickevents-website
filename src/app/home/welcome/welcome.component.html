@@ -7,21 +7,34 @@
 
 <div class="row align-content-center navbar-negative-compensation">
 
-  <div class="bg"></div>
-  <div class="bg bg2"></div>
-  <div class="bg bg3"></div>
+  <div class="parent">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="svg-background sb-0">
+      <path fill="#cc00cc" fill-opacity="1" class="w-100"
+        d="M0,128L30,117.3C60,107,120,85,180,96C240,107,300,149,360,176C420,203,480,213,540,192C600,171,660,117,720,112C780,107,840,149,900,144C960,139,1020,85,1080,85.3C1140,85,1200,139,1260,154.7C1320,171,1380,149,1410,138.7L1440,128L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z">
+      </path>
+    </svg>
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="svg-background sb-1">
+      <path fill="#ff0000" fill-opacity="1" class="w-100"
+        d="M0,128L30,117.3C60,107,120,85,180,96C240,107,300,149,360,176C420,203,480,213,540,192C600,171,660,117,720,112C780,107,840,149,900,144C960,139,1020,85,1080,85.3C1140,85,1200,139,1260,154.7C1320,171,1380,149,1410,138.7L1440,128L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z">
+      </path>
+    </svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="svg-background sb-2">
+      <path fill="#ffff00" fill-opacity="1" class="w-100"
+        d="M0,128L30,117.3C60,107,120,85,180,96C240,107,300,149,360,176C420,203,480,213,540,192C600,171,660,117,720,112C780,107,840,149,900,144C960,139,1020,85,1080,85.3C1140,85,1200,139,1260,154.7C1320,171,1380,149,1410,138.7L1440,128L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z">
+      </path>
+    </svg>
+  </div>
 
 
-  <div class="col-12 text-center w">
+  <div class="col-12 text-center b">
     <h1 class="title">TICKEVENTS</h1>
     <span class="lead w-100">Hét Ticketingplatform van Nederland!</span>
 
-    <div class="row mt-4">
+    <div class="row mt-4  text-center">
       <div class="col-md-6 my-1 my-md-0">
-        <button class="btn btn-lg btn-outline-light btn w-100">Maak een evenement aan!</button>
-      </div>
-      <div class="col-md-6 my-1 my-md-0">
-        <button class="btn btn-lg btn-outline-light btn w-100">Zoek een evenement!</button>
+        <button class="btn btn-lg btn-outline-light btn w-100" (click)="createEvent()">Maak een evenement aan!</button>
       </div>
     </div>
 
@@ -38,5 +51,3 @@
 
   </div>
 </div>
-
-<!-- <app-event></app-event> -->

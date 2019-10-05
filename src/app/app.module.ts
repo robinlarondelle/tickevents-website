@@ -9,7 +9,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './home/header/header.component';
 import { AppRoutingModule } from './app-routing.module';
-import { EventsComponent } from './home/events/events.component';
 import { LoginComponent } from './home/login/login.component';
 import { PageNotFoundComponent } from './home/page-not-found/page-not-found.component';
 import { EmailVerificationComponent } from './home/email-verification/email-verification.component';
@@ -17,7 +16,6 @@ import { RegisterComponent } from './home/register/register.component';
 import { MustMatchDirective } from './shared/directives/MustMatchDirective';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { WelcomeComponent } from './home/welcome/welcome.component';
-import { EventComponent } from './home/events/event/event.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EventDetailsComponent } from './home/event-details/event-details.component';
 
@@ -39,7 +37,6 @@ import { TypeComponent } from './home/purchase-ticket-form/ticket-types/type/typ
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    EventsComponent,
     LoginComponent,
     PageNotFoundComponent,
     EmailVerificationComponent,
@@ -47,7 +44,6 @@ import { TypeComponent } from './home/purchase-ticket-form/ticket-types/type/typ
     MustMatchDirective,
     DashboardComponent,
     WelcomeComponent,
-    EventComponent,
     EventDetailsComponent,
     AlertComponent,
     PurchaseTicketFormComponent,
@@ -55,7 +51,7 @@ import { TypeComponent } from './home/purchase-ticket-form/ticket-types/type/typ
     PurchaseOverviewComponent,
     CustomerDetailsComponent,
     TypeComponent
-   ],
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
