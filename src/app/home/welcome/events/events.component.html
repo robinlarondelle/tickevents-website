@@ -1,0 +1,14 @@
+<div *ngIf="events.length !== 0; else emptyEvents">
+  <div class="row mt-3">
+    <app-event-tile [event]="event" *ngFor="let event of events" class="col-sm-12 col-md-6 col-lg-4"></app-event-tile>
+  </div>
+</div>
+
+<ng-template #emptyEvents>
+  <div class="row emptyEvents align-content-center">
+    <div class="col-12">
+      <h1 class="text-center b">Het lijkt erop dat er nog geen evenementen zijn...</h1>
+      <p class="lead text-center">Neem het initiatief en wees de eerste!</p>
+    </div>
+  </div>
+</ng-template>

@@ -38,7 +38,11 @@
   100% { transform: translateY(15px); opacity: 0;}
 } */
 
-
+button {
+  border: 1.5px solid black;
+  height: 50px;
+  border-radius: 25px;
+}
 
 .row.align-content-center.navbar-negative-compensation {
   height: 100vh;
@@ -58,14 +62,13 @@
 
 
 /* Background */
-.parent {
-  width: 100%;
-  position: fixed;
-  overflow-x: hidden;
-}
-
 .svg-background {
-  position: inherit;
+  /* position: inherit; */
+
+  position: absolute;
+  /* top: 0; */
+  bottom: 100;
+  max-height: 300px;
 
   /* animations */
   animation-name: rock;

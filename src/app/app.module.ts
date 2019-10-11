@@ -31,6 +31,8 @@ import { TicketTypesComponent } from './home/purchase-ticket-form/ticket-types/t
 import { PurchaseOverviewComponent } from './home/purchase-ticket-form/purchase-overview/purchase-overview.component';
 import { CustomerDetailsComponent } from './home/purchase-ticket-form/customer-details/customer-details.component';
 import { TypeComponent } from './home/purchase-ticket-form/ticket-types/type/type.component';
+import { EventsComponent } from './home/welcome/events/events.component';
+import { EventTileComponent } from './home/welcome/events/event-tile/event-tile.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import { TypeComponent } from './home/purchase-ticket-form/ticket-types/type/typ
     TicketTypesComponent,
     PurchaseOverviewComponent,
     CustomerDetailsComponent,
-    TypeComponent
+    TypeComponent,
+    EventsComponent,
+    EventTileComponent
   ],
   imports: [
     BrowserModule,
