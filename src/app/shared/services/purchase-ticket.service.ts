@@ -12,6 +12,7 @@ import { TicketTypeAmount } from '../models/ticket-type-amount.model';
   providedIn: 'root'
 })
 export class PurchaseTicketService {
+
   private purchaseForm: BehaviorSubject<FormGroup | undefined> = new BehaviorSubject(
     this.fb.group(new PurchaseForm(new CustomerDetailsForm()))
   )
@@ -26,7 +27,7 @@ export class PurchaseTicketService {
 
 
   //Initiate the purchaseForm with the correct types
-  loadTicketTypes(eventID: number) {
+  initForm(eventID: number) {
     this.purchaseForm.getValue().get('eventID').setValue(eventID)
     this.eventService.getEventTypesByEventId(eventID).subscribe(types => {
 

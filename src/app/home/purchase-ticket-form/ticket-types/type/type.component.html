@@ -32,13 +32,17 @@
             </div>
           </div>
           <div class="col-3 text-center mx-1  align-self-center">
-            <button class="btn btn-outline-info btn-sm" (click)="increaseType()">+</button>
+            <button class="btn btn-outline-info btn-sm" (click)="increaseType()">
+                <i class="fas fa-plus"></i>
+            </button>
           </div>
           <div class="col-2 text-center mx-1  align-self-center">
             <input type="number" formControlName="amount" class="form-control w-100 px-1 text-center" #amountControl>
           </div>
           <div class="col-3 text-center mx-1  align-self-center">
-            <button class="btn btn-outline-info btn-sm" (click)="decreaseType()">-</button>
+            <button class="btn btn-outline-info btn-sm" (click)="decreaseType()">
+                <i class="fas fa-minus"></i>
+            </button>
           </div>
         </div>
       </div>

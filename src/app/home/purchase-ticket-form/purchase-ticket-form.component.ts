@@ -38,7 +38,7 @@ export class PurchaseTicketFormComponent implements OnInit, OnDestroy {
       })
 
       //Pre-fill the form with the corresponding ticket types
-      this.purchaseTicketService.loadTicketTypes(params.id)
+      this.purchaseTicketService.initForm(params.id)
 
       //Get Form Properties
       this.purchaseForm$ = this.purchaseTicketService.purchaseForm$.subscribe(purchaseForm => {

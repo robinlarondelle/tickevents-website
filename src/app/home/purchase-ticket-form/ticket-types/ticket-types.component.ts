@@ -1,11 +1,10 @@
-import { Component, OnInit, Input, AfterViewInit, OnDestroy, AfterContentChecked } from '@angular/core';
-import { TicketType } from 'src/app/shared/models/ticket-type.model';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import { FormArray } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EventService } from 'src/app/shared/services/event.service';
 import { Subscription} from 'rxjs';
 import { PurchaseTicketService } from 'src/app/shared/services/purchase-ticket.service';
-import { TicketTypeAmount } from 'src/app/shared/models/ticket-type-amount.model';
+import { Event } from 'src/app/shared/models/event.model';
 
 @Component({
   selector: 'app-ticket-types',
@@ -17,12 +16,14 @@ export class TicketTypesComponent implements OnInit, OnDestroy  {
   purchaseForm$: Subscription
   total: number = 0
   total$: Subscription
+  event: Event
 
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private purchaseTicketService: PurchaseTicketService
+    private purchaseTicketService: PurchaseTicketService,
+    private eventService: EventService
   ) {
     this.ticketTypeForm = new FormArray([])
   }
@@ -33,8 +34,13 @@ export class TicketTypesComponent implements OnInit, OnDestroy  {
     this.total = this.purchaseTicketService.purchaseTotal.getValue()
 
     //Get the current available ticket types
-    this.purchaseForm$ = this.purchaseTicketService.purchaseForm$.subscribe(form => {
+    this.purchaseForm$ = this.purchaseTicketService.purchaseForm$.subscribe(form => {     
       this.ticketTypeForm = form.get('tickets') as FormArray
+
+      //Get current event
+      this.eventService.getEventById(form.value.eventID).subscribe(event => {
+        this.event = event
+      })
     })
 
  
@@ -59,6 +65,13 @@ export class TicketTypesComponent implements OnInit, OnDestroy  {
 
   return() {
     this.router.navigate(['../..'], { relativeTo: this.route })
+  }
+
+
+  reset() {
+    this.ticketTypeForm.controls.map(control => {
+      control.patchValue({amount: 0})            
+    })
   }
 
 

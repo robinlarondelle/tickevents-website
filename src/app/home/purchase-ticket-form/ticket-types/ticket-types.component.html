@@ -1,5 +1,5 @@
 <p class="lead">Wat voor tickets wil je kopen?</p>
-<hr class="mb-3">
+<hr class="mb-3 devider">
 
 <div *ngFor="let type of ticketTypeForm?.controls">
   <app-type [typeForm]="type"></app-type>
@@ -13,16 +13,19 @@
   </div>
 </div>
 
-<hr class="mb-3">
+
+<hr class="mb-3 devider">
 
 <div class="row">
-  <div class="col-sm-3 text-sm-left">
-    <button class="btn btn-outline-danger" (click)="return()">Terug naar Evenement</button>
+
+  <div class="mt-2 order-3 col-sm-8 mt-sm-2 order-sm-2 col-md-4 order-md-1 mt-md-0">
+      <button class="btn btn-lg btn-outline-dark text-center h-auto btn-bottom w-100" (click)="return()"><i class="fas fa-chevron-left"></i> Terug naar {{event?.name}}-details</button>
   </div>
-  <div class="col-sm 3 text-sm-center">
-    <button class="btn btn-outline-warning">Reset</button>
+  <div class="mt-2 order-2 col-sm-4 mt-sm-2 order-sm-3 col-md-4 order-md-2 mt-md-0 align-self-center">
+      <button class="btn btn-lg btn-outline-dark text-center h-auto btn-bottom w-100" (click)="reset()">Reset</button>
   </div>
-  <div class="col-sm-4 text-sm-right">
-    <button class="btn btn-outline-info" (click)="next()">Gegevens invullen ></button>
+  <div class="order-1 col-sm-12 mt-sm-0 order-sm-1 col-md-4 order-md-3 mt-md-0">
+      <button class="btn btn-lg btn-outline-dark text-center h-auto btn-bottom w-100" (click)="next()">Gegevens invullen <i class="fas fa-chevron-right"></i></button>
   </div>
+
 </div>
