@@ -18,7 +18,7 @@ export class EventDetailsComponent implements OnInit {
     private eventService: EventService
   ) {
     this.event = null
-   }
+  }
 
   ngOnInit() {
 
@@ -31,20 +31,24 @@ export class EventDetailsComponent implements OnInit {
       let eventID = null;
       this.activeRoute.params.subscribe(params => {
         eventID = params.id
-        
+
         this.eventService.getEventById(eventID).subscribe(event => {
           this.event = event
+          console.log(this.event.date);
+
         })
       })
     }
+
+
   }
 
   return() {
-    this.router.navigateByUrl("/home/events")
+    this.router.navigateByUrl("/home/welcome")
   }
 
-  purchase() {        
-    this.router.navigate(["purchase/ticket-types"], {relativeTo: this.activeRoute})
+  purchase() {
+    this.router.navigate(["purchase/ticket-types"], { relativeTo: this.activeRoute })
   }
 
 }

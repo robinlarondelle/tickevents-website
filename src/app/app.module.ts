@@ -33,6 +33,7 @@ import { CustomerDetailsComponent } from './home/purchase-ticket-form/customer-d
 import { TypeComponent } from './home/purchase-ticket-form/ticket-types/type/type.component';
 import { EventsComponent } from './home/welcome/events/events.component';
 import { EventTileComponent } from './home/welcome/events/event-tile/event-tile.component';
+import { ReturnToHomeButtonComponent } from './home/return-to-home-button/return-to-home-button.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { EventTileComponent } from './home/welcome/events/event-tile/event-tile.
     CustomerDetailsComponent,
     TypeComponent,
     EventsComponent,
-    EventTileComponent
+    EventTileComponent,
+    ReturnToHomeButtonComponent
   ],
   imports: [
     BrowserModule,

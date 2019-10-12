@@ -2,6 +2,7 @@ import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import { Event } from "../../../../shared/models/event.model"
 import { trigger, state, style, transition } from '@angular/animations';
 import { Router, ActivatedRoute } from '@angular/router';
+import { EventService } from 'src/app/shared/services/event.service';
 declare var $: any;
 
 @Component({
@@ -32,6 +33,7 @@ export class EventTileComponent implements OnInit {
   @Input() event: Event
 
   constructor(
+    private eventService: EventService,
     private router: Router,
     private route: ActivatedRoute
   ) {
@@ -44,11 +46,13 @@ export class EventTileComponent implements OnInit {
 
 
   eventDetails() {
+    this.eventService.selectedEvent = this.event
     this.router.navigate([`events/${this.event.eventID}`], {relativeTo: this.route.parent})
   }
-  
+
 
   orderTicket() {
+    this.eventService.selectedEvent = this.event
     this.router.navigate([`events/${this.event.eventID}/purchase`], {relativeTo: this.route.parent})
   }
 }

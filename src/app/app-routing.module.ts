@@ -25,13 +25,18 @@ const routes: Routes = [
       { path: "register", component: RegisterComponent, data: { animation: 'RegisterComponent' } },
       { path: "events/:id", component: EventDetailsComponent, data: { animation: 'EventDetailsComponent' } },
 
-      { path: "events/:id/purchase", component: PurchaseTicketFormComponent, children: [
-        {path: "", canActivate: [PurchaseFormGuard], children: [
-          { path: "ticket-types", component: TicketTypesComponent},
-          { path: "customer-details", component: CustomerDetailsComponent},
-          { path: "purchase-overview", component: PurchaseOverviewComponent},
-        ]}
-      ] }
+      { path: "events/:id/purchase", redirectTo: "events/:id/purchase/ticket-types", pathMatch: "full" },
+      {
+        path: "events/:id/purchase", component: PurchaseTicketFormComponent, children: [
+          {
+            path: "", canActivate: [PurchaseFormGuard], children: [
+              { path: "ticket-types", component: TicketTypesComponent },
+              { path: "customer-details", component: CustomerDetailsComponent },
+              { path: "purchase-overview", component: PurchaseOverviewComponent },
+            ]
+          }
+        ]
+      }
     ]
   },
 
