@@ -15,17 +15,17 @@
       <div class="col-6">Ticketsoort</div>
       <div class="col"></div> <!-- Space Filler -->
       <div class="col-auto">Aantal</div>
-      <div class="col-auto ml-3 mr-1">Prijs</div>
+      <div class="col-3 ml-1 text-right">Prijs</div>
     </div>
 
     <hr class="my-0">
 
     <div *ngFor="let ticketTypeAmount of ticketTypeAmounts">
-      <div *ngIf="ticketTypeAmount.amount > 0" class="row">
-        <div class="col-6">{{ticketTypeAmount.ticketType.name}}</div>
+      <div *ngIf="ticketTypeAmount.amount > 0" class="row no-gutters">
+        <div class="col-auto">{{ticketTypeAmount.ticketType.name}}</div>
         <div class="col"></div> <!-- Space Filler -->
         <div class="col-auto">{{ticketTypeAmount.amount}}x</div>
-        <div class="col-auto ml-3 mr-1">{{ticketTypeAmount.amount * (ticketTypeAmount.ticketType.pricePerTicket / 100) | currency: "EUR"}}</div>
+        <div class="col-4 ml-1  text-right">{{ticketTypeAmount.amount * (ticketTypeAmount.ticketType.pricePerTicket / 100) | currency: "EUR"}}</div>
       </div>
     </div>
 
@@ -48,7 +48,7 @@
   <div class="col-md-8 col-lg-6 text-left">
 
     <div class="row no-gutters">
-      <span><b>persoonsgegevens</b></span>
+      <span><b>Persoonsgegevens</b></span>
     </div>
 
     <div class="row no-gutters">

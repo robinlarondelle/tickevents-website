@@ -46,4 +46,9 @@ export class PurchaseOverviewComponent implements OnInit {
   }
 
 
+  return() {
+    this.router.navigate(["./customer-details"], {relativeTo: this.route.parent})
+  }
+
+
 }
