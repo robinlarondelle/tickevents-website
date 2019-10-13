@@ -1,20 +1,15 @@
 <p class="lead">Vul hier je persoonsgegevens in zodat we weten wie je bent.</p>
-<hr class="mb-3">
+<hr class="mb-3 devider">
 
 <form [formGroup]="customerForm">
 
   <div class="form-row">
-    <div class="form-group col-md-5 text-left">
+    <div class="form-group col-md-6 text-left">
       <label for="firstname" class="col-form-label">Voornaam</label>
       <input type="text" formControlName="firstname" id="firstname" class="form-control">
     </div>
 
-    <div class="form-group col-md-2 text-left">
-      <label for="middlename" class="col-form-label">Tussenvoegsel</label>
-      <input type="text" formControlName="middlename" id="middlename" class="form-control">
-    </div>
-
-    <div class="form-group col-md-5 text-left">
+    <div class="form-group col-md-6 text-left">
       <label for="lastname" class="col-form-label">Achternaam</label>
       <input type="text" formControlName="lastname" id="lastname" class="form-control">
     </div>
@@ -28,9 +23,24 @@
   </div>
 </form>
 
-<hr class="my-3">
+<hr class="my-3 devider">
 
-<div class="row">
+<div class="row no-gutters">
+
+    <div class="mt-2 order-3 col-sm-8 mt-sm-2 order-sm-2 pr-sm-2 col-md-5 order-md-1 mt-md-0 col-lg-4 order-lg-1 col-xl-3 align-self-center">
+        <button class="btn btn-lg btn-outline-dark text-center h-auto btn-bottom w-100" (click)="return()"><i class="fas fa-chevron-left"></i> Terug naar ticketselectie</button>
+    </div>
+    <div class="col order-lg-2"></div> <!-- Space filler -->
+    <div class="mt-2 order-2 col-sm-4 mt-sm-2 order-sm-3 col-md-3 order-md-2 mt-md-0 pr-md-2 col-lg-2 order-lg-3 align-self-center">
+        <button class="btn btn-lg btn-outline-dark text-center h-auto btn-bottom w-100" (click)="reset()">Reset</button>
+    </div>
+    <div class="order-1 col-sm-12 mt-sm-0 order-sm-1 col-md-4 order-md-3 mt-md-0 col-lg-3 order-lg-3 align-self-center">
+        <button class="btn btn-lg btn-outline-dark text-center h-auto btn-bottom w-100" (click)="click()">Gegevens invullen <i class="fas fa-chevron-right"></i></button>
+    </div>
+  
+  </div>
+
+<!-- <div class="row">
   <div class="col-md-3 text-md-left">
     <button class="btn btn-outline-danger" (click)="return()">&#60; Terug naar ticketselectie</button>
   </div>
@@ -40,4 +50,4 @@
   <div class="col-md-4 text-md-right">
     <button class="btn btn-outline-info" (click)="click()">Naar overzicht ></button>
   </div>
-</div>
+</div> -->

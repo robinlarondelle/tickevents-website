@@ -34,6 +34,11 @@ export class CustomerDetailsComponent implements OnInit, OnDestroy {
   }
 
 
+  reset() {
+    this.customerForm.reset()
+  }
+
+
   return() {
     this.router.navigate(["ticket-types"], {relativeTo: this.route.parent})
   }
