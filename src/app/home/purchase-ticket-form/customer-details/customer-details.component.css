@@ -4,7 +4,7 @@
 }
 
 .devider {
-  border: 0.5px solid black;
+  border: 0.5px solid lightgray;
 }
 
 .btn-bottom {
@@ -13,4 +13,11 @@
   border-radius: 25px;
   font-size: 100%;
   font-weight: 400;
+}
+
+
+input {
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid black;
 }

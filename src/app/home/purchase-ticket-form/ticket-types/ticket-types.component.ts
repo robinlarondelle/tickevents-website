@@ -1,17 +1,18 @@
-import { Component, OnInit, OnDestroy} from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormArray } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EventService } from 'src/app/shared/services/event.service';
-import { Subscription} from 'rxjs';
+import { Subscription } from 'rxjs';
 import { PurchaseTicketService } from 'src/app/shared/services/purchase-ticket.service';
 import { Event } from 'src/app/shared/models/event.model';
+import { TicketTypeAmount } from 'src/app/shared/models/ticket-type-amount.model';
 
 @Component({
   selector: 'app-ticket-types',
   templateUrl: './ticket-types.component.html',
   styleUrls: ['./ticket-types.component.css']
 })
-export class TicketTypesComponent implements OnInit, OnDestroy  {
+export class TicketTypesComponent implements OnInit, OnDestroy {
   ticketTypeForm: FormArray
   purchaseForm$: Subscription
   total: number = 0
@@ -34,7 +35,7 @@ export class TicketTypesComponent implements OnInit, OnDestroy  {
     this.total = this.purchaseTicketService.purchaseTotal.getValue()
 
     //Get the current available ticket types
-    this.purchaseForm$ = this.purchaseTicketService.purchaseForm$.subscribe(form => {     
+    this.purchaseForm$ = this.purchaseTicketService.purchaseForm$.subscribe(form => {
       this.ticketTypeForm = form.get('tickets') as FormArray
 
       //Get current event
@@ -43,9 +44,9 @@ export class TicketTypesComponent implements OnInit, OnDestroy  {
       })
     })
 
- 
+
     //Get notified when the total purchase amount changes, and update the value to the service
-    this.total$ = this.purchaseTicketService.purchaseTotal.subscribe(purchaseTotal => {      
+    this.total$ = this.purchaseTicketService.purchaseTotal.subscribe(purchaseTotal => {
       this.total = purchaseTotal
     })
 
@@ -59,7 +60,7 @@ export class TicketTypesComponent implements OnInit, OnDestroy  {
 
       this.total = subTotal
     });
-    
+
   }
 
 
@@ -70,13 +71,25 @@ export class TicketTypesComponent implements OnInit, OnDestroy  {
 
   reset() {
     this.ticketTypeForm.controls.map(control => {
-      control.patchValue({amount: 0})            
+      control.patchValue({ amount: 0 })
     })
   }
 
 
   next() {
-    this.router.navigate(["customer-details"], { relativeTo: this.route.parent })
+    let allowContinue = false;
+    this.ticketTypeForm.value.map(ticketTypeAmount => {
+      if (ticketTypeAmount.amount > 0) {
+        allowContinue = true
+      }
+    })    
+
+    if (allowContinue) {
+      this.router.navigate(["customer-details"], { relativeTo: this.route.parent })
+    } else {
+      console.log("not allowed");
+      //alert
+    }
   }
 
 
