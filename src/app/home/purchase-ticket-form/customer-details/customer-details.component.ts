@@ -13,6 +13,7 @@ import { Subscription } from 'rxjs';
 export class CustomerDetailsComponent implements OnInit, OnDestroy {
   customerForm: FormGroup
   pf$: Subscription
+  submitted: Boolean = false
 
 
   constructor(
@@ -30,7 +31,13 @@ export class CustomerDetailsComponent implements OnInit, OnDestroy {
 
 
   click()  {
-    this.router.navigate(["purchase-overview"], {relativeTo: this.route.parent})
+    this.submitted = true;
+
+    if (this.customerForm.valid) {
+      this.router.navigate(["purchase-overview"], {relativeTo: this.route.parent})
+    } else {
+      //alert
+    }
   }
 
 
@@ -47,4 +54,9 @@ export class CustomerDetailsComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.pf$.unsubscribe()
   }
+
+
+  get email() {return this.customerForm.get('email')}
+  get firstname() {return this.customerForm.get('firstname')}
+  get lastname() {return this.customerForm.get('lastname')}
 }

@@ -1,22 +1,16 @@
-import { FormControl, FormGroup } from "@angular/forms";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { CustomerDetails } from "./customer-details.model";
 
 export class CustomerDetailsForm {
-  firstname = new FormControl()
-  middlename?= new FormControl()
-  lastname = new FormControl()
-  email = new FormControl()
+  firstname = new FormControl('', [Validators.required])
+  lastname = new FormControl('', [Validators.required])
+  email = new FormControl('', [Validators.required, Validators.email])
 
   constructor(customerDetails?: CustomerDetails) {
     if (customerDetails) {
       this.firstname.setValue(customerDetails.firstname)
       this.lastname.setValue(customerDetails.lastname)
       this.email.setValue(customerDetails.email)
-  
-      //optional parameters
-      if (customerDetails.middlename) {
-        this.middlename.setValue(customerDetails.middlename)
-      }
     }
   }
 }

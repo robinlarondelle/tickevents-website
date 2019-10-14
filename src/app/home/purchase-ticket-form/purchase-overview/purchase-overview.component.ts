@@ -6,6 +6,7 @@ import { FormGroup } from '@angular/forms';
 import { TicketTypeAmount } from 'src/app/shared/models/ticket-type-amount.model';
 import { CustomerDetails } from 'src/app/shared/models/customer-details.model';
 
+
 @Component({
   selector: 'app-purchase-overview',
   templateUrl: './purchase-overview.component.html',
@@ -17,14 +18,15 @@ export class PurchaseOverviewComponent implements OnInit {
   customer: CustomerDetails
   total: number
 
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private purchaseTicketService: PurchaseTicketService
   ) { }
 
-  ngOnInit() {
 
+  ngOnInit() {
     this.purchaseTicketService.purchaseForm$
       .pipe(
         distinctUntilChanged()
@@ -38,17 +40,17 @@ export class PurchaseOverviewComponent implements OnInit {
         
         this.total = this.purchaseTicketService.purchaseTotal.getValue()
       })
-
   }
 
+
   click() {
-    this.router.navigate(["ticket-types"], { relativeTo: this.route.parent })
+    this.purchaseTicketService.sendPurchase().subscribe(res => {
+      console.log(res);
+    })
   }
 
 
   return() {
     this.router.navigate(["./customer-details"], {relativeTo: this.route.parent})
   }
-
-
 }

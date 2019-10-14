@@ -9,7 +9,6 @@ export class PurchaseForm {
 
   constructor(customerDetailsForm: CustomerDetailsForm){
     this.customer.addControl('firstname', customerDetailsForm.firstname)
-    this.customer.addControl('middlename', customerDetailsForm.middlename)
     this.customer.addControl('lastname', customerDetailsForm.lastname)
     this.customer.addControl('email', customerDetailsForm.email)
   }

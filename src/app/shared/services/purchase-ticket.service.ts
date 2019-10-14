@@ -7,6 +7,8 @@ import { CustomerDetailsForm } from '../models/customer-details-form.models';
 import { EventService } from './event.service';
 import { TicketTypeForm } from '../models/ticket-type-form.model'
 import { TicketTypeAmount } from '../models/ticket-type-amount.model';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +24,8 @@ export class PurchaseTicketService {
 
   constructor(
     private fb: FormBuilder,
-    private eventService: EventService
+    private eventService: EventService,
+    private http: HttpClient
   ) { }
 
 
@@ -48,4 +51,13 @@ export class PurchaseTicketService {
       this.purchaseForm.next(purchaseFormGroup) // notify all observers 
     })
   }
+
+
+  sendPurchase() {
+    console.log(this.purchaseForm.value.value);
+    let form = this.purchaseForm.value.value
+    
+    return this.http.post<any>(`${environment.BASE_URL}/api/events/${form.eventID}/purchase`, form)
+  }
 }
+
