@@ -44,12 +44,8 @@ button {
   border-radius: 25px;
 }
 
-.row.align-content-center.navbar-negative-compensation {
+.row.align-content-center.b {
   height: 100vh;
-}
-
-.navbar-negative-compensation {
-  margin-top: -75px;
 }
 
 .title {
