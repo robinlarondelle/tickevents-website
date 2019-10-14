@@ -1,0 +1,15 @@
+.width-fix {
+  max-width: 275px;
+}
+
+.devider {
+  border: 0.5px solid lightgray;
+}
+
+.btn-bottom {
+  border: 1.5px solid black;
+  height: 50px;
+  border-radius: 25px;
+  font-size: 100%;
+  font-weight: 400;
+}

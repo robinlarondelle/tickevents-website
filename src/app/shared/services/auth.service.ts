@@ -6,7 +6,7 @@ import { RegisterResponse } from '../models/RegisterResponse';
 import { LoginResponse } from '../models/LoginResponse';
 import { catchError, map, tap } from 'rxjs/operators';
 import { TokenService } from 'src/app/shared/services/token.service';
-import { User } from '../models/User.model';
+import { User } from '../models/user.model';
 
 
 @Injectable({
@@ -22,7 +22,7 @@ export class AuthService {
   login(form): Observable<LoginResponse> {
     return this.http.post<any>(`${environment.BASE_URL}/api/login`, form)
       .pipe(
-        map(res => {
+        map(res => {          
 
           //if a login was successfull, the response will contain a token
           if (res && res.token) {
@@ -42,19 +42,24 @@ export class AuthService {
 
   sendVerification(userid, token): Observable<RegisterResponse> {
     return this.http.post(`${environment.BASE_URL}/api/verify-email/`, {
-      "IdentityUserID": `${userid}`,
-      "Token": `${token}`
+      "identityUserID": `${userid}`,
+      "token": `${token}`
     })
   }
 
 
   logout(): void {
     this.tokenService.removeToken()
+    this.tokenService.removePayload()
   }
 
 
   isLoggedIn(): boolean {
-    return !!this.tokenService.getToken()
+    const isExpired = this.tokenService.isTokenExpired()
+    const isKnown = !!this.tokenService.getToken()     
+
+    if (!isExpired && isKnown) return true
+    return false
   }
 
 

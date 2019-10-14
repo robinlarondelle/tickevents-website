@@ -1,0 +1,55 @@
+<p class="lead">Vul hier je persoonsgegevens in zodat we weten wie je bent.</p>
+<hr class="mb-3 devider">
+
+<form [formGroup]="customerForm">
+
+  <div class="form-row">
+    <div class="form-group col-md-6 text-left">
+      <label for="firstname" class="col-form-label">Voornaam<span class="r">*</span></label>
+      <input type="text" formControlName="firstname" id="firstname" class="form-control" placeholder="John">
+      <span *ngIf="submitted && firstname.invalid && firstname.errors.required" class="r small">Dit veld is verplicht</span>
+    </div>
+
+    <div class="form-group col-md-6 text-left">
+      <label for="lastname" class="col-form-label">Achternaam<span class="r">*</span></label>
+      <input type="text" formControlName="lastname" id="lastname" class="form-control" placeholder="Doe">
+      <span *ngIf="submitted && lastname.invalid && lastname.errors.required" class="r small">Dit veld is verplicht</span>
+
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-12 text-left">
+      <label for="email" class="col-form-label">Email<span class="r">*</span></label>
+      <input type="email" formControlName="email" id="email" placeholder="email@example.com" class="form-control">
+      <span *ngIf="submitted && email.invalid && email.errors.required" class="r small">Dit veld is verplicht</span>
+      <span *ngIf="submitted && email.invalid && email.errors.email" class="r small">Email is niet correct. Voer een geldig formaat in: aaa@bbb.ccc</span>
+
+    </div>
+  </div>
+</form>
+
+<div class="row no-gutters">
+  <span class="mt-3 mr-auto ml-0 w-100 small text-left"><i>Velden met een <span class="r">*</span> zijn verplicht</i></span>
+</div>
+
+<hr class=" mt-0 mb-3 devider">
+
+<div class="row no-gutters">
+
+  <div
+    class="mt-2 order-3 col-sm-8 mt-sm-2 order-sm-2 pr-sm-2 col-md-5 order-md-1 mt-md-0 col-lg-4 order-lg-1 col-xl-3 align-self-center">
+    <button class="btn btn-lg btn-outline-dark text-center h-auto btn-bottom w-100" (click)="return()"><i
+        class="fas fa-chevron-left"></i> Terug naar ticketselectie</button>
+  </div>
+  <div class="col order-lg-2"></div> <!-- Space filler -->
+  <div
+    class="mt-2 order-2 col-sm-4 mt-sm-2 order-sm-3 col-md-3 order-md-2 mt-md-0 pr-md-2 col-lg-2 order-lg-3 align-self-center">
+    <button class="btn btn-lg btn-outline-dark text-center h-auto btn-bottom w-100" (click)="reset()">Reset</button>
+  </div>
+  <div class="order-1 col-sm-12 mt-sm-0 order-sm-1 col-md-4 order-md-3 mt-md-0 col-lg-3 order-lg-3 align-self-center">
+    <button class="btn btn-lg btn-outline-dark text-center h-auto btn-bottom w-100" (click)="click()">Bestelling
+      afronden <i class="fas fa-chevron-right"></i></button>
+  </div>
+
+</div>

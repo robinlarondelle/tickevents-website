@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Route } from '@angular/compiler/src/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EventService } from '../../shared/services/event.service';
-import { Event } from "../../shared/models/EventModel"
+import { Event } from "../../shared/models/event.model"
 
 @Component({
   selector: 'app-event-details',
@@ -16,21 +16,39 @@ export class EventDetailsComponent implements OnInit {
     private activeRoute: ActivatedRoute,
     private router: Router,
     private eventService: EventService
-  ) { }
+  ) {
+    this.event = null
+  }
 
   ngOnInit() {
-    let eventID = null;
-    this.activeRoute.params.subscribe(params => {
-      eventID = params.id
-    })
 
-    this.eventService.getEventById(eventID).subscribe(event => {
-      this.event = event
-    })
+    //Get selected event from the application
+    this.event = this.eventService.getSelectedEvent()
+
+    //If the user navigated to this endpoint by typing in the URL, the selectedEvent property is not set
+    //In that case, we need to fetch the selectedEvent from the server
+    if (!!!this.event) {
+      let eventID = null;
+      this.activeRoute.params.subscribe(params => {
+        eventID = params.id
+
+        this.eventService.getEventById(eventID).subscribe(event => {
+          this.event = event
+          console.log(this.event.date);
+
+        })
+      })
+    }
+
+
   }
 
   return() {
-    this.router.navigateByUrl("/home/events")
+    this.router.navigateByUrl("/home/welcome")
+  }
+
+  purchase() {
+    this.router.navigate(["purchase/ticket-types"], { relativeTo: this.activeRoute })
   }
 
 }

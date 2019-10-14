@@ -7,7 +7,9 @@ import {
   transition,
   // ...
 } from '@angular/animations';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { EventService } from 'src/app/shared/services/event.service';
+import { Event } from 'src/app/shared/models/event.model';
 
 @Component({
   selector: 'app-welcome',
@@ -39,33 +41,43 @@ import { Router } from '@angular/router';
 
 
 export class WelcomeComponent implements OnInit, AfterContentInit {
-
+  events: Event[]
   mouseState = 'hide'
   allowedToScroll = false
 
-  ngOnInit() {}
 
-  ngAfterContentInit(){
+  ngOnInit() {
+    this.eventService.getEvents().subscribe(events => {
+      this.events = events
+    })
+  }
+
+
+  ngAfterContentInit() {
     setTimeout(() => {
       this.allowedToScroll = true
       this.mouseState = 'show'
     }, 1000)
   }
 
+
   constructor(
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute,
+    private eventService: EventService
   ) { }
 
+
   onScroll() {
-    if (this.allowedToScroll) {
-      this.mouseState = 'hide'
-    }
+    // if (this.allowedToScroll) {
+    //   this.mouseState = 'hide'
+    // }
+    console.log("scrolling...");
+
   }
 
-  secret() {
-    this.router.navigateByUrl('dashboard')
+
+  createEvent() {
+    this.router.navigate(["/dashboard"], { relativeTo: this.route.parent })
   }
-
-
-
 }

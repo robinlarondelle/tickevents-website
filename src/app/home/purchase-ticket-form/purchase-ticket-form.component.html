@@ -1,0 +1,14 @@
+<app-return-to-home-button></app-return-to-home-button>
+
+<div class="row align-content-center h-100 mx-1 mt-1">
+  <!-- <div class="mt-5 h-100 w-100"> -->
+    <div class="card w-100 text-center">
+      <div class="card-body p-3">
+        <form [formGroup]="purchaseForm">
+          <h1>Kaartjes voor {{event?.name}}</h1>
+          <router-outlet></router-outlet>
+        </form>
+      </div>
+    </div>
+  <!-- </div> -->
+</div>

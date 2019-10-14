@@ -5,6 +5,12 @@ import { catchError } from 'rxjs/operators';
 
 import { AuthService } from '../services/auth.service';
 
+
+/*
+* CURRENTLY NOT ACTIVATED
+*/
+
+
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
     constructor(private authService: AuthService) {}

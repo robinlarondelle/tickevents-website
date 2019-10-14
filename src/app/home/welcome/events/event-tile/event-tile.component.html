@@ -1,0 +1,11 @@
+<div class="card my-3 mx-1" (click)="eventDetails()">
+  <img src="../../../../../assets/dance.png" alt="" class="card-img-top w-auto h-auto mx-auto">
+  <div class="card-body front">
+    <h5 class="card-title text-center mb-0">{{event.name}}</h5>
+  </div>
+
+  <div class="card-body back">
+    <p>{{event.description}}</p>
+    <button class="btn btn-lg btn-outline-dark w-100 text-center h-auto" (click)="orderTicket()">Bestel Tickets!</button>
+  </div>
+</div>

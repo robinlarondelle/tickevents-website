@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../../shared/services/auth.service';
-import { User } from 'src/app/shared/models/User.model';
+import { User } from 'src/app/shared/models/user.model';
 import { TokenService } from 'src/app/shared/services/token.service';
 import { Router } from '@angular/router';
 
@@ -22,9 +22,7 @@ export class HeaderComponent implements OnInit {
     this.user = this.auth.getLoggedInUser()
   }
 
-  logout() {
-    console.log('logout');
-    
+  logout() {    
     this.auth.logout()
     this.router.navigate(["/home/welcome"])
   }

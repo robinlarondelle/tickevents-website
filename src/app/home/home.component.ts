@@ -12,16 +12,5 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-
-    /* Deprecated */
-    //Create random backgrounds with random classes
-    // $(document).ready(function(){
-    //   var classCycle=['imageCycle1','imageCycle2','imageCycle3','imageCycle4'];
-  
-    //   var randomNumber = Math.floor(Math.random() * classCycle.length);
-    //   var classToAdd = classCycle[randomNumber];
-  
-    //   $('#background').addClass(classToAdd);
-  // });
   }
 }

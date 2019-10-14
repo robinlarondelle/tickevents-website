@@ -1,24 +1,45 @@
-<div class="container">
-  <div class="row">
-    <div class="col-4 w">
-      <button class="btn w btn-outline-light" (click)="return()">&#171; Terug naar Evenementen</button>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12 text-center">
-      <div class="h1 w display-1">{{event.Name}}</div>
-      <hr style="border: 1px aliceblue solid" class="mb-5">
-      <div class="row">
-        <div class="col-md-7">
-          <div class="image">
+<app-return-to-home-button></app-return-to-home-button>
 
-          </div>
+<div class="row title align-content-center">
+  <h1 class="text-center w-100">{{event?.name}}</h1>
+  <p class="lead text-center w-100">Een te gek feest staat gepland voor {{event?.date}}</p>
+  <button class="btn btn-lg btn-outline-dark text-center h-auto mx-auto" (click)="purchase()">Bestel tickets!</button>
+</div>
+
+<div class="row">
+  <div class="col-lg-6 order-md-1 order-2">
+    {{event?.description}}
+  </div>
+
+  <div class="col-lg-6 order-md-2 order-1 mt-5 mt-lg-0">
+    <div class="card w-100">
+      <div class="card-body">
+        <h6 class="card-title">Over de locatie:</h6>
+        <div class="row my-md-0 mb-3">
+          <div class="col-xl-4 col-lg-5 col-md-6 "><i>Locatie:</i></div>
+          <div class="col-xl-8 col-lg-7 col-md-6 ">{{event?.venue}}</div>
         </div>
-        <div class="col-md-5 w">
-          {{event.Description}}
-          <button class="btn btn-md btn-primary">Koop Ticket!</button>
+        <div class="row my-md-0 mb-3">
+          <div class="col-xl-4 col-lg-5 col-md-6 "><i>Capaciteit:</i></div>
+          <div class="col-xl-8 col-lg-7 col-md-6 ">{{event?.venueCapacity}}</div>
+        </div>
+        <div class="row my-md-0 mb-3">
+          <div class="col-xl-4 col-lg-5 col-md-6 "><i>Straat:</i></div>
+          <div class="col-xl-8 col-lg-7 col-md-6 ">{{event?.venueAddress}}</div>
+        </div>
+        <div class="row my-md-0 mb-3">
+          <div class="col-xl-4 col-lg-5 col-md-6 "><i>Postcode + Stad:</i></div>
+          <div class="col-xl-8 col-lg-7 col-md-6 ">{{event?.venueZipcode}}, te {{event?.venueCity}}</div>
+        </div>
+        <div class="row">
+          <div class="col-xl-4 col-lg-5 col-md-6 "><i>Land:</i></div>
+          <div class="col-xl-8 col-lg-7 col-md-6 ">{{event?.venueCountry}}</div>
         </div>
       </div>
     </div>
   </div>
-</div>  
+</div>
+
+<div class="row mt-5">
+
+</div>

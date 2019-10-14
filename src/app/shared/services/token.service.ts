@@ -1,28 +1,27 @@
 import { Injectable } from '@angular/core';
-import { User } from '../models/User.model';
+import { User } from '../models/user.model';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TokenService {
-  token: string;
   tokenName: string;
   jwtHelper: JwtHelperService
 
-  constructor() { 
+  constructor() {
     this.jwtHelper = new JwtHelperService()
     this.tokenName = "Authentication"
   }
 
-  getToken(): string {     
+  getToken(): string {
     return localStorage.getItem(this.tokenName)
   }
 
   setToken(token: string) {
-    let payload = token.split(".")[1]    
+    let payload = token.split(".")[1]
     let decoded = atob(payload)
-    
+
     localStorage.setItem('payload', decoded) //get payload of token
     localStorage.setItem(this.tokenName, token)
   }
@@ -32,14 +31,18 @@ export class TokenService {
   }
 
   isTokenExpired(): boolean {
-    return this.jwtHelper.isTokenExpired(this.token)
-  }
-  
-  getTokenExpiryDate(): Date {
-    return this.jwtHelper.getTokenExpirationDate(this.token)
+    return this.jwtHelper.isTokenExpired(this.getToken())
   }
 
-  getPayload(): User { 
+  getTokenExpiryDate(): Date {
+    return this.jwtHelper.getTokenExpirationDate(this.getToken())
+  }
+
+  getPayload(): User {
     return JSON.parse(localStorage.getItem('payload'))
-   }
+  }
+
+  removePayload() {
+    localStorage.removeItem('payload')
+  }
 }

@@ -1,0 +1,32 @@
+<p class="lead">Wat voor tickets wil je kopen?</p>
+<hr class="mb-3 devider">
+
+<div *ngFor="let type of ticketTypeForm?.controls">
+  <app-type [typeForm]="type"></app-type>
+</div>
+
+<div class="row">
+  <div class="col"></div>
+  <div class="col-8 col-sm-6 align-self-end text-center width-fix">
+    <hr class="w-100 mt-3">
+    <span><b>Totaal: {{total / 100 | currency:'EUR' }}</b></span>
+  </div>
+</div>
+
+
+<hr class="mb-3 devider">
+
+<div class="row no-gutters">
+
+  <div class="mt-2 order-3 col-sm-8 mt-sm-2 order-sm-2 pr-sm-2 col-md-5 order-md-1 mt-md-0 col-lg-4 order-lg-1 col-xl-3 align-self-center">
+      <button class="btn btn-lg btn-outline-dark text-center h-auto btn-bottom w-100" (click)="return()"><i class="fas fa-chevron-left"></i> Terug naar {{event?.name}}-details</button>
+  </div>
+  <div class="col order-lg-2"></div> <!-- Space filler -->
+  <div class="mt-2 order-2 col-sm-4 mt-sm-2 order-sm-3 col-md-3 order-md-2 mt-md-0 pr-md-2 col-lg-2 order-lg-3 align-self-center">
+      <button class="btn btn-lg btn-outline-dark text-center h-auto btn-bottom w-100" (click)="reset()">Reset</button>
+  </div>
+  <div class="order-1 col-sm-12 mt-sm-0 order-sm-1 col-md-4 order-md-3 mt-md-0 col-lg-3 order-lg-3 align-self-center">
+      <button class="btn btn-lg btn-outline-dark text-center h-auto btn-bottom w-100" (click)="next()">Gegevens invullen <i class="fas fa-chevron-right"></i></button>
+  </div>
+
+</div>

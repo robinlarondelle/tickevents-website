@@ -17,15 +17,10 @@ export class LoginComponent implements OnInit {
     private alertService: AlertService,
     private route: ActivatedRoute,
     private router: Router
-  ) {
-
-    if (this.authService.isLoggedIn()) {
-      this.router.navigate(['./home/welcome'])
-    }
-  }
+  ) { }
 
   ngOnInit() {
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || './home/welcome';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || './home/welcome';    
   }
 
   onSubmit(form: any) {
@@ -33,7 +28,7 @@ export class LoginComponent implements OnInit {
       this.router.navigate([this.returnUrl])
     },
       error => {
-        this.alertService.error(error)
+        console.log(error)
       })
   }
 }
