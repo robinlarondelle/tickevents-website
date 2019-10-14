@@ -10,7 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './home/header/header.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './home/login/login.component';
-import { PageNotFoundComponent } from './home/page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { EmailVerificationComponent } from './home/email-verification/email-verification.component';
 import { RegisterComponent } from './home/register/register.component';
 import { MustMatchDirective } from './shared/directives/MustMatchDirective';
