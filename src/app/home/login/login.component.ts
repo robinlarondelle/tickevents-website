@@ -3,6 +3,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 import { AlertService } from 'src/app/shared/services/alert.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TokenService } from 'src/app/shared/services/token.service';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -12,12 +13,20 @@ import { TokenService } from 'src/app/shared/services/token.service';
 export class LoginComponent implements OnInit {
   returnUrl: string;
 
+  loginForm = this.fb.group({
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', Validators.required]
+  })
+
   constructor(
     private authService: AuthService,
+    private fb: FormBuilder,
     private alertService: AlertService,
     private route: ActivatedRoute,
     private router: Router
-  ) { }
+  ) { 
+
+  }
 
   ngOnInit() {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || './home/welcome';    

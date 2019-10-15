@@ -10,6 +10,10 @@ html {
   min-width: 300px !important;
 }
 
+.header-compensation {
+  margin-top: -65px;
+}
+
 
 .w {
   color: whitesmoke;
@@ -17,4 +21,16 @@ html {
 
 .b {
   color: black;
+}
+
+.r {
+  color: red;
+}
+
+.btn-bottom {
+  border: 1.5px solid black;
+  height: 50px;
+  border-radius: 25px;
+  font-size: 100%;
+  font-weight: 400;
 }

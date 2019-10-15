@@ -2,15 +2,12 @@
   height: 100vh !important;
 }
 
-.center-fix {
-  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
-  min-height: 100vh; /* These two lines are counted as one :-)       */
-
-  display: flex;
-  align-items: center;
+input {
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid black;
 }
 
-.form-group {
-  width: 100% !important;
-  max-width: 100% !important;
+.btn-bottom {
+  width: 150px;
 }

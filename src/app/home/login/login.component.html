@@ -1,44 +1,48 @@
-<div class="container h-100">
-    <div class="row  center-fix">
-      <div class="col-md-2"></div>
-  
-      <div class="col-md-8 p-0" *ngIf="!success; else successTemplate">
-        <h1 class="text-center display-4">Login</h1>
-        <hr class="mt-5">
-  
-        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-    
-          <div class="form-group row">
-            <label for="email" class="col-form-label col-lg-3">Email*</label>
-            <input type="email" class="form-control col-lg-9" name="email" ngModel required>
-            <!-- <span class="help-block" *ngIf="!email.valid && email.touched">Dit veld is verplicht</span> -->
-          </div>
-  
-          <div class="form-group row">
-            <label for="password" class="col-form-label col-lg-3">Wachtwoord*</label>
-            <input type="password" class="form-control col-lg-9" name="password" ngModel required>
-            <!-- <span class="help-block" *ngIf="!password.valid && password.touched">Dit veld is verplicht</span> -->
-          </div>
-  
-          <hr class="mb-0">
-  
-          <span><i><small>* verplicht</small></i></span>
-  
-          <div class="d-flex mt-3 w-100">
-            <button class="btn btn-danger btn-md mr-2" type="button" (click)="home()">Terug</button>
-            <button class="btn btn-warning btn-md" type="reset" (click)="onReset()">Reset</button>
-            <button class="btn btn-success btn-md ml-auto" type="submit" [disabled]="!f.valid">Verstuur!</button>
-          </div>
-  
-        </form>
+<app-return-to-home-button></app-return-to-home-button>
+<div class="row h-100 align-content-center no-gutters">
+  <div class="col-md-6">
+
+    <form [formGroup]="loginForm">
+
+      <div class="form-row justify-content-center justify-content-md-start">
+        <div class="form-group col-11 col-md-10 col-lg-9 col-xl-8 text-left">
+          <label for="email" class="col-form-label">Email<span class="r">*</span></label>
+          <input type="email" autocomplete="email" formControlName="email" id="email" class="form-control" placeholder="email@example.com">
+          <span *ngIf="submitted && email.invalid && email.errors.required" class="r small">Dit veld is
+            verplicht</span>
+        </div>
       </div>
-  
-      <ng-template #successTemplate class="col-md-6">
-        <h1>Gelukt!</h1>
-        <p>Uw verzoek tot aanmelding is ontvangen. U ontvangt spoedig een bevestigings-email</p>
-        <button class="btn btn-default" (click)="home()">home</button>
-      </ng-template>
-  
-      <div class="col-md-3"></div>
-    </div>
+
+      <div class="form-row justify-content-center justify-content-md-start">
+        <div class="form-group col-11 col-md-10 col-lg-9 col-xl-8 text-left">
+          <label for="password" class="col-form-label">Wachtwoord<span class="r">*</span></label>
+          <input type="password" autocomplete="current-password" formControlName="password" id="password" class="form-control" placeholder="*******">
+          <span *ngIf="submitted && password.invalid && password.errors.required" class="r small">Dit veld is
+            verplicht</span>
+        </div>
+      </div>
+
+      <div class="row no-gutters justify-content-center justify-content-md-start">
+        <div class="col-11 col-md-10 col-lg-9 col-xl-8 text-left">
+          <span class="mt-3 mr-auto ml-0 w-100 small text-left"><i>Velden met een <span class="r">*</span> zijn
+              verplicht</i></span>
+        </div>
+      </div>
+
+      <div class="row no-gutters justify-content-end">
+        <button class="btn btn-outline-dark btn-bottom">Login</button>
+      </div>
+
+
+
+    </form>
+
+
+
+
   </div>
+
+  <div class="col-0 col-md-6">
+    
+  </div>
+</div>
