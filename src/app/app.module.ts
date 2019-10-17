@@ -11,7 +11,7 @@ import { HeaderComponent } from './home/header/header.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './home/login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { EmailVerificationComponent } from './home/email-verification/email-verification.component';
+import { EmailVerificationComponent } from './email-verification/email-verification.component';
 import { RegisterComponent } from './home/register/register.component';
 import { MustMatchDirective } from './shared/directives/MustMatchDirective';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -34,6 +34,8 @@ import { TypeComponent } from './home/purchase-ticket-form/ticket-types/type/typ
 import { EventsComponent } from './home/welcome/events/events.component';
 import { EventTileComponent } from './home/welcome/events/event-tile/event-tile.component';
 import { ReturnToHomeButtonComponent } from './home/return-to-home-button/return-to-home-button.component';
+import { LoadingIconComponent } from './loading-icon/loading-icon.component';
+import { HttpErrorInterceptor } from './shared/interceptors/http-error-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,8 @@ import { ReturnToHomeButtonComponent } from './home/return-to-home-button/return
     TypeComponent,
     EventsComponent,
     EventTileComponent,
-    ReturnToHomeButtonComponent
+    ReturnToHomeButtonComponent,
+    LoadingIconComponent
   ],
   imports: [
     BrowserModule,
@@ -84,6 +87,11 @@ import { ReturnToHomeButtonComponent } from './home/return-to-home-button/return
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
       multi: true
     },
     AuthGuard,

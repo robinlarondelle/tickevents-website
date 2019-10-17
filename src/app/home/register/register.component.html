@@ -1,132 +1,77 @@
-<div class="container h-100">
-  <div class="row  center-fix">
-    <div class="col-md-2"></div>
+<app-return-to-home-button></app-return-to-home-button>
+<div class="row h-100 align-content-center no-gutters">
+  <div class="col-md-6">
 
-    <div class="col-md-8 p-4" *ngIf="!success; else successTemplate">
-      <h1 class="text-center display-4 mb-5">Registreer uzelf hier</h1>
+    <form [formGroup]="registerForm" (ngSubmit)="submit()">
 
-      <!-- Notification when email is already registered in the database -->
-      <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="duplicateEmailError">
-        <p class="mb-0">Dit email adres is al geregistreerd. Check uw mailbox voor een bevestigingsmail. Heeft u geen
-          email ontvangen, vraag dan <a [routerLink]="" class="alert-link" (click)="resendEmail(model.email)">hier</a>
-          een
-          nieuwe aan.</p>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+      <div class="form-row justify-content-center justify-content-md-start">
+        <div class="form-group col-11 col-lg-10 col-xl-9">
+          <label for="firstname" class="col-form-label">Voornaam<span class="r">*</span></label>
+          <input type="text" autocomplete="name" formControlName="firstname" id="firstname" class="form-control"
+            placeholder="John">
+          <span *ngIf="submitted && firstname.invalid && firstname.errors.required" class="r small">Dit veld is
+            verplicht</span>
+        </div>
       </div>
 
-      <!-- Notification when passwords dont match. This should theoretically be impossible to trigger. -->
-      <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="passwordDontMatchError">
-        <p class="mb-0">De wachtwoorden komen niet met elkaar overeen.</p>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+      <div class="form-row justify-content-center justify-content-md-start">
+        <div class="form-group col-11 col-lg-10 col-xl-9">
+          <label for="lastname" class="col-form-label">Achternaam<span class="r">*</span></label>
+          <input type="text" autocomplete="name" formControlName="lastname" id="lastname" class="form-control"
+            placeholder="Doe">
+          <span *ngIf="submitted && lastname.invalid && lastname.errors.required" class="r small">Dit veld is
+            verplicht</span>
+        </div>
       </div>
-      <hr class="">
 
-      <!-- Start form -->
-      <form (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm" name="form" [mustMatch]="['password', 'passwordConf']">
-
-        <!-- Firstname group -->
-        <div class="form-group row">
-          <label for="firstName" class="col-form-label col-lg-3">Voornaam*</label>
-          <div class="col-lg-9">
-            <input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel"
-              [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }" required>
-            <div *ngIf="f.submitted && firstName.invalid" class="invalid-feedback">
-              <div *ngIf="firstName.errors.required">Veld is verplicht</div>
-            </div>
-          </div>
+      <div class="form-row justify-content-center justify-content-md-start">
+        <div class="form-group col-11 col-lg-10 col-xl-9">
+          <label for="email" class="col-form-label">Email<span class="r">*</span></label>
+          <input type="email" autocomplete="email" formControlName="email" id="email" class="form-control"
+            placeholder="email@example.com">
+          <span *ngIf="submitted && email.invalid && email.errors.required" class="r small">Dit veld is
+            verplicht</span>
         </div>
-
-        <!-- Middlename Group -->
-        <div class="form-group row">
-          <label for="middleName" class="col-form-label col-lg-3">Tussenvoegsel</label>
-          <div class="col-lg-9">
-            <input type="text" class="form-control" name="middleName" [(ngModel)]="model.middleName"
-              [ngClass]="{ 'is-invalid': f.submitted && middleName.invalid }" #middleName="ngModel">
-          </div>
-        </div>
-
-        <!-- Lastname group -->
-        <div class="form-group row">
-          <label for="lastName" class="col-form-label col-lg-3">Achternaam*</label>
-          <div class="col-lg-9">
-            <input type="text" class="form-control" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel"
-              [ngClass]="{ 'is-invalid': f.submitted && lastName.invalid }" required>
-            <div *ngIf="f.submitted && lastName.invalid" class="invalid-feedback">
-              <div *ngIf="lastName.errors.required">Veld is verplicht</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Email group -->
-        <div class="form-group row">
-          <label for="email" class="col-form-label col-lg-3">Email*</label>
-          <div class="col-lg-9">
-            <input type="email" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel"
-              [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required email="true">
-            <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
-              <div *ngIf="email.errors.required">Veld is verplicht</div>
-              <div *ngIf="email.errors.email">Geen geldige email</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Password group -->
-        <div class="form-group row">
-          <div class="col-lg-3">
-            <label for="password" class="col-form-label p-0">Wachtwoord*</label>
-            <div class="my-0 py-0"><small>minimaal 6 karakters</small></div>
-          </div>
-          <div class="col-lg-9">
-            <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel"
-              [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" minlength="6" required>
-            <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
-              <div *ngIf="password.errors.required">Veld is verplicht</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Confirm password group -->
-        <div class="form-group row">
-          <label for="passwordConf" class="col-form-label col-lg-3">Bevestig Wachtwoord*</label>
-          <div class="col-lg-9">
-            <input type="password" class="form-control" name="passwordConf" [(ngModel)]="model.passwordConf"
-              [ngClass]="{ 'is-invalid': f.submitted && passwordConf.invalid }" minlength="6" #passwordConf="ngModel"
-              required>
-            <div *ngIf="f.submitted && passwordConf.invalid" class="invalid-feedback">
-              <div *ngIf="passwordConf.errors.required">Veld is verplicht</div>
-              <div *ngIf="passwordConf.errors.mustMatch">Wachtwoorden komen niet overeen.</div>
-            </div>
-          </div>
-        </div>
-
-        <hr class="mb-0">
-
-        <span><i><small>* verplicht</small></i></span>
-
-        <div class="d-flex mt-3 w-100">
-          <button class="btn btn-danger btn-md mr-2" type="button" (click)="home()">Terug</button>
-          <button class="btn btn-warning btn-md" type="reset" (click)="onReset()">Reset</button>
-          <button class="btn btn-success btn-md ml-auto" type="submit">Verstuur!</button>
-        </div>
-
-      </form>
-    </div>
-
-    <!-- Template when user succesfully enters email and verification email has been send -->
-    <ng-template #successTemplate>
-      <div class="col-md-8 text-center">
-        <h1 class="display-1">Gelukt!</h1>
-        <hr>
-        <div>Je account is aangemaakt en staat klaar voor gebruik. U krijgt zo snel mogelijk een bevestigingslink in uw
-          email, waarna u de registratie kan afronden.</div>
-        <button class="btn btn-success btn-md mt-4" routerLink="/home">Home</button>
       </div>
-    </ng-template>
 
-    <div class="col-md-3"></div>
+      <div class="form-row justify-content-center justify-content-md-start">
+        <div class="form-group col-11 col-lg-10 col-xl-9">
+          <label for="password" class="col-form-label">Wachtwoord<span class="r">*</span></label>
+          <input type="password" autocomplete="current-password" formControlName="password" id="password" class="form-control"
+            placeholder="*******">
+          <span *ngIf="submitted && password.invalid && password.errors.required" class="r small">Dit veld is
+            verplicht</span>
+        </div>
+      </div>
+
+      <div class="form-row justify-content-center justify-content-md-start">
+        <div class="form-group col-11 col-lg-10 col-xl-9">
+          <label for="passwordConf" class="col-form-label">Herhaal wachtwoord<span class="r">*</span></label>
+          <input type="password" autocomplete="current-password" formControlName="passwordConf" id="passwordConf"
+            class="form-control" placeholder="*******">
+          <span *ngIf="submitted && passwordConf.invalid && passwordConf.errors.required" class="r small">Dit veld is
+            verplicht</span>
+        </div>
+      </div>
+
+      <div class="row no-gutters justify-content-center justify-content-md-start">
+        <div class="col-11 col-lg-10 col-xl-9">
+          <span class="mt-3 mr-auto ml-0 w-100 small text-left"><i>Velden met een <span class="r">*</span> zijn
+              verplicht</i></span>
+        </div>
+      </div>
+
+      <div class="row no-gutters mt-3">
+        <div class="col-11 col-lg-10 col-xl-9 text-right">
+          <button class="btn btn-outline-dark btn-bottom" type="submit">Login</button>
+        </div>
+      </div>
+
+    </form>
+
+  </div>
+
+  <div class="col-0 col-md-6">
+
   </div>
 </div>

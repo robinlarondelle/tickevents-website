@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, NgForm } from '@angular/forms'
+import { FormGroup, NgForm, FormBuilder, Validators } from '@angular/forms'
 import { AuthService } from '../../shared/services/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MustMatch } from "../../shared/validator/MustMatch"
+import { MustMatchDirective } from 'src/app/shared/directives/MustMatchDirective';
 
 @Component({
   selector: 'app-register',
@@ -10,6 +11,15 @@ import { MustMatch } from "../../shared/validator/MustMatch"
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  registerForm = this.fb.group({
+    firstname: ['', Validators.required],
+    lastname: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required]],
+    passwordConf: ['', [Validators.required]],
+  })
+
+
   success: Boolean = false
   duplicateEmailError = false
   passwordDontMatchError = false
@@ -18,14 +28,15 @@ export class RegisterComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private fb: FormBuilder
   ) { }
 
   ngOnInit() {    
   }
 
-  onSubmit(form: NgForm) {
-    this.authService.register(form.value).subscribe(res => {      
+  submit() {
+    this.authService.register(this.registerForm.value).subscribe(res => {      
       if (res.message.includes('DuplicateEmailError')) this.duplicateEmailError = true
       else if (res.message.includes('PasswordDontMatchError')) this.passwordDontMatchError = true
       else this.success = true
