@@ -1,3 +1,109 @@
+<div class="row h-100 no-gutters header-padding mb-3">
+  <!-- Placed inside the row because of the Relative Position, which will place the element relative to it's parent element-->
+  <app-return-to-home-button class="mt-3"></app-return-to-home-button>
+
+  <div class="align-content-center w-100">
+    <div class="row no-gutters">
+
+      <div class="col-md-6" *ngIf="!success; else successTemplate">
+        <span *ngIf="duplicateEmailError" class="r mt-3 mb-2">Dit email adres is bij ons al bekend. <a routerLink="" (click)="toLogin()" class="r underline">Klik hier om in te loggen.</a></span>
+        <span *ngIf="passwordDontMatchError" class="r mt-3 mb-2">Je wachtwoorden komen niet overeen.</span>
+        <span *ngIf="defaultWarning" class="r mt-3 mb-2">Sorry! Er ging iets fout. Probeer het opnieuw!</span>
+
+        <form [formGroup]="registerForm" (ngSubmit)="submit()">
+
+          <div class="form-row justify-content-center justify-content-md-start">
+            <div class="form-group col-11 col-lg-10 col-xl-9">
+              <label for="firstname" class="col-form-label">Voornaam<span class="r">*</span></label>
+              <input type="text" autocomplete="name" formControlName="firstname" id="firstname" class="form-control"
+                placeholder="John">
+              <span *ngIf="submitted && firstname.invalid && firstname.errors.required" class="r small">Dit veld is
+                verplicht</span>
+            </div>
+          </div>
+
+          <div class="form-row justify-content-center justify-content-md-start">
+            <div class="form-group col-11 col-lg-10 col-xl-9">
+              <label for="lastname" class="col-form-label">Achternaam<span class="r">*</span></label>
+              <input type="text" autocomplete="name" formControlName="lastname" id="lastname" class="form-control"
+                placeholder="Doe">
+              <span *ngIf="submitted && lastname.invalid && lastname.errors.required" class="r small">Dit veld is
+                verplicht</span>
+            </div>
+          </div>
+
+          <div class="form-row justify-content-center justify-content-md-start">
+            <div class="form-group col-11 col-lg-10 col-xl-9">
+              <label for="email" class="col-form-label">Email<span class="r">*</span></label>
+              <input type="email" autocomplete="email" formControlName="email" id="email" class="form-control"
+                placeholder="email@example.com">
+              <span *ngIf="submitted && email.invalid && email.errors.required" class="r small">Dit veld is
+                verplicht</span>
+            </div>
+          </div>
+
+          <div class="form-row justify-content-center justify-content-md-start">
+            <div class="form-group col-11 col-lg-10 col-xl-9">
+              <label for="password" class="col-form-label password-information">Wachtwoord<span class="r">*<span class="i ml-2">i</span></span></label>
+              <span class="information small r">Een wachtwoord moet bestaan uit minimaal 6 tekens, letters en cijfers.</span>
+              <input type="password" autocomplete="current-password" formControlName="password" id="password"
+                class="form-control" placeholder="*******">
+              <span *ngIf="submitted && password.invalid && password.errors.required" class="r small">Dit veld is
+                verplicht</span>
+            </div>
+          </div>
+
+          <div class="form-row justify-content-center justify-content-md-start">
+            <div class="form-group col-11 col-lg-10 col-xl-9">
+              <label for="passwordConf" class="col-form-label">Herhaal wachtwoord<span class="r">*</span></label>
+              <input type="password" autocomplete="current-password" formControlName="passwordConf" id="passwordConf"
+                class="form-control" placeholder="*******">
+              <span *ngIf="submitted && passwordConf.invalid && passwordConf.errors.required" class="r small">Dit veld
+                is
+                verplicht</span>
+            </div>
+          </div>
+
+          <div class="row no-gutters justify-content-center justify-content-md-start">
+            <div class="col-11 col-lg-10 col-xl-9">
+              <span class="mt-3 mr-auto ml-0 w-100 small text-left"><i>Velden met een <span class="r">*</span> zijn
+                  verplicht</i></span>
+            </div>
+          </div>
+
+          <div class="row no-gutters mt-3">
+            <div class="col-11 col-lg-10 col-xl-9 text-right">
+
+              <div *ngIf="!loading; else loadingButton">
+                <button class="btn btn-outline-dark btn-bottom" type="submit">Login</button>
+              </div>
+
+              <ng-template #loadingButton>
+                <button class="btn btn-outline-dark btn-loading btn-bottom align-content-center" disabled>
+                  <app-loading-icon></app-loading-icon>
+                </button>
+              </ng-template>
+
+            </div>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<ng-template #successTemplate>
+  <div class="col-md-6">
+      <h1><b>Gelukt!</b></h1>
+      <p>Je registratie is gelukt, en er is een email verstuurd om deze te bevestigen.</p>
+    </div>
+</ng-template>
+
+
+<!-- 
 <app-return-to-home-button></app-return-to-home-button>
 <div class="row h-100 align-content-center no-gutters">
   <div class="col-md-6">
@@ -74,4 +180,4 @@
   <div class="col-0 col-md-6">
 
   </div>
-</div>
+</div> -->

@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
-import { User } from '../models/user.model';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { IdentityUser } from '../models/identityUser.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TokenService {
   tokenName: string;
+  payloadProperty: string
   jwtHelper: JwtHelperService
 
   constructor() {
     this.jwtHelper = new JwtHelperService()
     this.tokenName = "Authentication"
+    this.payloadProperty = "payload"
   }
 
   getToken(): string {
@@ -22,7 +24,7 @@ export class TokenService {
     let payload = token.split(".")[1]
     let decoded = atob(payload)
 
-    localStorage.setItem('payload', decoded) //get payload of token
+    localStorage.setItem(this.payloadProperty, decoded) //get payload of token
     localStorage.setItem(this.tokenName, token)
   }
 
@@ -38,11 +40,11 @@ export class TokenService {
     return this.jwtHelper.getTokenExpirationDate(this.getToken())
   }
 
-  getPayload(): User {
-    return JSON.parse(localStorage.getItem('payload'))
+  getPayload(): IdentityUser {
+    return JSON.parse(localStorage.getItem(this.payloadProperty))
   }
 
   removePayload() {
-    localStorage.removeItem('payload')
+    localStorage.removeItem(this.payloadProperty)
   }
 }

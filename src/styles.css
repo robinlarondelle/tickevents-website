@@ -14,6 +14,10 @@ html {
   margin-top: -65px;
 }
 
+.header-padding {
+  padding-top: 65px;
+}
+
 
 .w {
   color: whitesmoke;

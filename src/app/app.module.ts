@@ -11,7 +11,7 @@ import { HeaderComponent } from './home/header/header.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './home/login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { EmailVerificationComponent } from './email-verification/email-verification.component';
+import { EmailVerificationComponent } from './home/email-verification/email-verification.component';
 import { RegisterComponent } from './home/register/register.component';
 import { MustMatchDirective } from './shared/directives/MustMatchDirective';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -23,7 +23,6 @@ import { RequestCache } from './shared/services/request-cache.service';
 import { CachingInterceptor } from './shared/interceptors/caching-interceptor.service';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { TokenInterceptorService } from './shared/interceptors/token-interceptor.service';
-import { AlertComponent } from './alert/alert.component';
 import { TokenService } from './shared/services/token.service';
 import { ErrorInterceptor } from './shared/interceptors/error-interceptor.service';
 import { PurchaseTicketFormComponent } from './home/purchase-ticket-form/purchase-ticket-form.component';
@@ -36,6 +35,8 @@ import { EventTileComponent } from './home/welcome/events/event-tile/event-tile.
 import { ReturnToHomeButtonComponent } from './home/return-to-home-button/return-to-home-button.component';
 import { LoadingIconComponent } from './loading-icon/loading-icon.component';
 import { HttpErrorInterceptor } from './shared/interceptors/http-error-interceptor.service';
+import { ForgotPasswordComponent } from './home/forgot-password/forgot-password.component';
+import { CreateNewPasswordComponent } from './home/create-new-password/create-new-password.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,6 @@ import { HttpErrorInterceptor } from './shared/interceptors/http-error-intercept
     DashboardComponent,
     WelcomeComponent,
     EventDetailsComponent,
-    AlertComponent,
     PurchaseTicketFormComponent,
     TicketTypesComponent,
     PurchaseOverviewComponent,
@@ -59,7 +59,9 @@ import { HttpErrorInterceptor } from './shared/interceptors/http-error-intercept
     EventsComponent,
     EventTileComponent,
     ReturnToHomeButtonComponent,
-    LoadingIconComponent
+    LoadingIconComponent,
+    ForgotPasswordComponent,
+    CreateNewPasswordComponent
   ],
   imports: [
     BrowserModule,

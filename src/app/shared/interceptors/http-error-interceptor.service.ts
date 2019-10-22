@@ -20,14 +20,10 @@ export class HttpErrorInterceptor implements HttpInterceptor {
                   console.log(error);
                   
                 } else {
-                  console.log("No ErrorEvent");
-
                   let serverError = new ServerError(error.error)
                   error = serverError
-                  
                 }
               }
-
                return throwError(error);
           })
         )

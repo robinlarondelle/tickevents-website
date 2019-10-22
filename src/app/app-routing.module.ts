@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './home/login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { EmailVerificationComponent } from './email-verification/email-verification.component';
+import { EmailVerificationComponent } from './home/email-verification/email-verification.component';
 import { RegisterComponent } from './home/register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { WelcomeComponent } from './home/welcome/welcome.component';
@@ -14,22 +14,30 @@ import { TicketTypesComponent } from './home/purchase-ticket-form/ticket-types/t
 import { CustomerDetailsComponent } from './home/purchase-ticket-form/customer-details/customer-details.component';
 import { PurchaseOverviewComponent } from './home/purchase-ticket-form/purchase-overview/purchase-overview.component';
 import { PurchaseFormGuard } from './shared/guards/purchase-form.guard';
+import { ForgotPasswordComponent } from './home/forgot-password/forgot-password.component';
+import { CreateNewPasswordComponent } from './home/create-new-password/create-new-password.component';
 
 const routes: Routes = [
+  //catch routes
   { path: '', redirectTo: "/home/welcome", pathMatch: "full" },
   { path: 'home', redirectTo: "/home/welcome", pathMatch: "full" },
-  {
-    path: "home", component: HomeComponent, children: [
+
+  //home-related routes
+  { path: "home", component: HomeComponent, children: [
       { path: "welcome", component: WelcomeComponent, data: { animation: 'WelcomeComponent' } },
+
+      //auth-related routes
       { path: "login", component: LoginComponent, data: { animation: 'LoginComponent' } },
       { path: "register", component: RegisterComponent, data: { animation: 'RegisterComponent' } },
-      { path: "events/:id", component: EventDetailsComponent, data: { animation: 'EventDetailsComponent' } },
+      { path: "verify-email/:userid/:token", component: EmailVerificationComponent },
+      { path: "forgot-password", component: ForgotPasswordComponent, data: { animation: 'ForgotPasswordComponent' } },
+      {path: "forgot-password/:identityUserID/:token", component: CreateNewPasswordComponent, data: {animation: "CreateNewPasswordComponent"}},
 
+      //event-related routes
+      { path: "events/:id", component: EventDetailsComponent, data: { animation: 'EventDetailsComponent' } },
       { path: "events/:id/purchase", redirectTo: "events/:id/purchase/ticket-types", pathMatch: "full" },
-      {
-        path: "events/:id/purchase", component: PurchaseTicketFormComponent, children: [
-          {
-            path: "", canActivate: [PurchaseFormGuard], children: [
+      { path: "events/:id/purchase", component: PurchaseTicketFormComponent, children: [
+          { path: "", canActivate: [PurchaseFormGuard], children: [
               { path: "ticket-types", component: TicketTypesComponent },
               { path: "customer-details", component: CustomerDetailsComponent },
               { path: "purchase-overview", component: PurchaseOverviewComponent },
@@ -40,10 +48,11 @@ const routes: Routes = [
     ]
   },
 
+  //dashboard-related routes
   { path: "dashboard", component: DashboardComponent, canActivate: [AuthGuard] },
 
+  //error-handling routes
   { path: "404", component: PageNotFoundComponent },
-  { path: "verify-email/:userid/:token/:jwt", component: EmailVerificationComponent },
   { path: "**", redirectTo: "/404" }
 ]
 

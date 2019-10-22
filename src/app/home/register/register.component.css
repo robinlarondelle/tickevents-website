@@ -11,3 +11,28 @@ input {
 .btn-bottom {
   width: 150px;
 }
+
+.header-padding {
+  padding-top: 65px;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.information {
+  display: none;
+}
+
+.i {
+  border: 2px solid grey;
+  border-radius: 50%;
+  height: 28px;
+  padding: 0px 9.45px;
+  color: grey;
+  font-weight: bold;
+}
+
+.password-information:hover ~ .information {
+  display: block;
+}

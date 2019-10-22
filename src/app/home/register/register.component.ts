@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, NgForm, FormBuilder, Validators } from '@angular/forms'
+import { NgForm, FormBuilder, Validators } from '@angular/forms'
 import { AuthService } from '../../shared/services/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { MustMatch } from "../../shared/validator/MustMatch"
-import { MustMatchDirective } from 'src/app/shared/directives/MustMatchDirective';
 
 @Component({
   selector: 'app-register',
@@ -11,19 +9,21 @@ import { MustMatchDirective } from 'src/app/shared/directives/MustMatchDirective
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  success: Boolean = false
+  duplicateEmailError: boolean = false
+  passwordDontMatchError = false
+  model: any = {}; //form-model
+  loading: boolean = false
+  defaultWarning: boolean = false
+  submitted: boolean = false
   registerForm = this.fb.group({
-    firstname: ['', Validators.required],
-    lastname: ['', Validators.required],
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required]],
+    firstname:    ['', [Validators.required]],
+    lastname:     ['', [Validators.required]],
+    email:        ['', [Validators.required, Validators.email]],
+    password:     ['', [Validators.required, Validators.minLength(6)]],
     passwordConf: ['', [Validators.required]],
   })
 
-
-  success: Boolean = false
-  duplicateEmailError = false
-  passwordDontMatchError = false
-  model: any = {}; //form-model
 
   constructor(
     private authService: AuthService,
@@ -32,27 +32,62 @@ export class RegisterComponent implements OnInit {
     private fb: FormBuilder
   ) { }
 
-  ngOnInit() {    
+
+  ngOnInit() {
   }
 
+
   submit() {
-    this.authService.register(this.registerForm.value).subscribe(res => {      
-      if (res.message.includes('DuplicateEmailError')) this.duplicateEmailError = true
-      else if (res.message.includes('PasswordDontMatchError')) this.passwordDontMatchError = true
-      else this.success = true
-    })
+    this.submitted = true
+    this.loading = true
+    this.success = false
+    this.duplicateEmailError = false
+    this.defaultWarning = false
+    this.passwordDontMatchError = false
+
+    if (this.password.value != this.passwordConf.value) {
+      this.loading = false
+      this.passwordDontMatchError = true
+    } else {
+      this.authService.register(this.registerForm.value).subscribe(
+
+        res => {
+         this.success = true
+          this.loading = false
+        },
+
+        error => {
+          switch (error.type) {
+            case "DuplicateEmailError":
+              this.duplicateEmailError = true
+              break
+            case "PasswordsDontMatchError":
+              this.passwordDontMatchError = true
+              break
+            default:
+              this.defaultWarning = true;
+          }
+
+          this.loading = false
+        }
+      )
+    }
   }
+
 
   onReset(form: NgForm) {
     form.resetForm()
   }
 
+
   home() {
-    this.router.navigate(["../home"], {relativeTo: this.route})
+    this.router.navigate(["../home"], { relativeTo: this.route })
   }
 
-  resendEmail(email) {
-    console.log(`resend email`);
-    
-  }
+
+  get firstname() { return this.registerForm.get('firstname') }
+  get lastname() { return this.registerForm.get('lastname') }
+  get email() { return this.registerForm.get('email') }
+  get password() { return this.registerForm.get('password') }
+  get passwordConf() { return this.registerForm.get('passwordConf') }
 }

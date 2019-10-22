@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { AuthService } from '../../shared/services/auth.service';
-import { User } from 'src/app/shared/models/user.model';
-import { TokenService } from 'src/app/shared/services/token.service';
 import { Router } from '@angular/router';
+import { IdentityUser } from 'src/app/shared/models/identityUser.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -10,29 +10,50 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css'],
   animations: []
 })
-export class HeaderComponent implements OnInit {
-  user: User
+export class HeaderComponent implements OnInit, OnDestroy {
+  identityUser: IdentityUser
+  identityUser$: Subscription
+  logoutConfirmation = false
+  loggedIn: boolean = false
+  loggedIn$: Subscription
+  loading: boolean = false
+
 
   constructor(
     private auth: AuthService,
     private router: Router
   ) { }
 
+
   ngOnInit() {
-    this.user = this.auth.getLoggedInUser()
+    this.loading = true
+
+    this.loggedIn$ = this.auth.isLoggedIn.subscribe(status => {
+      this.loggedIn = status
+
+      this.identityUser$ = this.auth.loggedInIdentityUser.subscribe(idUser => {      
+        this.identityUser = idUser
+        this.loading = false
+      })
+    })
   }
 
-  logout() {    
-    this.auth.logout()
-    this.router.navigate(["/home/welcome"])
+
+  logout() {   
+    if (this.logoutConfirmation) {
+      this.auth.logout()
+      this.router.navigate(["/home/welcome"])
+      this.logoutConfirmation = false
+
+    } else {
+      this.logoutConfirmation = true
+      event.stopPropagation()
+    }
   }
 
-  tickets() {
-    console.log('TODO: Navigate to My Tickets')
-  }
 
-  events() {
-    console.log('TODO: Navigate to My Events');
-    
+  ngOnDestroy() {
+    this.loggedIn$.unsubscribe()
+    this.identityUser$.unsubscribe()
   }
 }
