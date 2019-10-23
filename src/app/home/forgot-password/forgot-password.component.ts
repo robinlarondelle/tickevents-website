@@ -9,13 +9,10 @@ import { AuthService } from 'src/app/shared/services/auth.service';
   styleUrls: ['./forgot-password.component.css']
 })
 export class ForgotPasswordComponent implements OnInit {
-  forgotPasswordForm = this.fb.group({
-    email: this.fb.control('', [Validators.email, Validators.required])
-  })
+  forgotPasswordForm = this.fb.group({})
   emailParam: string
   success: boolean = false
   loading: boolean = false
-  defaultError: boolean = false
   submitted: boolean = false
 
 
@@ -27,12 +24,11 @@ export class ForgotPasswordComponent implements OnInit {
 
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.emailParam = params.email
-    })
-
-    this.forgotPasswordForm.patchValue({
-      email: this.emailParam
+    this.route.queryParamMap.subscribe(params => {
+      this.forgotPasswordForm.addControl(
+        'email', this.fb.control(
+          params.get('email'), [Validators.required, Validators.email])
+      )
     })
   }
 
@@ -40,20 +36,18 @@ export class ForgotPasswordComponent implements OnInit {
   submit() {
     this.submitted = true
     this.loading = true
-    this.defaultError = false
     this.success = false
 
     this.authService.forgotPassword(this.email.value).subscribe(
       res => {
-        this.loading = false
-        this.success = true
-      },
-
-      error => {
-        this.defaultError = true
-        this.loading = false
-      }
-    )
+      this.loading = false
+      this.success = true
+    },
+    
+    error => {
+      this.loading = false
+      this.success = true
+    })
   }
 
 
