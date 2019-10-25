@@ -7,7 +7,7 @@ import { ScrollEventModule } from 'ngx-scroll-event';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { HeaderComponent } from './home/header/header.component';
+import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './home/login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -19,12 +19,9 @@ import { WelcomeComponent } from './home/welcome/welcome.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EventDetailsComponent } from './home/event-details/event-details.component';
 
-import { RequestCache } from './shared/services/request-cache.service';
-import { CachingInterceptor } from './shared/interceptors/caching-interceptor.service';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { TokenInterceptorService } from './shared/interceptors/token-interceptor.service';
 import { TokenService } from './shared/services/token.service';
-import { ErrorInterceptor } from './shared/interceptors/error-interceptor.service';
 import { PurchaseTicketFormComponent } from './home/purchase-ticket-form/purchase-ticket-form.component';
 import { TicketTypesComponent } from './home/purchase-ticket-form/ticket-types/ticket-types.component';
 import { PurchaseOverviewComponent } from './home/purchase-ticket-form/purchase-overview/purchase-overview.component';
@@ -37,6 +34,14 @@ import { LoadingIconComponent } from './loading-icon/loading-icon.component';
 import { HttpErrorInterceptor } from './shared/interceptors/http-error-interceptor.service';
 import { ForgotPasswordComponent } from './home/forgot-password/forgot-password.component';
 import { CreateNewPasswordComponent } from './home/create-new-password/create-new-password.component';
+import { DWelcomeComponent } from './dashboard/d-welcome/d-welcome.component';
+import { DSideMenuComponent } from './dashboard/d-side-menu/d-side-menu.component';
+import { DProfileNavComponent } from './dashboard/d-side-menu/d-profile-nav/d-profile-nav.component';
+import { DProfileComponent } from './dashboard/d-profile/d-profile.component';
+import { DProfileStatusComponent } from './dashboard/d-side-menu/d-profile-status/d-profile-status.component';
+import { DSettingsComponent } from './dashboard/d-side-menu/d-settings/d-settings.component';
+import { DNotFoundComponent } from './dashboard/d-not-found/d-not-found.component';
+import { DMyEventsComponent} from './dashboard/d-side-menu/d-my-events/d-my-events.component'
 
 @NgModule({
   declarations: [
@@ -61,7 +66,15 @@ import { CreateNewPasswordComponent } from './home/create-new-password/create-ne
     ReturnToHomeButtonComponent,
     LoadingIconComponent,
     ForgotPasswordComponent,
-    CreateNewPasswordComponent
+    CreateNewPasswordComponent,
+    DWelcomeComponent,
+    DSideMenuComponent,
+    DProfileNavComponent,
+    DProfileComponent,
+    DProfileStatusComponent,
+    DSettingsComponent,
+    DNotFoundComponent,
+    DMyEventsComponent
   ],
   imports: [
     BrowserModule,
@@ -74,18 +87,6 @@ import { CreateNewPasswordComponent } from './home/create-new-password/create-ne
     HttpModule
   ],
   providers: [
-    //disable caching and intercepting until further notice
-    // RequestCache,
-    // { 
-    //   provide: HTTP_INTERCEPTORS, 
-    //   useClass: CachingInterceptor, 
-    //   multi: true 
-    // },
-    // { 
-    //   provide: HTTP_INTERCEPTORS, 
-    //   useClass: ErrorInterceptor, 
-    //   multi: true 
-    // },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,

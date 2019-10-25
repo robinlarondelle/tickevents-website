@@ -18,6 +18,10 @@ html {
   padding-top: 65px;
 }
 
+.h-100vh {
+  height: 100vh !important;
+}
+
 
 .w {
   color: whitesmoke;
@@ -31,10 +35,30 @@ html {
   color: red;
 }
 
+.darker-gray {
+  color: darkgray;
+}
+
 .btn-bottom {
   border: 1.5px solid black;
   height: 50px;
   border-radius: 25px;
   font-size: 100%;
   font-weight: 400;
+}
+
+.side-nav-box {
+  height: 60px;
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+  color: white;
+}
+
+.side-nav-box:hover {
+  background-color: rgb(49, 54, 59);
+  
+}
+
+.side-nav-text{
+  font-size: 21px;
 }

@@ -1,0 +1,12 @@
+.box {
+  height: 60px;
+}
+
+.box:hover {
+  background-color: rgb(49, 54, 59);
+  
+}
+
+.side-nav-text{
+  font-size: 21px;
+}

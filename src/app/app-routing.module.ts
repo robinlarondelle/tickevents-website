@@ -16,10 +16,14 @@ import { PurchaseOverviewComponent } from './home/purchase-ticket-form/purchase-
 import { PurchaseFormGuard } from './shared/guards/purchase-form.guard';
 import { ForgotPasswordComponent } from './home/forgot-password/forgot-password.component';
 import { CreateNewPasswordComponent } from './home/create-new-password/create-new-password.component';
+import { DWelcomeComponent } from './dashboard/d-welcome/d-welcome.component';
+import { DProfileComponent } from './dashboard/d-profile/d-profile.component';
+import { DNotFoundComponent } from './dashboard/d-not-found/d-not-found.component';
 
 const routes: Routes = [
   //catch routes
-  { path: '', redirectTo: "/home/welcome", pathMatch: "full" },
+  // { path: '', redirectTo: "/home/welcome", pathMatch: "full" }, //disabled for development purposes
+  { path: '', redirectTo: "/dashboard", pathMatch: "full" },
   { path: 'home', redirectTo: "/home/welcome", pathMatch: "full" },
 
   //home-related routes
@@ -49,7 +53,13 @@ const routes: Routes = [
   },
 
   //dashboard-related routes
-  { path: "dashboard", component: DashboardComponent, canActivate: [AuthGuard] },
+  // { path: "dashboard", component: DashboardComponent, canActivate: [AuthGuard] }, //deactivated authguard because of development purposes
+  { path: "dashboard", redirectTo: "dashboard/welcome", pathMatch: "full"},
+  { path: "dashboard", component: DashboardComponent, children: [
+      {path: "welcome", component: DWelcomeComponent},
+      {path: "profile", component: DProfileComponent},
+      {path: "404", component: DNotFoundComponent}
+  ]},
 
   //error-handling routes
   { path: "404", component: PageNotFoundComponent },
