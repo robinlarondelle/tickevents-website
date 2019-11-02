@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IdentityUser } from 'src/app/shared/models/identityUser.model';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-d-profile',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./d-profile.component.css']
 })
 export class DProfileComponent implements OnInit {
+  identityUser: IdentityUser
 
-  constructor() { }
+  constructor(
+    private authService: AuthService
+  ) { }
 
   ngOnInit() {
+    this.authService.loggedInIdentityUser.subscribe(idUser => {
+      this.identityUser = idUser
+    })
   }
 
 }

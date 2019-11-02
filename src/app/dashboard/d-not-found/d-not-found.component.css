@@ -1,0 +1,19 @@
+.height {
+  height: 100vh;
+}
+
+i {
+  font-size: 150px;
+}
+
+hr {
+  border: 1px solid black;
+}
+
+@media (min-width: 300px) {
+  i {font-size: 50vw}
+}
+
+@media (min-width: 576px) {
+  i {font-size: 288px}
+}

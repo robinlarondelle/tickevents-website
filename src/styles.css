@@ -10,12 +10,16 @@ html {
   min-width: 300px !important;
 }
 
+nav {
+  height: 65px !important;
+}
+
 .header-compensation {
-  margin-top: -65px;
+  margin-top: -65px !important;
 }
 
 .header-padding {
-  padding-top: 65px;
+  padding-top: 65px !important;
 }
 
 .h-100vh {

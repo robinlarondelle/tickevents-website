@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './home/login/login.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './home/page-not-found/page-not-found.component';
 import { EmailVerificationComponent } from './home/email-verification/email-verification.component';
 import { RegisterComponent } from './home/register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -23,11 +23,12 @@ import { DNotFoundComponent } from './dashboard/d-not-found/d-not-found.componen
 const routes: Routes = [
   //catch routes
   // { path: '', redirectTo: "/home/welcome", pathMatch: "full" }, //disabled for development purposes
-  { path: '', redirectTo: "/dashboard", pathMatch: "full" },
+  { path: '', redirectTo: "/home/welcome", pathMatch: "full" },
   { path: 'home', redirectTo: "/home/welcome", pathMatch: "full" },
 
   //home-related routes
-  { path: "home", component: HomeComponent, children: [
+  {
+    path: "home", component: HomeComponent, children: [
       { path: "welcome", component: WelcomeComponent, data: { animation: 'WelcomeComponent' } },
 
       //auth-related routes
@@ -35,13 +36,15 @@ const routes: Routes = [
       { path: "register", component: RegisterComponent, data: { animation: 'RegisterComponent' } },
       { path: "verify-email/:userid/:token", component: EmailVerificationComponent },
       { path: "forgot-password", component: ForgotPasswordComponent, data: { animation: 'ForgotPasswordComponent' } },
-      {path: "forgot-password/:identityUserID/:token", component: CreateNewPasswordComponent, data: {animation: "CreateNewPasswordComponent"}},
+      { path: "forgot-password/:identityUserID/:token", component: CreateNewPasswordComponent, data: { animation: "CreateNewPasswordComponent" } },
 
       //event-related routes
       { path: "events/:id", component: EventDetailsComponent, data: { animation: 'EventDetailsComponent' } },
       { path: "events/:id/purchase", redirectTo: "events/:id/purchase/ticket-types", pathMatch: "full" },
-      { path: "events/:id/purchase", component: PurchaseTicketFormComponent, children: [
-          { path: "", canActivate: [PurchaseFormGuard], children: [
+      {
+        path: "events/:id/purchase", component: PurchaseTicketFormComponent, children: [
+          {
+            path: "", canActivate: [PurchaseFormGuard], children: [
               { path: "ticket-types", component: TicketTypesComponent },
               { path: "customer-details", component: CustomerDetailsComponent },
               { path: "purchase-overview", component: PurchaseOverviewComponent },
@@ -53,13 +56,15 @@ const routes: Routes = [
   },
 
   //dashboard-related routes
-  // { path: "dashboard", component: DashboardComponent, canActivate: [AuthGuard] }, //deactivated authguard because of development purposes
-  { path: "dashboard", redirectTo: "dashboard/welcome", pathMatch: "full"},
-  { path: "dashboard", component: DashboardComponent, children: [
-      {path: "welcome", component: DWelcomeComponent},
-      {path: "profile", component: DProfileComponent},
-      {path: "404", component: DNotFoundComponent}
-  ]},
+  { path: "dashboard", redirectTo: "dashboard/welcome", pathMatch: "full" },
+  {
+    path: "dashboard", component: DashboardComponent, canActivate: [AuthGuard], children: [
+      { path: "", redirectTo: "welcome", pathMatch: "full" },
+      { path: "welcome", component: DWelcomeComponent },
+      { path: "profile", component: DProfileComponent },
+      { path: "404", component: DNotFoundComponent }
+    ]
+  },
 
   //error-handling routes
   { path: "404", component: PageNotFoundComponent },

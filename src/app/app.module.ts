@@ -7,10 +7,10 @@ import { ScrollEventModule } from 'ngx-scroll-event';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent } from './home/header/header.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './home/login/login.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './home/page-not-found/page-not-found.component';
 import { EmailVerificationComponent } from './home/email-verification/email-verification.component';
 import { RegisterComponent } from './home/register/register.component';
 import { MustMatchDirective } from './shared/directives/MustMatchDirective';
@@ -41,7 +41,8 @@ import { DProfileComponent } from './dashboard/d-profile/d-profile.component';
 import { DProfileStatusComponent } from './dashboard/d-side-menu/d-profile-status/d-profile-status.component';
 import { DSettingsComponent } from './dashboard/d-side-menu/d-settings/d-settings.component';
 import { DNotFoundComponent } from './dashboard/d-not-found/d-not-found.component';
-import { DMyEventsComponent} from './dashboard/d-side-menu/d-my-events/d-my-events.component'
+import { DMyEventsComponent} from './dashboard/d-side-menu/d-my-events/d-my-events.component';
+import { DHeaderComponent } from './dashboard/d-header/d-header.component'
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { DMyEventsComponent} from './dashboard/d-side-menu/d-my-events/d-my-even
     DProfileStatusComponent,
     DSettingsComponent,
     DNotFoundComponent,
-    DMyEventsComponent
+    DMyEventsComponent,
+    DHeaderComponent
   ],
   imports: [
     BrowserModule,
