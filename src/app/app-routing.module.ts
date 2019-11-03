@@ -19,6 +19,7 @@ import { CreateNewPasswordComponent } from './home/create-new-password/create-ne
 import { DWelcomeComponent } from './dashboard/d-welcome/d-welcome.component';
 import { DProfileComponent } from './dashboard/d-profile/d-profile.component';
 import { DNotFoundComponent } from './dashboard/d-not-found/d-not-found.component';
+import { DCreateEventComponent } from './dashboard/d-create-event/d-create-event.component';
 
 const routes: Routes = [
   //catch routes
@@ -60,6 +61,7 @@ const routes: Routes = [
   {
     path: "dashboard", component: DashboardComponent, canActivate: [AuthGuard], children: [
       { path: "", redirectTo: "welcome", pathMatch: "full" },
+      { path: "create-event", component: DCreateEventComponent },
       { path: "welcome", component: DWelcomeComponent },
       { path: "profile", component: DProfileComponent },
       { path: "404", component: DNotFoundComponent }

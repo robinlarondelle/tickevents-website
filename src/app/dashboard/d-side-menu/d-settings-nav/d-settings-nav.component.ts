@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-d-my-events',
-  templateUrl: './d-my-events.component.html',
-  styleUrls: ['./d-my-events.component.css']
+  selector: 'app-d-settings-nav',
+  templateUrl: './d-settings-nav.component.html',
+  styleUrls: ['./d-settings-nav.component.css']
 })
-export class DMyEventsComponent implements OnInit {
+export class DSettingsNavComponent implements OnInit {
 
   constructor(
     private router: Router,
@@ -16,7 +16,7 @@ export class DMyEventsComponent implements OnInit {
   ngOnInit() {
   }
 
-  myEvents() {
+  settings() {
     this.router.navigate(["404"], { relativeTo: this.route })
   }
 }

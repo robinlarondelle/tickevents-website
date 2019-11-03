@@ -35,14 +35,16 @@ import { HttpErrorInterceptor } from './shared/interceptors/http-error-intercept
 import { ForgotPasswordComponent } from './home/forgot-password/forgot-password.component';
 import { CreateNewPasswordComponent } from './home/create-new-password/create-new-password.component';
 import { DWelcomeComponent } from './dashboard/d-welcome/d-welcome.component';
+import { DProfileComponent } from './dashboard/d-profile/d-profile.component';
+import { DNotFoundComponent } from './dashboard/d-not-found/d-not-found.component';
+import { DHeaderComponent } from './dashboard/d-header/d-header.component';
+import { DCreateEventComponent } from './dashboard/d-create-event/d-create-event.component'
+
 import { DSideMenuComponent } from './dashboard/d-side-menu/d-side-menu.component';
 import { DProfileNavComponent } from './dashboard/d-side-menu/d-profile-nav/d-profile-nav.component';
-import { DProfileComponent } from './dashboard/d-profile/d-profile.component';
-import { DProfileStatusComponent } from './dashboard/d-side-menu/d-profile-status/d-profile-status.component';
-import { DSettingsComponent } from './dashboard/d-side-menu/d-settings/d-settings.component';
-import { DNotFoundComponent } from './dashboard/d-not-found/d-not-found.component';
-import { DMyEventsComponent} from './dashboard/d-side-menu/d-my-events/d-my-events.component';
-import { DHeaderComponent } from './dashboard/d-header/d-header.component'
+import { DSettingsNavComponent } from './dashboard/d-side-menu/d-settings-nav/d-settings-nav.component';
+import { DMyEventsNavComponent} from './dashboard/d-side-menu/d-my-events-nav/d-my-events-nav.component';
+import { DCreateEventNavComponent } from './dashboard/d-side-menu/d-create-event-nav/d-create-event-nav.component';
 
 @NgModule({
   declarations: [
@@ -68,15 +70,18 @@ import { DHeaderComponent } from './dashboard/d-header/d-header.component'
     LoadingIconComponent,
     ForgotPasswordComponent,
     CreateNewPasswordComponent,
-    DWelcomeComponent,
+    
     DSideMenuComponent,
     DProfileNavComponent,
+    DSettingsNavComponent,
+    DMyEventsNavComponent,
+    DCreateEventNavComponent,
+    
+    DWelcomeComponent,
     DProfileComponent,
-    DProfileStatusComponent,
-    DSettingsComponent,
     DNotFoundComponent,
-    DMyEventsComponent,
-    DHeaderComponent
+    DHeaderComponent,
+    DCreateEventComponent,
   ],
   imports: [
     BrowserModule,
