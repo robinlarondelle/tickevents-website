@@ -45,6 +45,7 @@ import { DProfileNavComponent } from './dashboard/d-side-menu/d-profile-nav/d-pr
 import { DSettingsNavComponent } from './dashboard/d-side-menu/d-settings-nav/d-settings-nav.component';
 import { DMyEventsNavComponent} from './dashboard/d-side-menu/d-my-events-nav/d-my-events-nav.component';
 import { DCreateEventNavComponent } from './dashboard/d-side-menu/d-create-event-nav/d-create-event-nav.component';
+import { DStripeReturnComponentComponent } from './dashboard/d-stripe-return-component/d-stripe-return-component.component';
 
 @NgModule({
   declarations: [
@@ -82,6 +83,7 @@ import { DCreateEventNavComponent } from './dashboard/d-side-menu/d-create-event
     DNotFoundComponent,
     DHeaderComponent,
     DCreateEventComponent,
+    DStripeReturnComponentComponent,
   ],
   imports: [
     BrowserModule,

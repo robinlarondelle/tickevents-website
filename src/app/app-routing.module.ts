@@ -20,6 +20,7 @@ import { DWelcomeComponent } from './dashboard/d-welcome/d-welcome.component';
 import { DProfileComponent } from './dashboard/d-profile/d-profile.component';
 import { DNotFoundComponent } from './dashboard/d-not-found/d-not-found.component';
 import { DCreateEventComponent } from './dashboard/d-create-event/d-create-event.component';
+import { DStripeReturnComponentComponent } from './dashboard/d-stripe-return-component/d-stripe-return-component.component';
 
 const routes: Routes = [
   //catch routes
@@ -64,6 +65,7 @@ const routes: Routes = [
       { path: "create-event", component: DCreateEventComponent },
       { path: "welcome", component: DWelcomeComponent },
       { path: "profile", component: DProfileComponent },
+      { path: "stripe-return", component: DStripeReturnComponentComponent},
       { path: "404", component: DNotFoundComponent }
     ]
   },

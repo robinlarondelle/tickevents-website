@@ -1,0 +1,21 @@
+<div class="h-100vh row no-gutters align-content-center justify-content-center">
+  <div class="col-8">
+
+    <div *ngIf="success">
+      <h1><b>Gelukt.</b></h1>
+      <p>Je kunt het tabblad afsluiten.</p>
+    </div>
+
+    <div *ngIf="error">
+      <h1><b>Oeps.</b></h1>
+      <p>Er is iets fout gegaan. Probeer het nog eens.</p>
+
+      <hr>
+
+      <button type="button" class="btn btn-outline-dark btn-bottom" (click)="navigateToStripe()">
+        Connect to Stripe
+      </button>
+    </div>
+    
+  </div>
+</div>

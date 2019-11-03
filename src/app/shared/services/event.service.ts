@@ -73,8 +73,8 @@ export class EventService {
   }
 
 
-  purchaseTicket(eventID: number) {
-    return -1 //TODO implement endpoint
+  authorizeStripeUser(code: string) {
+    
   }
 
 
