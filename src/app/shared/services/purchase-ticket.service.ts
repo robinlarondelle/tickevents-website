@@ -9,6 +9,8 @@ import { TicketTypeForm } from '../models/ticket-type-form.model'
 import { TicketTypeAmount } from '../models/ticket-type-amount.model';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { StripeService } from './stripe.service';
+declare var Stripe: any
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +27,7 @@ export class PurchaseTicketService {
   constructor(
     private fb: FormBuilder,
     private eventService: EventService,
+    private stripeService: StripeService,
     private http: HttpClient
   ) { }
 
@@ -53,11 +56,39 @@ export class PurchaseTicketService {
   }
 
 
-  sendPurchase() {
-    console.log(this.purchaseForm.value.value);
+  sendPurchase(idealBank: any) {
     let form = this.purchaseForm.value.value
-    
-    return this.http.post<any>(`${environment.BASE_URL}/api/events/${form.eventID}/purchase`, form)
+
+    var stripe = this.stripeService.stripe
+    // Create a Stripe client.
+    // Note: this merchant has been set up for demo purposes.
+    const sourceData = {
+      type: 'ideal',
+      amount: 1099,
+      currency: 'eur',
+      owner: {
+        name: "Jan van leeuwen"
+      },
+      // Specify the URL to which the customer should be redirected
+      // after paying.
+      redirect: {
+        return_url: 'http://svturing.nl',
+      },
+    };
+  
+    // Call `stripe.createSource` with the idealBank Element and
+    // additional options.
+    stripe.createSource(idealBank, sourceData).then(source => {
+      console.log(source);
+    }).catch(err =>{
+      console.log(err);
+    })
+
+    return this.http.post<any>(`${environment.BASE_URL}/api/events/${form.eventID}/initialize-purchase`, form)
+  }
+
+  getStripeElements() {
+
   }
 }
 

@@ -24,7 +24,9 @@ export class DStripeReturnComponentComponent implements OnInit {
     if (params['error']) {
       this.error = true
     } else if (params['code'] && params['scope']) {
-      this.success = true
+      this.stripeService.fetchUserCredentials(params['code']).subscribe(res => {
+        this.success = true
+      })
     } else {
       this.router.navigate(['404'], {relativeTo: this.route})
     }

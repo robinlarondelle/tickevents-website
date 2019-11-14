@@ -6,6 +6,7 @@ export class PurchaseForm {
   tickets = new FormArray([])
   customer = new FormGroup({})
   eventID = new FormControl()
+  idealBank = new FormControl()
 
   constructor(customerDetailsForm: CustomerDetailsForm){
     this.customer.addControl('firstname', customerDetailsForm.firstname)

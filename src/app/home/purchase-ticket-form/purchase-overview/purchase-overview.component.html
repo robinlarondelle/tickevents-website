@@ -25,7 +25,8 @@
         <div class="col-auto">{{ticketTypeAmount.ticketType.name}}</div>
         <div class="col"></div> <!-- Space Filler -->
         <div class="col-auto">{{ticketTypeAmount.amount}}x</div>
-        <div class="col-4 ml-1  text-right">{{ticketTypeAmount.amount * (ticketTypeAmount.ticketType.pricePerTicket / 100) | currency: "EUR"}}</div>
+        <div class="col-4 ml-1  text-right">
+          {{ticketTypeAmount.amount * (ticketTypeAmount.ticketType.pricePerTicket / 100) | currency: "EUR"}}</div>
       </div>
     </div>
 
@@ -68,18 +69,37 @@
   <div class="col"></div>
 </div>
 
+<div class="row no-gutters mt-4 justify-content-center">
+  <div class="col-md-8 col-lg-6 text-left">
+    
+    <div class="form-row">
+      <label for="ideal-bank">
+        <b>Kies uw bank:</b>
+      </label>
+      <div id="ideal-bank">
+        <!-- A Stripe Element will be inserted here. -->
+      </div>
+    </div>
+
+    <!-- Used to display form errors. -->
+    <div id="error-message" role="alert"></div>
+  </div>
+</div>
+
 
 <hr class="my-3 devider">
 
 
 <div class="row no-gutters">
 
-  <div class="mt-2 order-2 col-sm-12 mt-sm-2 order-sm-2 pr-sm-2 col-md-6 order-md-1 mt-md-0 col-lg-5 order-lg-1 col-xl-4 align-self-center">
-    <button class="btn btn-lg btn-outline-dark text-center h-auto btn-bottom w-100" (click)="return()"><i class="fas fa-chevron-left"></i> Terug naar gegevens invullen</button>
+  <div
+    class="mt-2 order-2 col-sm-12 mt-sm-2 order-sm-2 pr-sm-2 col-md-6 order-md-1 mt-md-0 col-lg-5 order-lg-1 col-xl-4 align-self-center">
+    <button class="btn btn-lg btn-outline-dark text-center h-auto btn-bottom w-100" (click)="return()"><i
+        class="fas fa-chevron-left"></i> Terug naar gegevens invullen</button>
   </div>
   <div class="col order-lg-2"></div> <!-- Space filler -->
   <div class="order-1 col-sm-12 mt-sm-0 order-sm-1 col-md-6 order-md-2 mt-md-0 col-lg-3 order-lg-2 align-self-center">
     <button class="btn btn-lg btn-outline-dark text-center h-auto btn-bottom w-100" (click)="click()">Afrekenen</button>
   </div>
-  
+
 </div>
